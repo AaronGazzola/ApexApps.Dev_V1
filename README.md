@@ -1,4 +1,10 @@
-# Getting Started with Create React App
+# Apex Apps - The Pinnacle of Web App Excellence
+
+## About
+
+ApexApps.dev is the portfolio website for Apex Apps development by Aaron Gazzola.
+
+---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
