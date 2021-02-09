@@ -18,7 +18,6 @@ const Logo = () => {
 			viewBox='0 0 100 100'
 		>
 			<path
-				class='line'
 				d='
           M 0 100
           L 20 60
@@ -27,7 +26,6 @@ const Logo = () => {
           '
 			></path>
 			<path
-				class='line'
 				d='
           M 32.5 35
           L 50 0

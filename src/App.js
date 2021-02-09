@@ -5,7 +5,6 @@ import { getTheme } from 'styles/theme';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
 import styles from 'styles/appStyles';
-import HomeScreen from 'screens/HomeScreen';
 import PageNotFoundScreen from 'screens/PageNotFoundScreen';
 import PortfolioScreen from 'screens/PortfolioScreen';
 import AboutScreen from 'screens/AboutScreen';
@@ -25,9 +24,8 @@ const App = () => {
 				<Header />
 				<main className={classes.main}>
 					<Switch>
-						<Route path='/' exact component={HomeScreen} />
+						<Route path='/' exact component={AboutScreen} />
 						<Route path='/portfolio' exact component={PortfolioScreen} />
-						<Route path='/about' exact component={AboutScreen} />
 						<Route path='/blog' component={BlogScreen} />
 						<Route path='/contact' exact component={ContactScreen} />
 						<Route path='/' component={PageNotFoundScreen} />
