@@ -28,8 +28,8 @@ const App = () => {
 						<Route path='/' exact component={HomeScreen} />
 						<Route path='/portfolio' exact component={PortfolioScreen} />
 						<Route path='/about' exact component={AboutScreen} />
-						<Route path='/contact' exact component={ContactScreen} />
 						<Route path='/blog' component={BlogScreen} />
+						<Route path='/contact' exact component={ContactScreen} />
 						<Route path='/' component={PageNotFoundScreen} />
 					</Switch>
 				</main>
