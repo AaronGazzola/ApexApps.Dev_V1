@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 // const drawerWidth = 240;
 const appBarHeight = 150;
-// const footerHeight = 50;
+const footerHeight = 55;
 
 const styles = makeStyles(theme => ({
 	appBar: {
@@ -27,6 +27,23 @@ const styles = makeStyles(theme => ({
 	},
 	headerTitle2: {
 		transform: 'translate(35%, 0)'
+	},
+	main: {
+		minHeight: `calc(100vh - ${appBarHeight + footerHeight}px)`
+	},
+	footer: {
+		height: footerHeight,
+		width: 320,
+		margin: 'auto',
+		borderTop: `1px solid ${theme.palette.grey[900]}`,
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+		justifyContent: 'flex-end',
+		paddingBottom: theme.spacing(1),
+		'& p': {
+			color: theme.palette.text.secondary
+		}
 	}
 }));
 

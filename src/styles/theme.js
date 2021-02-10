@@ -46,6 +46,10 @@ export const getTheme = () =>
 			tonalOffset: 0.2,
 			background: {
 				default: '#000'
+			},
+			text: {
+				primary: '#bdbdbd',
+				secondary: '#616161'
 			}
 		},
 		typography: {
