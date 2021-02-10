@@ -13,7 +13,10 @@ const styles = makeStyles(theme => ({
 		strokeWidth: 3,
 		strokeLinecap: 'round',
 		strokeLinejoin: 'round',
-		fill: 'none'
+		fill: 'none',
+		'&:hover': {
+			cursor: 'pointer'
+		}
 	},
 	resize: {
 		animation: '$resize 1s ease 3.3s backwards'
@@ -23,30 +26,60 @@ const styles = makeStyles(theme => ({
 		strokeDashoffset: 0,
 		animation: '$bottom-left 1.5s linear 1s backwards 1'
 	},
+	bottomLeftReplay: {
+		strokeDasharray: 45,
+		strokeDashoffset: 0,
+		animation: '$bottom-left 1.5s linear backwards 1'
+	},
 	bottomRight: {
 		strokeDasharray: 45,
 		strokeDashoffset: 0,
 		animation: '$bottom-right 1.5s linear 1s backwards 1'
+	},
+	bottomRightReplay: {
+		strokeDasharray: 45,
+		strokeDashoffset: 0,
+		animation: '$bottom-right 1.5s linear backwards 1'
 	},
 	centerLeft: {
 		strokeDasharray: 30,
 		strokeDashoffset: 0,
 		animation: '$center-left .3s linear 2.5s backwards 1'
 	},
+	centerLeftReplay: {
+		strokeDasharray: 30,
+		strokeDashoffset: 0,
+		animation: '$center-left .3s linear 1.5s backwards 1'
+	},
 	centerRight: {
 		strokeDasharray: 30,
 		strokeDashoffset: 0,
 		animation: '$center-right .3s linear 2.5s backwards 1'
+	},
+	centerRightReplay: {
+		strokeDasharray: 30,
+		strokeDashoffset: 0,
+		animation: '$center-right .3s linear 1.5s backwards 1'
 	},
 	topLeft: {
 		strokeDasharray: 40,
 		strokeDashoffset: 0,
 		animation: '$top-left 1.5s linear 1.3s backwards 1'
 	},
+	topLeftReplay: {
+		strokeDasharray: 40,
+		strokeDashoffset: 0,
+		animation: '$top-left 1.5s linear backwards 1'
+	},
 	topRight: {
 		strokeDasharray: 40,
 		strokeDashoffset: 0,
 		animation: '$top-right 1.5s linear 1.3s backwards 1'
+	},
+	topRightReplay: {
+		strokeDasharray: 40,
+		strokeDashoffset: 0,
+		animation: '$top-right 1.5s linear backwards 1'
 	},
 	backDrop: {
 		zIndex: 2,

@@ -19,7 +19,8 @@ const styles = makeStyles(theme => ({
 		top: 12,
 		left: '50%',
 		margin: 0,
-		padding: 0
+		padding: 0,
+		userSelect: 'none'
 	},
 	headerTitle1: {
 		transform: 'translate(-140%, 0)'
