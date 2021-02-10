@@ -31,12 +31,12 @@ const styles = makeStyles(theme => ({
 	centerLeft: {
 		strokeDasharray: 30,
 		strokeDashoffset: 0,
-		animation: '$center-left .5s linear 2.5s backwards 1'
+		animation: '$center-left .3s linear 2.5s backwards 1'
 	},
 	centerRight: {
 		strokeDasharray: 30,
 		strokeDashoffset: 0,
-		animation: '$center-right .5s linear 2.5s backwards 1'
+		animation: '$center-right .3s linear 2.5s backwards 1'
 	},
 	topLeft: {
 		strokeDasharray: 40,
@@ -61,7 +61,7 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes resize': {
 		'0%': {
-			strokeWidth: 1.5,
+			strokeWidth: 1,
 			position: 'fixed',
 			top: '50%',
 			left: '50%',

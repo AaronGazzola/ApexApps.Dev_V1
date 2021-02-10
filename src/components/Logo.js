@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
 import styles from 'styles/logoStyles';
 import { isIE } from 'react-device-detect';
@@ -7,10 +7,23 @@ const useStyles = styles;
 
 const Logo = () => {
 	const classes = useStyles();
+	// Check local storage to see if animation has been played
+	// Skip if so
+	const [animPlayed, setAnimPlayed] = useState(false);
+	useEffect(() => {
+		if (JSON.parse(localStorage.getItem('animationPlayed'))) {
+			setAnimPlayed(true);
+		} else {
+			localStorage.setItem('animationPlayed', JSON.stringify(true));
+		}
+	});
+
 	return (
 		<>
 			<svg
-				className={isIE ? classes.logo : clsx(classes.logo, classes.resize)}
+				className={
+					isIE || animPlayed ? classes.logo : clsx(classes.logo, classes.resize)
+				}
 				version='1.1'
 				id='logo'
 				xmlns='http://www.w3.org/2000/svg'
@@ -19,35 +32,35 @@ const Logo = () => {
 				viewBox='0 0 100 100'
 			>
 				<path
-					className={classes.bottomLeft}
+					className={!animPlayed ? classes.bottomLeft : null}
 					d='
           M 0 100
           L 20 60
           '
 				></path>
 				<path
-					className={classes.centerLeft}
+					className={!animPlayed ? classes.centerLeft : null}
 					d='
           M 20 60
           L 50 60
           '
 				></path>
 				<path
-					className={classes.centerRight}
+					className={!animPlayed ? classes.centerRight : null}
 					d='
           M 50 60
           L 80 60
           '
 				></path>
 				<path
-					className={classes.bottomRight}
+					className={!animPlayed ? classes.bottomRight : null}
 					d='
           M 80 60
           L 100 100
           '
 				></path>
 				<path
-					className={classes.topLeft}
+					className={!animPlayed ? classes.topLeft : null}
 					d='
           M 32.5 35
           L 50 0
@@ -55,7 +68,7 @@ const Logo = () => {
           '
 				></path>
 				<path
-					className={classes.topRight}
+					className={!animPlayed ? classes.topRight : null}
 					d='
           M 50 0
           L 67.5 35
@@ -63,7 +76,7 @@ const Logo = () => {
           '
 				></path>
 			</svg>
-			{!isIE && <div className={classes.backDrop}></div>}
+			{!isIE && !animPlayed && <div className={classes.backDrop}></div>}
 		</>
 	);
 };
