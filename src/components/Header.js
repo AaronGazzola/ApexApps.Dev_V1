@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
-import { AppBar, Toolbar, useMediaQuery, Typography } from '@material-ui/core';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import Logo from 'components/Logo';
 import NavTabs from 'components/NavTabs';
 import styles from 'styles/appStyles';
@@ -30,7 +30,7 @@ const Header = () => {
 			default:
 				break;
 		}
-	}, [location.pathname]);
+	});
 
 	const [tabValue, setTabValue] = useState(0);
 
