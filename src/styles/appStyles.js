@@ -20,13 +20,23 @@ const styles = makeStyles(theme => ({
 		left: '50%',
 		margin: 0,
 		padding: 0,
-		userSelect: 'none'
+		userSelect: 'none',
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '3rem',
+			top: 20
+		}
 	},
 	headerTitle1: {
-		transform: 'translate(-140%, 0)'
+		transform: 'translate(-140%, 0)',
+		[theme.breakpoints.down('xs')]: {
+			transform: 'translate(-150%, 0)'
+		}
 	},
 	headerTitle2: {
-		transform: 'translate(35%, 0)'
+		transform: 'translate(35%, 0)',
+		[theme.breakpoints.down('xs')]: {
+			transform: 'translate(45%, 0)'
+		}
 	},
 	main: {
 		minHeight: `calc(100vh - ${appBarHeight + footerHeight}px)`

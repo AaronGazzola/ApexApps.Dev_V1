@@ -5,6 +5,15 @@ const apexGreen = '#309772';
 
 export const getTheme = () =>
 	createMuiTheme({
+		breakpoints: {
+			values: {
+				xs: 0,
+				sm: 650,
+				md: 960,
+				lg: 1280,
+				xl: 1920
+			}
+		},
 		palette: {
 			primary: {
 				main: apexOrange,

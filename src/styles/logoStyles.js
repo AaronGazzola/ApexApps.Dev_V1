@@ -14,12 +14,22 @@ const styles = makeStyles(theme => ({
 		strokeLinecap: 'round',
 		strokeLinejoin: 'round',
 		fill: 'none',
+		userSelect: 'none',
+		outline: 'none',
 		'&:hover': {
 			cursor: 'pointer'
+		},
+		[theme.breakpoints.down('xs')]: {
+			width: 60,
+			height: 60,
+			top: 20
 		}
 	},
 	resize: {
-		animation: '$resize 1s ease 3.3s backwards'
+		animation: '$resize 1s ease 3.3s backwards',
+		[theme.breakpoints.down('xs')]: {
+			animation: '$resize-small 1s ease 3.3s backwards'
+		}
 	},
 	bottomLeft: {
 		strokeDasharray: 45,
@@ -110,6 +120,27 @@ const styles = makeStyles(theme => ({
 			left: '50%',
 			width: 70,
 			height: 70,
+			transform: 'translate(-50%, 0%)'
+		}
+	},
+	'@keyframes resize-small': {
+		'0%': {
+			strokeWidth: 1,
+			position: 'fixed',
+			top: '50%',
+			left: '50%',
+			height: '50vh',
+			width: '50vh',
+			maxWidth: '100vw',
+			transform: 'translate(-50%, -50%)'
+		},
+		'100%': {
+			strokeWidth: 3,
+			position: 'fixed',
+			top: 20,
+			left: '50%',
+			width: 60,
+			height: 60,
 			transform: 'translate(-50%, 0%)'
 		}
 	},
