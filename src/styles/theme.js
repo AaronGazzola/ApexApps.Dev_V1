@@ -1,6 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const apexOrange = '#a63600';
+const apexOrange = '#CF3A19';
 const apexGreen = '#309772';
 
 export const getTheme = () =>
@@ -21,21 +21,26 @@ export const getTheme = () =>
 				main: '#970026'
 			},
 			common: {
-				yellow1: '#E49F39',
-				yellow2: '#C87D11',
-				yellow3: '#A66200',
-				yellow4: '#834E00',
-				yellow5: '#573400',
-				orange1: '#E47139',
-				orange2: '#C84c11',
-				orange3: '#A63600',
-				orange4: '#832A00',
-				orange5: '#571C00',
-				pink1: '#D0345B',
-				pink2: '#B61039',
-				pink1: '#970026',
-				pink1: '#77001E',
-				pink1: '#500014'
+				orange1: '#CF3919',
+				orange2: '#FF886F',
+				orange3: '#E65E41',
+				orange4: '#A82409',
+				orange5: '#801600',
+				yellow1: '#CF7819',
+				yellow2: '#FFBA6F',
+				yellow3: '#E69741',
+				yellow4: '#A85C09',
+				yellow5: '#804300',
+				blue1: '#146482',
+				blue2: '#4A8AA2',
+				blue3: '#2D7591',
+				blue4: '#0A4F69',
+				blue5: '#033B50',
+				green1: '#129643',
+				green2: '#51BA78',
+				green3: '#2FA75C',
+				green4: '#067A31',
+				green5: '#005D23'
 			},
 			contrastThreshold: 3,
 			tonalOffset: 0.2,

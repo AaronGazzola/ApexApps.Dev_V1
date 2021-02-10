@@ -14,7 +14,7 @@ const styles = makeStyles(theme => ({
 	},
 	headerTitle: {
 		fontSize: '3.5rem',
-		color: theme.palette.common.orange4,
+		color: theme.palette.secondary.main,
 		position: 'absolute',
 		top: 12,
 		left: '50%',

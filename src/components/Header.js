@@ -39,7 +39,7 @@ const Header = () => {
 	};
 
 	return (
-		<AppBar position='fixed' className={classes.appBar}>
+		<AppBar position='relative' className={classes.appBar}>
 			<Toolbar disableGutters className={classes.toolbar}>
 				<Typography
 					className={clsx(classes.headerTitle, classes.headerTitle1)}

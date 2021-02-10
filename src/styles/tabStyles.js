@@ -9,7 +9,7 @@ const styles = makeStyles(theme => ({
 		'& .MuiTabs-indicator': {
 			top: 0,
 			height: 2,
-			backgroundColor: theme.palette.primary.main
+			backgroundColor: theme.palette.secondary.dark
 		},
 		borderTop: `1px solid ${theme.palette.grey[900]}`
 	},
@@ -18,7 +18,7 @@ const styles = makeStyles(theme => ({
 		fontSize: '.95rem',
 		textTransform: 'none',
 		'&.Mui-selected': {
-			color: theme.palette.common.orange1
+			color: theme.palette.secondary.main
 		}
 	}
 }));
