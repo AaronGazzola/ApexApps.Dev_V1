@@ -18,7 +18,7 @@ const Header = () => {
 			case '/about':
 				setTabValue(0);
 				break;
-			case '/portfolio':
+			case '/apps':
 				setTabValue(1);
 				break;
 			case '/blog':

@@ -21,14 +21,14 @@ const NavTabs = ({ tabValue, handleTabChange }) => {
 				component={Link}
 				to='/'
 				disableRipple
-				label='About'
+				label='Aaron'
 			/>
 			<Tab
 				className={classes.tab}
 				component={Link}
-				to='/portfolio'
+				to='/apps'
 				disableRipple
-				label='Portfolio'
+				label='Apps'
 			/>
 			<Tab
 				className={classes.tab}

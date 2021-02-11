@@ -25,7 +25,7 @@ const App = () => {
 				<main className={classes.main}>
 					<Switch>
 						<Route path='/' exact component={AboutScreen} />
-						<Route path='/portfolio' exact component={PortfolioScreen} />
+						<Route path='/apps' exact component={PortfolioScreen} />
 						<Route path='/blog' component={BlogScreen} />
 						<Route path='/contact' exact component={ContactScreen} />
 						<Route path='/' component={PageNotFoundScreen} />
