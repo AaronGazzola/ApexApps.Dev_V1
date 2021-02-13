@@ -73,7 +73,7 @@ const AboutScreen = () => {
 					Apex Apps is dedicated to creating&nbsp;
 					<span className={classes.highlight}>elegant</span> and&nbsp;
 					<span className={classes.highlight}>powerful</span>
-					&nbsp;Web Applications.
+					&nbsp;web applications.
 				</Typography>
 			</div>
 			<Grid
