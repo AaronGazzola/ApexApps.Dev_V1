@@ -2,7 +2,7 @@
 
 ## About
 
-ApexApps.dev is the portfolio website for Apex Apps - Web Application Development by Aaron Gazzola.
+ApexApps.dev is the portfolio, blog, and information website for Apex Apps, a web application development business owned and operated by Aaron Gazzola.
 
 ---
 

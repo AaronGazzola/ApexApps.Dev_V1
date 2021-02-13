@@ -1,0 +1,52 @@
+{
+  "name": "apexapps",
+  "version": "1.0.0",
+  "description": "ApexApps.dev is the portfolio, blog, and information website for Apex Apps, a web application development business owned and operated by Aaron Gazzola.",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node backend/server",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "data:import": "node backend/seeder",
+    "data:destroy": "node backend/seeder -d"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AaronGazzola/ApexApps.dev.git"
+  },
+  "keywords": [
+    "Apex",
+    "Apps",
+    "ApexApps",
+    "Aaron",
+    "Gazzola",
+    "web",
+    "application",
+    "javascript",
+    "development",
+    "excelence"
+  ],
+  "author": "Aaron Gazzola",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AaronGazzola/ApexApps.dev/issues"
+  },
+  "homepage": "https://github.com/AaronGazzola/ApexApps.dev#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "concurrently": "^5.3.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-fileupload": "^1.2.1",
+    "express-mongo-sanitize": "^2.0.2",
+    "express-rate-limit": "^5.2.5",
+    "helmet": "^4.4.1",
+    "hpp": "^0.2.3",
+    "mongoose": "^5.11.16",
+    "morgan": "^1.10.0",
+    "xss-clean": "^0.1.1"
+  }
+}
