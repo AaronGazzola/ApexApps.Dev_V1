@@ -15,7 +15,7 @@ const Header = () => {
 	// update selected tab with router location on page reload
 	useEffect(() => {
 		switch (location.pathname) {
-			case '/about':
+			case '/':
 				setTabValue(0);
 				break;
 			case '/apps':

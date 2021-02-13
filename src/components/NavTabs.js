@@ -21,7 +21,7 @@ const NavTabs = ({ tabValue, handleTabChange }) => {
 				component={Link}
 				to='/'
 				disableRipple
-				label='Aaron'
+				label='About'
 			/>
 			<Tab
 				className={classes.tab}

@@ -13,6 +13,7 @@ const styles = makeStyles(theme => ({
 		position: 'relative'
 	},
 	headerTitle: {
+		fontFamily: "'Poiret One', Sans Serif",
 		fontSize: '3.5rem',
 		color: theme.palette.secondary.main,
 		position: 'absolute',
@@ -39,12 +40,27 @@ const styles = makeStyles(theme => ({
 		}
 	},
 	main: {
-		minHeight: `calc(100vh - ${appBarHeight + footerHeight}px)`
+		minHeight: `calc(100vh - ${
+			appBarHeight + footerHeight + theme.spacing(3)
+		}px)`,
+		margin: 'auto',
+		paddingTop: theme.spacing(1),
+		width: 1100,
+		[theme.breakpoints.down('md')]: {
+			width: 800
+		},
+		[theme.breakpoints.down('sm')]: {
+			width: 600
+		},
+		[theme.breakpoints.down('xs')]: {
+			width: '100%'
+		}
 	},
 	footer: {
 		height: footerHeight,
 		width: 320,
 		margin: 'auto',
+		marginTop: theme.spacing(3),
 		borderTop: `1px solid ${theme.palette.grey[900]}`,
 		display: 'flex',
 		flexDirection: 'column',

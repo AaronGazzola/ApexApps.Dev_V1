@@ -1,8 +1,8 @@
-# Apex Apps - The Pinnacle of Web App Excellence
+# Apex Apps - Web App Excellence
 
 ## About
 
-ApexApps.dev is the portfolio website for Apex Apps development by Aaron Gazzola.
+ApexApps.dev is the portfolio website for Apex Apps - Web Application Development by Aaron Gazzola.
 
 ---
 

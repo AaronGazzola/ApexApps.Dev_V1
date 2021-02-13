@@ -2,6 +2,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 const apexOrange = '#CF3A19';
 const apexGreen = '#309772';
+const spacing = 16;
 
 export const getTheme = () =>
 	createMuiTheme({
@@ -64,8 +65,25 @@ export const getTheme = () =>
 		typography: {
 			fontFamily: "'Montserrat', sans-serif",
 			h1: {
-				fontWeight: 100,
-				fontFamily: "'Poiret One', Sans Serif"
+				fontWeight: 200,
+				fontSize: '3.5rem'
+			},
+			h2: {
+				fontWeight: 200,
+				fontSize: '2.5rem',
+				fontStyle: 'italic'
+			},
+			h3: {
+				fontWeight: 200,
+				fontSize: '2rem',
+				fontStyle: 'italic'
+			},
+			h4: {
+				fontWeight: 200,
+				fontSize: '1.8rem'
+			},
+			body1: {
+				fontWeight: 300
 			}
 		}
 	});

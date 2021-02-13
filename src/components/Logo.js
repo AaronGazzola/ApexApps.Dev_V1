@@ -19,6 +19,9 @@ const Logo = ({ handleTabChange }) => {
 		} else {
 			localStorage.setItem('animationPlayed', JSON.stringify(true));
 			setTimeout(() => {
+				window.scrollTo(0, 0);
+			}, 3800);
+			setTimeout(() => {
 				setAnimPlayed(true);
 			}, 4800);
 		}

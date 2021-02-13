@@ -5,7 +5,7 @@ const styles = makeStyles(theme => ({
 		width: 70,
 		zIndex: 3,
 		height: 70,
-		position: 'fixed',
+		position: 'absolute',
 		top: 16,
 		left: '50%',
 		transform: 'translate(-50%, 0%)',
