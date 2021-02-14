@@ -40,6 +40,7 @@ const styles = makeStyles(theme => ({
 		maxWidth: '90%',
 		backgroundColor: '#090909',
 		borderLeft: `1px solid ${theme.palette.primary.main}`,
+		maxWidth: 650,
 		// borderLeft: `1px solid ${theme.palette.grey[200]}`,
 		boxShadow: `inset 6px 0 9px -7px ${theme.palette.primary.dark}`,
 		// boxShadow: `inset 5px 0 7px -7px ${theme.palette.grey[200]}`,
