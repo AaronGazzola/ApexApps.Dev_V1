@@ -12,22 +12,19 @@ const ContactScreen = () => {
 	});
 
 	return (
-		<Grid container xs item direction='column' alignItems='center' spacing={3}>
+		<Grid container xs item direction='column' alignItems='center'>
 			<Grid item xs container justify='center'>
 				<div className={classes.textBox1}>
 					<Typography variant='h1' className={classes.title}>
 						Book a Call
 					</Typography>
 					<Typography className={classes.paragraph}>
-						Select a date and time for us to discuss your web app.
-						{/* <br />
-						One hour is alotted for each obligation-free call. */}
+						Select a date and time to discuss your web app.
 					</Typography>
 				</div>
 			</Grid>
-			<Grid item xs container className={classes.calendarGrid}>
-				<Calendar />
-			</Grid>
+
+			<Calendar />
 		</Grid>
 	);
 };

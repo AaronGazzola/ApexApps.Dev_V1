@@ -7,11 +7,11 @@ const styles = makeStyles(theme => ({
 		justifyContent: 'space-between',
 		padding: theme.spacing(1),
 		borderTop: `1px solid ${theme.palette.grey[900]}`,
-		marginTop: theme.spacing(1)
+		marginTop: theme.spacing(4)
 	},
 	container: {
 		width: '100%',
-		height: 500,
+		height: 'min-contend',
 		display: 'flex'
 	},
 	day: {
@@ -22,6 +22,7 @@ const styles = makeStyles(theme => ({
 		borderTop: `1px solid ${theme.palette.grey[900]}`,
 		borderRight: `1px solid ${theme.palette.grey[900]}`,
 		width: '14.28%',
+		minHeight: 200,
 		height: 'min-content',
 		'& h4': {
 			textAlign: 'center'
@@ -33,30 +34,36 @@ const styles = makeStyles(theme => ({
 	dayName: {
 		fontSize: '1.1rem',
 		fontWeight: 300,
-		marginTop: theme.spacing(1)
+		marginTop: theme.spacing(1),
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '1rem'
+		}
 	},
 	date: {
 		fontSize: '1.2rem',
 		marginBottom: theme.spacing(2),
 		marginTop: theme.spacing(0),
 		fontWeight: 400,
-		fontStyle: 'none'
+		fontStyle: 'none',
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '.9rem'
+		}
 	},
 	hour: {
+		border: `1px solid ${theme.palette.secondary.main}`,
+		borderRadius: 4,
 		width: '90%',
-		height: 30,
-		marginBottom: theme.spacing(1)
-		// display: 'flex',
-		// alignItems: 'center',
-		// justifyContent: 'center',
-	},
-	available: {
-		// color: theme.palette.secondary.main
-		// border: `2px solid ${theme.palette.secondary.main}`
-	},
-	unavailable: {
-		'& span': {
-			color: theme.palette.grey[800]
+		marginBottom: theme.spacing(1),
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		'& p': {
+			margin: 0,
+			color: theme.palette.secondary.main,
+			fontWeight: 500
+		},
+		[theme.breakpoints.down('xs')]: {
+			fontSize: '.8rem'
 		}
 	},
 	arrowBack: {

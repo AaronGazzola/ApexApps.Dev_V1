@@ -37,7 +37,6 @@ const styles = makeStyles(theme => ({
 		marginTop: theme.spacing(2)
 	},
 	textBox1: {
-		maxWidth: '90%',
 		backgroundColor: '#090909',
 		borderLeft: `1px solid ${theme.palette.primary.main}`,
 		maxWidth: 650,
@@ -46,10 +45,13 @@ const styles = makeStyles(theme => ({
 		// boxShadow: `inset 5px 0 7px -7px ${theme.palette.grey[200]}`,
 		padding: theme.spacing(3),
 		paddingTop: theme.spacing(2),
-		marginTop: theme.spacing(2)
+		marginTop: theme.spacing(3),
+		[theme.breakpoints.down('xs')]: {
+			maxWidth: '90%'
+		}
 	},
 	textBox2: {
-		backgroundColor: '#090909',
+		backgroundColor: '#0A0A0A',
 		// borderTop: `1px solid ${theme.palette.grey[200]}`,
 		borderTop: `1px solid ${theme.palette.primary.main}`,
 		// boxShadow: `inset 0 5px 7px -7px ${theme.palette.grey[200]}`,

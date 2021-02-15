@@ -10,13 +10,13 @@ const appointments = [
 	{
 		date: 15,
 		month: 1,
-		UTCHours: 1,
+		timeStamp: new Date(2021, 1, 15, 13).getTime(),
 		booked: false
 	},
 	{
 		date: 17,
 		month: 1,
-		UTCHours: 3,
+		timeStamp: new Date(2021, 1, 15, 4).getTime(),
 		booked: false
 	}
 ];
@@ -156,28 +156,23 @@ const Calendar = () => {
 						<Typography variant='h4' className={classes.date}>
 							{date}
 						</Typography>
+						{appointments
+							.filter(a => !a.booked && a.date === date)
+							.map(a => (
+								<div key={a.timeStamp} className={classes.hour}>
+									{/* Refactor after making API request on week change 
+                Find local time from stored timestamp and format
+                */}
+									<p>
+										{new Date(a.timeStamp).getHours() < 12
+											? new Date(a.timeStamp).getHours()
+											: new Date(a.timeStamp).getHours() - 12}
+										{new Date(a.timeStamp).getHours() < 12 ? ' am' : ' pm'}
+									</p>
+								</div>
+							))}
 					</div>
 				))}
-				{/* <div className={classes.day}>
-					<Typography variant='h4'>Sun</Typography>
-					<Typography variant='h4'>12</Typography>
-					{times.map(time => (
-						<Button
-							key={time.time}
-							variant='outlined'
-							color='secondary'
-							size='small'
-							disabled={!time.available}
-							className={
-								time.available
-									? clsx(classes.hour, classes.available)
-									: clsx(classes.hour, classes.unavailable)
-							}
-						>
-							{time.time}
-						</Button>
-					))}
-				</div> */}
 			</div>
 		</>
 	);
