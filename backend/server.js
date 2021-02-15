@@ -10,16 +10,17 @@ import xss from 'xss-clean';
 import rateLimit from 'express-rate-limit';
 import hpp from 'hpp';
 import cors from 'cors';
-// import connectDB from './config/db.js';
+import connectDB from './config/db.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
+import bookingRoutes from './routes/bookingRoutes.js';
 // import blogRoutes from './routes/blogRoutes.js';
 
 // Load env variables from .env file in root
 dotenv.config();
 
 // Connect to database
-// connectDB();
+connectDB();
 
 const app = express();
 
@@ -61,6 +62,7 @@ const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 
 //Mount Routers
+app.use('/api/v1/bookings', bookingRoutes);
 // app.use('/api/v1/blogs', blogRoutes);
 
 // Serve react app from frontend folder if in production

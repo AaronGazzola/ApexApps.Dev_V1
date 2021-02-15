@@ -12,7 +12,8 @@ const styles = makeStyles(theme => ({
 	container: {
 		width: '100%',
 		height: 'min-contend',
-		display: 'flex'
+		display: 'flex',
+		marginBottom: theme.spacing(2)
 	},
 	day: {
 		display: 'flex',
