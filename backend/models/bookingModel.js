@@ -1,15 +1,15 @@
 import mongoose from 'mongoose';
 
 const bookingSchema = mongoose.Schema({
-	timeStamp: {
-		type: Number,
-		required: true
-	},
 	date: {
 		type: Number,
 		required: true
 	},
 	month: {
+		type: Number,
+		required: true
+	},
+	hour: {
 		type: Number,
 		required: true
 	},

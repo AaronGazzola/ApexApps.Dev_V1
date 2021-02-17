@@ -1,49 +1,35 @@
-const bookings = [
-	{
-		timeStamp: new Date(2021, 1, 16, 16).getTime(),
-		date: 16,
-		month: 1
-	},
-	{
-		timeStamp: new Date(2021, 1, 16, 17).getTime(),
-		date: 16,
-		month: 1
-	},
-	{
-		timeStamp: new Date(2021, 1, 16, 9).getTime(),
-		date: 16,
-		month: 1
-	},
-	{
-		timeStamp: new Date(2021, 1, 17, 9).getTime(),
-		date: 17,
-		month: 1
-	},
-	{
-		timeStamp: new Date(2021, 1, 17, 16).getTime(),
-		date: 17,
-		month: 1
-	},
-	{
-		timeStamp: new Date(2021, 2, 2, 16).getTime(),
-		date: 2,
-		month: 2
-	},
-	{
-		timeStamp: new Date(2021, 3, 5, 10).getTime(),
-		date: 5,
-		month: 3
-	},
-	{
-		timeStamp: new Date(2021, 3, 6, 16).getTime(),
-		date: 6,
-		month: 3
-	},
-	{
-		timeStamp: new Date(2021, 3, 7, 16).getTime(),
-		date: 6,
-		month: 3
+import moment from 'moment';
+
+// set booking times (GMT +!!)
+const times = [7, 8, 9, 13, 14, 15, 18, 19, 20];
+// set number of days to populate`
+const datesToPopulate = 2;
+
+// determine hourly increments from first booking;
+const hourlyIncrements = times.map((time, i) => {
+	if (i > 0) {
+		return time - times[i - 1];
+	} else {
+		return 0;
 	}
-];
+});
+// determine UTC date and time of first booking
+let booking = moment.utc(
+	moment().add(1, 'd').hour(times[0]).minute(0).second(0)
+);
+
+// loop through dates to populate bookings
+let bookings = [];
+for (let i = 0; i < datesToPopulate; i++) {
+	booking.add(i, 'd');
+	hourlyIncrements.forEach(increment => {
+		booking.add(increment, 'h');
+		bookings.push({
+			hour: booking.hour(),
+			date: booking.date(),
+			month: booking.month()
+		});
+	});
+}
 
 export default bookings;

@@ -3,6 +3,7 @@ import styles from 'styles/calendarStyles';
 import { Button, IconButton, Typography } from '@material-ui/core';
 import { ArrowBackIos, ArrowForwardIos } from '@material-ui/icons';
 import clsx from 'clsx';
+import moment from 'moment';
 
 const useStyles = styles;
 
@@ -130,6 +131,7 @@ const useGetDates = () => {
 const Calendar = () => {
 	const classes = useStyles();
 	const { week, dates, month, handleNextWeek, handlePrevWeek } = useGetDates();
+	console.log(moment.utc().format());
 
 	return (
 		<>
