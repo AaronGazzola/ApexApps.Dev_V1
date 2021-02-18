@@ -27,6 +27,7 @@ for (let i = 0; i < datesToPopulate; i++) {
 	hourlyIncrements.forEach(increment => {
 		booking.add(increment, 'h');
 		bookings.push({
+			timestamp: booking.unix(),
 			hour: booking.hour(),
 			date: booking.date(),
 			month: booking.month()

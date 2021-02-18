@@ -15,6 +15,10 @@ const styles = makeStyles(theme => ({
 		display: 'flex',
 		marginBottom: theme.spacing(2)
 	},
+	year: {
+		marginLeft: theme.spacing(1),
+		marginTop: -theme.spacing(1)
+	},
 	day: {
 		display: 'flex',
 		flexDirection: 'column',

@@ -3,6 +3,6 @@ import { getAvailableBookings } from '../controllers/bookingController.js';
 
 const router = express.Router();
 
-router.route('/').get(getAvailableBookings);
+router.route('/:timestamp').get(getAvailableBookings);
 
 export default router;

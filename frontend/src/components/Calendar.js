@@ -1,26 +1,13 @@
-import React, { useState } from 'react';
-import styles from 'styles/calendarStyles';
-import { Button, IconButton, Typography } from '@material-ui/core';
-import { ArrowBackIos, ArrowForwardIos } from '@material-ui/icons';
-import clsx from 'clsx';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
+import styles from 'styles/calendarStyles';
+import { Grid, IconButton, Typography } from '@material-ui/core';
+import { ArrowBackIos, ArrowForwardIos } from '@material-ui/icons';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { getBookingsAction } from 'actions/bookingActions';
 
 const useStyles = styles;
-
-const appointments = [
-	{
-		date: 15,
-		month: 1,
-		timeStamp: new Date(2021, 1, 15, 13).getTime(),
-		booked: false
-	},
-	{
-		date: 17,
-		month: 1,
-		timeStamp: new Date(2021, 1, 15, 4).getTime(),
-		booked: false
-	}
-];
 
 const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
 const months = [
@@ -38,133 +25,71 @@ const months = [
 	'December'
 ];
 
-const useGetDates = () => {
-	const today = new Date();
-	const todayDate = today.getDate();
-	const todayDay = today.getDay();
-	const [week, setWeek] = useState(0);
-	const [month, setMonth] = useState(today.getMonth());
-	const [year, setYear] = useState(today.getFullYear());
-	const getDaysInMonth = (year, month, end) => {
-		return new Date(year, month + 1, 0).getDate();
-	};
-	const [dates, setDates] = useState(() => {
-		// loop through week starting from monday
-		let dates = [];
-		for (let i = 0; i < 7; i++) {
-			let date = todayDate - todayDay + i;
-			// check if dates go into previous or next month
-			if (date <= 0) {
-				dates.push(getDaysInMonth(year, month - 1) - date);
-			} else if (date > getDaysInMonth(year, month)) {
-				dates.push(date - getDaysInMonth(year, month));
-			} else {
-				dates.push(date);
-			}
-		}
-		return dates;
-	});
+const Calendar = () => {
+	const classes = useStyles();
+	const dispatch = useDispatch();
+	const [dates, setDates] = useState(
+		days.map((day, i) => moment().subtract(moment().day(), 'd').add(i, 'd'))
+	);
+
+	const getBookings = useSelector(state => state.getBookings);
+	const { bookings } = getBookings;
+
+	useEffect(() => {
+		dispatch(getBookingsAction(dates[0].hour(0).minute(0)));
+	}, [dates, dispatch]);
 
 	const handleNextWeek = () => {
-		// increment week relative to current week
-		setWeek(week + 1);
-		// if next week starts in next month
-		if (dates[6] + 7 > getDaysInMonth(year, month)) {
-			if (month === 11) {
-				setYear(year + 1);
-				setMonth(0);
-			} else {
-				setMonth(month + 1);
-			}
-		}
-		setDates(() => {
-			let newDates = [];
-			for (let i = 1; i < 8; i++) {
-				let date = dates[6] + i;
-				// check if dates go into next month
-				if (date > getDaysInMonth(year, month)) {
-					newDates.push(date - getDaysInMonth(year, month));
-				} else {
-					newDates.push(date);
-				}
-			}
-			return newDates;
-		});
+		setDates(dates.map(date => date.add(7, 'd')));
 	};
 
 	const handlePrevWeek = () => {
-		if (week > 0) {
-			setWeek(week - 1);
-			// if previous week starts in previous month
-			if (dates[6] - 7 <= 0) {
-				if (month === 0) {
-					setYear(year - 1);
-					setMonth(11);
-				} else {
-					setMonth(month - 1);
-				}
-			}
-			setDates(() => {
-				let newDates = [];
-				for (let i = 1; i < 8; i++) {
-					let date = dates[0] - 8 + i;
-					// check if dates go into next month
-					if (date <= 0) {
-						newDates.push(
-							getDaysInMonth(
-								month === 0 ? year - 1 : year,
-								month === 0 ? 11 : month - 1
-							) - Math.abs(date)
-						);
-					} else {
-						newDates.push(date);
-					}
-				}
-				return newDates;
-			});
-		}
+		setDates(dates.map(date => date.subtract(7, 'd')));
 	};
-
-	return { week, dates, month, handleNextWeek, handlePrevWeek };
-};
-
-const Calendar = () => {
-	const classes = useStyles();
-	const { week, dates, month, handleNextWeek, handlePrevWeek } = useGetDates();
-	console.log(moment.utc().format());
 
 	return (
 		<>
 			<div className={classes.header}>
 				<IconButton
-					disabled={week === 0}
+					disabled={dates[0] === moment() || dates[0].isBefore(moment())}
 					color='secondary'
 					onClick={handlePrevWeek}
 					className={classes.arrowBack}
 				>
 					<ArrowBackIos color='secondary' />
 				</IconButton>
-				<Typography variant='h2'>{months[month]}</Typography>
+				<Grid container alignItems='flex-end' justify='center'>
+					<Typography variant='h2'>
+						{dates[0].month() === dates[6].month()
+							? months[dates[0].month()]
+							: `${months[dates[0].month()].substring(0, 3)} - ${months[
+									dates[6].month()
+							  ].substring(0, 3)}`}
+					</Typography>
+					<Typography className={classes.year}>
+						{dates[0].year() === dates[6].year()
+							? dates[0].year()
+							: `${dates[0].year()} - ${dates[6].year()}`}
+					</Typography>
+				</Grid>
 				<IconButton color='secondary' onClick={handleNextWeek}>
 					<ArrowForwardIos color='secondary' />
 				</IconButton>
 			</div>
 			<div className={classes.container}>
 				{dates.map((date, i) => (
-					<div className={classes.day} key={date}>
+					<div className={classes.day} key={date._d}>
 						<Typography variant='h4' className={classes.dayName}>
 							{days[i]}
 						</Typography>
 						<Typography variant='h4' className={classes.date}>
-							{date}
+							{date.date()}
 						</Typography>
-						{appointments
+						{/* {appointments
 							.filter(a => !a.booked && a.date === date)
 							.map(a => (
 								<div key={a.timeStamp} className={classes.hour}>
-									{/* Refactor after making API request on week change 
-                Find local time from stored timestamp and format
-                */}
+									
 									<p>
 										{new Date(a.timeStamp).getHours() < 12
 											? new Date(a.timeStamp).getHours()
@@ -172,7 +97,7 @@ const Calendar = () => {
 										{new Date(a.timeStamp).getHours() < 12 ? ' am' : ' pm'}
 									</p>
 								</div>
-							))}
+							))} */}
 					</div>
 				))}
 			</div>
