@@ -63,7 +63,7 @@ const styles = makeStyles(theme => ({
 		padding: 0
 	},
 	hour: {
-		border: `1px solid ${theme.palette.secondary.main}`,
+		// border: `1px solid ${theme.palette.secondary.dark}`,
 		borderRadius: 4,
 		width: '90%',
 		marginBottom: theme.spacing(1),

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import clsx from 'clsx';
 import styles from 'styles/calendarStyles';
-import { Grid, IconButton, Typography } from '@material-ui/core';
+import { Grid, IconButton, Typography, useMediaQuery } from '@material-ui/core';
 import { ArrowBackIos, ArrowForwardIos } from '@material-ui/icons';
 import { Skeleton } from '@material-ui/lab';
 
@@ -30,6 +30,7 @@ const months = [
 const Calendar = () => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
+	const matchesXS = useMediaQuery(theme => theme.breakpoints.down('xs'));
 	const [dates, setDates] = useState(
 		days.map((day, i) => moment().subtract(moment().day(), 'd').add(i, 'd'))
 	);
@@ -39,14 +40,16 @@ const Calendar = () => {
 
 	useEffect(() => {
 		dispatch(getBookingsAction(moment(dates[0]).hour(0).minute(0)));
-	}, [dates, dispatch]);
+	}, []);
 
 	const handleNextWeek = () => {
 		setDates(dates.map(date => date.add(7, 'd')));
+		dispatch(getBookingsAction(moment(dates[0]).hour(0).minute(0)));
 	};
 
 	const handlePrevWeek = () => {
 		setDates(dates.map(date => date.subtract(7, 'd')));
+		dispatch(getBookingsAction(moment(dates[0]).hour(0).minute(0)));
 	};
 
 	return (
@@ -104,9 +107,17 @@ const Calendar = () => {
 									.map(booking => (
 										<div key={booking.timestamp} className={classes.hour}>
 											{booking.hour <= 12 ? (
-												<p>{`${booking.hour} am`}</p>
+												<p>
+													{matchesXS
+														? `${booking.hour} am`
+														: `${booking.hour}:00 am`}
+												</p>
 											) : (
-												<p>{`${booking.hour - 12} pm`}</p>
+												<p>
+													{matchesXS
+														? `${booking.hour - 12} pm`
+														: `${booking.hour - 12}:00 pm`}
+												</p>
 											)}
 										</div>
 									))}
