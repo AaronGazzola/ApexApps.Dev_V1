@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
+import clsx from 'clsx';
 import styles from 'styles/calendarStyles';
 import { Grid, IconButton, Typography } from '@material-ui/core';
 import { ArrowBackIos, ArrowForwardIos } from '@material-ui/icons';
+import { Skeleton } from '@material-ui/lab';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { getBookingsAction } from 'actions/bookingActions';
@@ -33,10 +35,10 @@ const Calendar = () => {
 	);
 
 	const getBookings = useSelector(state => state.getBookings);
-	const { bookings } = getBookings;
+	const { bookings, loading } = getBookings;
 
 	useEffect(() => {
-		dispatch(getBookingsAction(dates[0].hour(0).minute(0)));
+		dispatch(getBookingsAction(moment(dates[0]).hour(0).minute(0)));
 	}, [dates, dispatch]);
 
 	const handleNextWeek = () => {
@@ -78,26 +80,36 @@ const Calendar = () => {
 			</div>
 			<div className={classes.container}>
 				{dates.map((date, i) => (
-					<div className={classes.day} key={date._d}>
+					<div
+						className={
+							date.date() === moment().date() &&
+							date.month() === moment().month()
+								? clsx(classes.day, classes.today)
+								: classes.day
+						}
+						key={date._d}
+					>
 						<Typography variant='h4' className={classes.dayName}>
 							{days[i]}
 						</Typography>
 						<Typography variant='h4' className={classes.date}>
 							{date.date()}
 						</Typography>
-						{/* {appointments
-							.filter(a => !a.booked && a.date === date)
-							.map(a => (
-								<div key={a.timeStamp} className={classes.hour}>
-									
-									<p>
-										{new Date(a.timeStamp).getHours() < 12
-											? new Date(a.timeStamp).getHours()
-											: new Date(a.timeStamp).getHours() - 12}
-										{new Date(a.timeStamp).getHours() < 12 ? ' am' : ' pm'}
-									</p>
-								</div>
-							))} */}
+						{loading
+							? [...Array(Math.floor(Math.random() * 10)).keys()].map(key => (
+									<Skeleton key={key} className={classes.skeleton} />
+							  ))
+							: bookings
+									?.filter(booking => booking.date === date.date())
+									.map(booking => (
+										<div key={booking.timestamp} className={classes.hour}>
+											{booking.hour <= 12 ? (
+												<p>{`${booking.hour} am`}</p>
+											) : (
+												<p>{`${booking.hour - 12} pm`}</p>
+											)}
+										</div>
+									))}
 					</div>
 				))}
 			</div>

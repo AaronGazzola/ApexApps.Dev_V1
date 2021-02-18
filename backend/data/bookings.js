@@ -3,7 +3,7 @@ import moment from 'moment';
 // set booking times (GMT +!!)
 const times = [7, 8, 9, 13, 14, 15, 18, 19, 20];
 // set number of days to populate`
-const datesToPopulate = 2;
+const datesToPopulate = 90;
 
 // determine hourly increments from first booking;
 const hourlyIncrements = times.map((time, i) => {
@@ -27,10 +27,7 @@ for (let i = 0; i < datesToPopulate; i++) {
 	hourlyIncrements.forEach(increment => {
 		booking.add(increment, 'h');
 		bookings.push({
-			timestamp: booking.unix(),
-			hour: booking.hour(),
-			date: booking.date(),
-			month: booking.month()
+			timestamp: booking.unix()
 		});
 	});
 	booking.add(resetIncrement, 'h');

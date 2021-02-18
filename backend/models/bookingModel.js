@@ -5,18 +5,6 @@ const bookingSchema = mongoose.Schema({
 		type: Number,
 		requried: true
 	},
-	date: {
-		type: Number,
-		required: true
-	},
-	month: {
-		type: Number,
-		required: true
-	},
-	hour: {
-		type: Number,
-		required: true
-	},
 	booked: {
 		type: Boolean,
 		default: false

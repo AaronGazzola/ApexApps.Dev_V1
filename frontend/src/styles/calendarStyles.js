@@ -11,7 +11,7 @@ const styles = makeStyles(theme => ({
 	},
 	container: {
 		width: '100%',
-		height: 'min-contend',
+		height: 'min-content',
 		display: 'flex',
 		marginBottom: theme.spacing(2)
 	},
@@ -28,13 +28,15 @@ const styles = makeStyles(theme => ({
 		borderRight: `1px solid ${theme.palette.grey[900]}`,
 		width: '14.28%',
 		minHeight: 200,
-		height: 'min-content',
 		'& h4': {
 			textAlign: 'center'
 		},
 		'&:last-of-type': {
 			borderRight: `none`
 		}
+	},
+	today: {
+		color: theme.palette.primary.light
 	},
 	dayName: {
 		fontSize: '1.1rem',
@@ -54,6 +56,12 @@ const styles = makeStyles(theme => ({
 			fontSize: '.9rem'
 		}
 	},
+	skeleton: {
+		width: '90%',
+		height: 33,
+		margin: 0,
+		padding: 0
+	},
 	hour: {
 		border: `1px solid ${theme.palette.secondary.main}`,
 		borderRadius: 4,
@@ -69,6 +77,13 @@ const styles = makeStyles(theme => ({
 		},
 		[theme.breakpoints.down('xs')]: {
 			fontSize: '.8rem'
+		},
+		'&:hover': {
+			backgroundColor: theme.palette.secondary.main,
+			cursor: 'pointer',
+			'& p': {
+				color: '#000'
+			}
 		}
 	},
 	arrowBack: {

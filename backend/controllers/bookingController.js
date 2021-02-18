@@ -7,10 +7,10 @@ import moment from 'moment';
 // @route   GET /api/bookings/
 // @access    Public
 const getAvailableBookings = asyncHandler(async (req, res, next) => {
-	const minTime = Number(req.params.timestamp);
+	const midnightSunday = Number(req.params.timestamp);
+	const unixTimeNow = moment().unix();
+	const minTime = unixTimeNow > midnightSunday ? unixTimeNow : midnightSunday;
 	const maxTime = moment.unix(minTime).add(7, 'd').unix();
-	console.log(minTime);
-	console.log(typeof minTime);
 
 	const bookings = await Booking.find({
 		booked: false,

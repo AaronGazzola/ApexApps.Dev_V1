@@ -15,7 +15,13 @@ export const getBookingsAction = midnightSunday => async dispatch => {
 			`/api/v1/bookings/${midnightSunday.utc().unix()}`
 		);
 
-		dispatch({ type: GET_BOOKINGS_SUCCESS, payload: data.bookings });
+		const bookings = data.bookings.map(booking => ({
+			timestamp: booking.timestamp,
+			date: moment.unix(booking.timestamp).date(),
+			hour: moment.unix(booking.timestamp).hour()
+		}));
+
+		dispatch({ type: GET_BOOKINGS_SUCCESS, payload: bookings });
 	} catch (error) {
 		dispatch({
 			type: GET_BOOKINGS_FAIL,
