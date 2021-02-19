@@ -52,8 +52,12 @@ const styles = makeStyles(theme => ({
 			}
 		}
 	},
-	cancel: {
+	cancelButton: {
 		color: theme.palette.error.light
+	},
+	submitButton: {
+		minWidth: 100,
+		minHeight: 34
 	}
 }));
 

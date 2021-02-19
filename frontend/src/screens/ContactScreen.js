@@ -10,7 +10,7 @@ const ContactScreen = () => {
 	const classes = useStyles();
 	useEffect(() => {
 		window.scrollTo(0, 0);
-	});
+	}, []);
 
 	const [bookingModalIsOpen, setBookingModalIsOpen] = useState(false);
 	const [booking, setBooking] = useState(null);

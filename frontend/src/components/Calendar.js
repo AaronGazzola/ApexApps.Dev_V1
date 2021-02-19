@@ -113,7 +113,7 @@ const Calendar = ({ setOpen, setBooking }) => {
 										<div
 											key={booking.timestamp}
 											className={classes.hour}
-											onClick={() => handleSelectBooking(booking.timestamp)}
+											onClick={() => handleSelectBooking(booking)}
 										>
 											{booking.hour <= 12 ? (
 												<p>

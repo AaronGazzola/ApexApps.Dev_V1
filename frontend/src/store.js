@@ -1,10 +1,14 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { getBookingsReducer } from 'reducers/bookingReducers';
+import {
+	getBookingsReducer,
+	confirmBookingReducer
+} from 'reducers/bookingReducers';
 
 const reducer = combineReducers({
-	getBookings: getBookingsReducer
+	getBookings: getBookingsReducer,
+	confirmBooking: confirmBookingReducer
 });
 
 const middleware = [thunk];

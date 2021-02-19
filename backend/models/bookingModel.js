@@ -8,6 +8,15 @@ const bookingSchema = mongoose.Schema({
 	booked: {
 		type: Boolean,
 		default: false
+	},
+	description: {
+		type: String,
+		required: false
+	},
+	client: {
+		type: mongoose.Schema.Types.ObjectId,
+		required: false,
+		ref: 'Client'
 	}
 });
 

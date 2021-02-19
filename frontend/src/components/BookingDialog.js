@@ -5,6 +5,7 @@ import { produce } from 'immer';
 import clsx from 'clsx';
 import {
 	Button,
+	CircularProgress,
 	Dialog,
 	DialogActions,
 	DialogContent,
@@ -18,6 +19,8 @@ import {
 	VALIDATOR_MAXLENGTH,
 	VALIDATOR_REQUIRE
 } from 'utils/validators';
+import { useDispatch, useSelector } from 'react-redux';
+import { confirmBookingAction } from 'actions/bookingActions';
 
 const useStyles = styles;
 
@@ -80,10 +83,14 @@ const reducer = (formState, action) =>
 
 const BookingDialog = ({ open, setOpen, booking }) => {
 	const classes = useStyles();
+	const dispatch = useDispatch();
 	const [formState, formDispatch] = useReducer(reducer, initialState);
 	const {
 		inputs: { name, email, phone, description }
 	} = formState;
+
+	const confirmBooking = useSelector(state => state.confirmBooking);
+	const { success, loading } = confirmBooking;
 
 	const handleClose = () => {
 		setOpen(false);
@@ -99,6 +106,10 @@ const BookingDialog = ({ open, setOpen, booking }) => {
 		}
 	};
 
+	const submitHandler = () => {
+		dispatch(confirmBookingAction(formState.inputs, booking));
+	};
+
 	return (
 		<Dialog
 			open={open}
@@ -109,7 +120,7 @@ const BookingDialog = ({ open, setOpen, booking }) => {
 				Confirm Call Booking
 			</DialogTitle>
 			<DialogTitle disableTypography className={classes.subTitle}>
-				{moment.unix(booking).format('h:mma dddd Do MMMM YYYY')}
+				{moment.unix(booking?.timestamp).format('h:mma dddd Do MMMM YYYY')}
 			</DialogTitle>
 			<DialogContent>
 				<TextField
@@ -199,7 +210,7 @@ const BookingDialog = ({ open, setOpen, booking }) => {
 						changeHandler(e, [
 							VALIDATOR_REQUIRE(),
 							VALIDATOR_MINLENGTH(10),
-							VALIDATOR_MAXLENGTH(10)
+							VALIDATOR_MAXLENGTH(1000)
 						])
 					}
 					onBlur={touchHandler}
@@ -212,15 +223,21 @@ const BookingDialog = ({ open, setOpen, booking }) => {
 					}
 				/>
 				<DialogActions>
-					<Button onClick={handleClose} className={classes.cancel}>
+					<Button onClick={handleClose} className={classes.cancelButton}>
 						Cancel
 					</Button>
 					<Button
-						onClick={handleClose}
+						onClick={submitHandler}
 						color='secondary'
 						disabled={!formState.isValid}
+						variant='outlined'
+						className={classes.submitButton}
 					>
-						Confirm
+						{loading ? (
+							<CircularProgress size={25} color='secondary' />
+						) : (
+							'Confirm'
+						)}
 					</Button>
 				</DialogActions>
 			</DialogContent>
