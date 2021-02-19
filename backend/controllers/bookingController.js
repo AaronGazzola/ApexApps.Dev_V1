@@ -8,7 +8,7 @@ import moment from 'moment';
 // @access    Public
 const getAvailableBookings = asyncHandler(async (req, res, next) => {
 	const midnightSunday = Number(req.params.timestamp);
-	const unixTimeNow = moment().unix();
+	const unixTimeNow = moment().add(1, 'h').unix();
 	const minTime = unixTimeNow > midnightSunday ? unixTimeNow : midnightSunday;
 	const maxTime = moment.unix(minTime).add(7, 'd').unix();
 

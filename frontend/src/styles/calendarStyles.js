@@ -73,7 +73,8 @@ const styles = makeStyles(theme => ({
 		'& p': {
 			margin: 0,
 			color: theme.palette.secondary.main,
-			fontWeight: 500
+			fontWeight: 500,
+			userSelect: 'none'
 		},
 		[theme.breakpoints.down('xs')]: {
 			fontSize: '.8rem'

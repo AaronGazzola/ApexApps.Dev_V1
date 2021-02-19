@@ -27,7 +27,7 @@ const months = [
 	'December'
 ];
 
-const Calendar = () => {
+const Calendar = ({ setOpen, setBooking }) => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const matchesXS = useMediaQuery(theme => theme.breakpoints.down('xs'));
@@ -50,6 +50,11 @@ const Calendar = () => {
 	const handlePrevWeek = () => {
 		setDates(dates.map(date => date.subtract(7, 'd')));
 		dispatch(getBookingsAction(moment(dates[0]).hour(0).minute(0)));
+	};
+
+	const handleSelectBooking = timestamp => {
+		setOpen(true);
+		setBooking(timestamp);
 	};
 
 	return (
@@ -105,7 +110,11 @@ const Calendar = () => {
 							: bookings
 									?.filter(booking => booking.date === date.date())
 									.map(booking => (
-										<div key={booking.timestamp} className={classes.hour}>
+										<div
+											key={booking.timestamp}
+											className={classes.hour}
+											onClick={() => handleSelectBooking(booking.timestamp)}
+										>
 											{booking.hour <= 12 ? (
 												<p>
 													{matchesXS
