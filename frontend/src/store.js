@@ -3,12 +3,14 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import {
 	getBookingsReducer,
-	confirmBookingReducer
+	confirmBookingReducer,
+	cancelBookingReducer
 } from 'reducers/bookingReducers';
 
 const reducer = combineReducers({
 	getBookings: getBookingsReducer,
-	confirmBooking: confirmBookingReducer
+	confirmBooking: confirmBookingReducer,
+	cancelBooking: cancelBookingReducer
 });
 
 const middleware = [thunk];

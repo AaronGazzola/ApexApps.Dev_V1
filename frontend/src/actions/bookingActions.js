@@ -6,7 +6,10 @@ import {
 	GET_BOOKINGS_FAIL,
 	CONFIRM_BOOKING_REQUEST,
 	CONFIRM_BOOKING_SUCCESS,
-	CONFIRM_BOOKING_FAIL
+	CONFIRM_BOOKING_FAIL,
+	CANCEL_BOOKING_REQUEST,
+	CANCEL_BOOKING_SUCCESS,
+	CANCEL_BOOKING_FAIL
 } from 'constants/bookingConstants';
 
 export const getBookingsAction = midnightSunday => async dispatch => {
@@ -64,6 +67,32 @@ export const confirmBookingAction = (inputs, booking) => async dispatch => {
 	} catch (error) {
 		dispatch({
 			type: CONFIRM_BOOKING_FAIL,
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message
+		});
+	}
+};
+
+export const cancelBookingAction = (id, isClient) => async dispatch => {
+	try {
+		dispatch({
+			type: CANCEL_BOOKING_REQUEST
+		});
+
+		const config = {};
+
+		await axios.post(
+			`/api/v1/bookings/cancel/${id}/${isClient ? 'client' : 'admin'}`,
+			{},
+			config
+		);
+
+		dispatch({ type: CANCEL_BOOKING_SUCCESS });
+	} catch (error) {
+		dispatch({
+			type: CANCEL_BOOKING_FAIL,
 			payload:
 				error.response && error.response.data.message
 					? error.response.data.message

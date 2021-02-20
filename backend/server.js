@@ -57,9 +57,10 @@ app.use(hpp());
 // Enable CORS
 app.use(cors());
 
-// Set uploads folder as static
+// Set uploads and images folders as static
 const __dirname = path.resolve();
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
+app.use('/images', express.static(path.join(__dirname, '/images')));
 
 //Mount Routers
 app.use('/api/v1/bookings', bookingRoutes);

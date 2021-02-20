@@ -5,9 +5,10 @@ import styles from 'styles/calendarStyles';
 import { Grid, IconButton, Typography, useMediaQuery } from '@material-ui/core';
 import { ArrowBackIos, ArrowForwardIos } from '@material-ui/icons';
 import { Skeleton } from '@material-ui/lab';
-
 import { useDispatch, useSelector } from 'react-redux';
 import { getBookingsAction } from 'actions/bookingActions';
+import { CONFIRM_BOOKING_CLEAR } from 'constants/bookingConstants';
+import Message from 'components/Message';
 
 const useStyles = styles;
 
@@ -38,9 +39,18 @@ const Calendar = ({ setOpen, setBooking }) => {
 	const getBookings = useSelector(state => state.getBookings);
 	const { bookings, loading } = getBookings;
 
+	const confirmBooking = useSelector(state => state.confirmBooking);
+	const { success, error } = confirmBooking;
+
 	useEffect(() => {
 		dispatch(getBookingsAction(moment(dates[0]).hour(0).minute(0)));
 	}, []);
+
+	useEffect(() => {
+		if (success || error) {
+			dispatch(getBookingsAction(moment(dates[0]).hour(0).minute(0)));
+		}
+	}, [success, dispatch, error]);
 
 	const handleNextWeek = () => {
 		setDates(dates.map(date => date.add(7, 'd')));
@@ -59,6 +69,11 @@ const Calendar = ({ setOpen, setBooking }) => {
 
 	return (
 		<>
+			<Message
+				error={error}
+				success={success}
+				reset={() => dispatch({ type: CONFIRM_BOOKING_CLEAR })}
+			/>
 			<div className={classes.header}>
 				<IconButton
 					disabled={dates[0] === moment() || dates[0].isBefore(moment())}

@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer';
-// import useHtmlTemplate from './useHtmlTemplate.js';
+import useHtmlTemplate from './useHtmlTemplate.js';
 import moment from 'moment';
 
 const sendEmail = async options => {
@@ -12,18 +12,14 @@ const sendEmail = async options => {
 		}
 	});
 
-	// const [mailList, subject, html] = useHtmlTemplate(options);
+	const [subject, html] = useHtmlTemplate(options);
 
 	const message = {
 		from: `${process.env.FROM_NAME} <aaron@apexapps.dev>`,
-		to: options.to,
-		subject: 'Thank you for booking',
-		html: `<!DOCTYPE html><html lang="en"><p>Thank you for booking a call to discuss you web app.</p>
-    <p>${moment(options.booking.timestamp)
-			.minute(0)
-			.format(
-				'h:mma dddd Do MMMM YYYY'
-			)}</p><p><a href='#'>Cancel Booking</a></p></br></html>`
+		to:
+			options.type === 'BOOKING_DETAILS' ? 'aaron@apexapps.dev' : options.email,
+		subject,
+		html
 	};
 
 	const info = await transporter.sendMail(message);

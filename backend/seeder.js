@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import colors from 'colors';
 import Booking from './models/bookingModel.js';
+import Client from './models/clientModel.js';
 import bookings from './data/bookings.js';
 import connectDB from './config/db.js';
 
@@ -14,6 +15,7 @@ connectDB();
 const importData = async () => {
 	try {
 		await Booking.deleteMany();
+		await Client.deleteMany();
 		await Booking.insertMany(bookings);
 
 		console.log('Data Imported!'.green.inverse);
@@ -27,6 +29,7 @@ const importData = async () => {
 const destroyData = async () => {
 	try {
 		await Booking.deleteMany();
+		await Client.deleteMany();
 
 		console.log('Data Destroyed!'.green.inverse);
 		process.exit();

@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import styles from 'styles/dialogStyles';
 import moment from 'moment';
 import { produce } from 'immer';
@@ -90,7 +90,13 @@ const BookingDialog = ({ open, setOpen, booking }) => {
 	} = formState;
 
 	const confirmBooking = useSelector(state => state.confirmBooking);
-	const { success, loading } = confirmBooking;
+	const { success, loading, error } = confirmBooking;
+
+	useEffect(() => {
+		if (success || error) {
+			setOpen(false);
+		}
+	}, [success, dispatch, error]);
 
 	const handleClose = () => {
 		setOpen(false);
