@@ -121,6 +121,33 @@ const styles = makeStyles(theme => ({
 		width: '80%',
 		maxWidth: 600,
 		borderBottom: `1px solid ${theme.palette.grey[800]}`
+	},
+	divider2: {
+		padding: theme.spacing(1),
+		marginTop: theme.spacing(2),
+		width: '80%',
+		maxWidth: 400,
+		borderBottom: `1px solid ${theme.palette.grey[800]}`
+	},
+	icons: {
+		marginTop: theme.spacing(2),
+		maxWidth: 150,
+		'& a': {
+			color: theme.palette.text.primary,
+			'&:hover': {
+				color: theme.palette.secondary.main
+			}
+		}
+	},
+	email: {
+		marginTop: theme.spacing(1),
+		'& a': {
+			color: theme.palette.text.primary,
+			textDecoration: 'none',
+			'&:hover': {
+				color: theme.palette.secondary.main
+			}
+		}
 	}
 }));
 
