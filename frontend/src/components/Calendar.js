@@ -124,6 +124,7 @@ const Calendar = ({ setOpen, setBooking }) => {
 							  ))
 							: bookings
 									?.filter(booking => booking.date === date.date())
+									.sort((a, b) => a.timestamp - b.timestamp)
 									.map(booking => (
 										<div
 											key={booking.timestamp}
