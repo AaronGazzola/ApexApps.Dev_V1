@@ -50,7 +50,7 @@ const ContactScreen = () => {
 					<a href='https://github.com/AaronGazzola' target='_blank'>
 						<GitHub fontSize='large' />
 					</a>
-					<a href='https://twitter.com/_apexapps' target='_blank'>
+					<a href='https://twitter.com/aarongazzola' target='_blank'>
 						<Twitter fontSize='large' />
 					</a>
 					<a href='mailto: aaron@apexapps.dev'>

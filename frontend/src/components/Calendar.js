@@ -119,7 +119,9 @@ const Calendar = ({ setOpen, setBooking }) => {
 							{date.date()}
 						</Typography>
 						{loading
-							? [...Array(Math.floor(Math.random() * 10)).keys()].map(key => (
+							? [
+									...Array(Math.floor(Math.random() * 5 + 5)).keys()
+							  ].map(key => (
 									<Skeleton key={key} className={classes.skeleton} />
 							  ))
 							: bookings
