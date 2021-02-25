@@ -87,6 +87,10 @@ const styles = makeStyles(theme => ({
 		textDecoration: 'none',
 		fontWeight: 400
 	},
+	linkReset: {
+		textDecoration: 'none',
+		color: theme.palette.text.primary
+	},
 	contactButton: {
 		color: theme.palette.secondary.main,
 		border: `1px solid ${theme.palette.secondary.main}`,
@@ -148,6 +152,28 @@ const styles = makeStyles(theme => ({
 				color: theme.palette.secondary.main
 			}
 		}
+	},
+	date: {
+		fontStyle: 'italic',
+		color: theme.palette.text.secondary
+	},
+	blogList: {
+		border: `1px solid ${theme.palette.grey[800]}`,
+		padding: theme.spacing(2),
+		paddingLeft: theme.spacing(3),
+		paddingRight: theme.spacing(3),
+		backgroundColor: '#090909',
+		marginTop: theme.spacing(2),
+		minWidth: 400,
+		'&:hover': {
+			border: `1px solid ${theme.palette.secondary.main}`,
+			backgroundColor: theme.palette.grey[900],
+			color: '#fff',
+			cursor: 'pointer'
+		}
+	},
+	skeleton: {
+		marginTop: theme.spacing(2)
 	}
 }));
 

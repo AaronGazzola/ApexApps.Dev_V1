@@ -6,11 +6,13 @@ import {
 	confirmBookingReducer,
 	cancelBookingReducer
 } from 'reducers/bookingReducers';
+import { getBlogsReducer } from 'reducers/blogReducers';
 
 const reducer = combineReducers({
 	getBookings: getBookingsReducer,
 	confirmBooking: confirmBookingReducer,
-	cancelBooking: cancelBookingReducer
+	cancelBooking: cancelBookingReducer,
+	getBlogs: getBlogsReducer
 });
 
 const middleware = [thunk];

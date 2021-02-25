@@ -9,7 +9,7 @@ import PageNotFoundScreen from 'screens/PageNotFoundScreen';
 import PortfolioScreen from 'screens/PortfolioScreen';
 import AboutScreen from 'screens/AboutScreen';
 import ContactScreen from 'screens/ContactScreen';
-import BlogScreen from 'screens/BlogScreen';
+import BlogsScreen from 'screens/BlogsScreen';
 import CancelBookingScreen from 'screens/CancelBookingScreen';
 import AdminCancelBooking from 'screens/AdminCancelBooking';
 
@@ -28,7 +28,7 @@ const App = () => {
 					<Switch>
 						<Route path='/' exact component={AboutScreen} />
 						<Route path='/apps' exact component={PortfolioScreen} />
-						<Route path='/blog' component={BlogScreen} />
+						<Route path='/blog' component={BlogsScreen} />
 						<Route path='/contact' exact component={ContactScreen} />
 						<Route path='/cancel/:id/:client' component={CancelBookingScreen} />
 						<Route

@@ -14,7 +14,7 @@ import connectDB from './config/db.js';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 
 import bookingRoutes from './routes/bookingRoutes.js';
-// import blogRoutes from './routes/blogRoutes.js';
+import blogRoutes from './routes/blogRoutes.js';
 
 // Load env variables from .env file in root
 dotenv.config();
@@ -64,7 +64,7 @@ app.use('/images', express.static(path.join(__dirname, '/images')));
 
 //Mount Routers
 app.use('/api/v1/bookings', bookingRoutes);
-// app.use('/api/v1/blogs', blogRoutes);
+app.use('/api/v1/blogs', blogRoutes);
 
 // Serve react app from frontend folder if in production
 if (process.env.NODE_ENV === 'production') {
