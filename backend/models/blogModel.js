@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import slugify from 'slugify';
+import sanitizeHtml from 'sanitize-html';
 
 const blogSchema = mongoose.Schema({
 	title: {
@@ -43,6 +44,11 @@ blogSchema.pre('validate', function () {
 	if (this.title) {
 		this.slug = slugify(this.title, { lower: true, strict: true });
 	}
+	this.paragraphs?.map(p => {
+		console.log(p.content);
+		p.content = sanitizeHtml(p.content);
+		console.log(p.content);
+	});
 });
 
 const Blog = mongoose.model('Blog', blogSchema);

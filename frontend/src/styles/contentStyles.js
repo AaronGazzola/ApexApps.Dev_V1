@@ -60,7 +60,7 @@ const styles = makeStyles(theme => ({
 		marginTop: theme.spacing(2)
 	},
 	textBox3: {
-		backgroundColor: '#090909',
+		backgroundColor: '#0d0d0d',
 		// borderLeft: `1px solid ${theme.palette.grey[200]}`,
 		// boxShadow: `inset 5px 0 7px -7px ${theme.palette.grey[200]}`,
 		padding: theme.spacing(3)
@@ -166,13 +166,36 @@ const styles = makeStyles(theme => ({
 		marginTop: theme.spacing(2),
 		minWidth: 400,
 		'&:hover': {
-			border: `1px solid ${theme.palette.secondary.main}`,
+			border: `1px solid #fff`,
 			backgroundColor: theme.palette.grey[900],
 			color: '#fff',
 			cursor: 'pointer'
 		}
 	},
+	blogTextBox: {
+		marginTop: theme.spacing(2),
+		'& strong': {
+			borderBottom: `1px solid ${theme.palette.primary.main}`,
+			fontStyle: 'italic',
+			fontWeight: 500
+		},
+		'& a': {
+			color: theme.palette.secondary.main,
+			borderBottom: `1px solid ${theme.palette.secondary.main}`,
+			// fontStyle: 'italic',
+			textDecoration: 'none',
+			fontWeight: 400
+		}
+	},
 	skeleton: {
+		marginTop: theme.spacing(2)
+	},
+	image: {
+		marginTop: theme.spacing(3),
+		maxWidth: 400,
+		maxHeight: 400
+	},
+	blogTitle: {
 		marginTop: theme.spacing(2)
 	}
 }));
