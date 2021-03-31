@@ -133,19 +133,7 @@ const Calendar = ({ setOpen, setBooking }) => {
 											className={classes.hour}
 											onClick={() => handleSelectBooking(booking)}
 										>
-											{booking.hour <= 12 ? (
-												<p>
-													{matchesXS
-														? `${booking.hour} am`
-														: `${booking.hour}:00 am`}
-												</p>
-											) : (
-												<p>
-													{matchesXS
-														? `${booking.hour - 12} pm`
-														: `${booking.hour - 12}:00 pm`}
-												</p>
-											)}
+											<p>{moment.unix(booking.timestamp).format('h:mm a')}</p>
 										</div>
 									))}
 					</div>

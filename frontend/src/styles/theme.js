@@ -2,7 +2,6 @@ import { createMuiTheme } from '@material-ui/core/styles';
 
 const apexOrange = '#CF3A19';
 const apexGreen = '#309772';
-const spacing = 16;
 
 export const getTheme = () =>
 	createMuiTheme({

@@ -20,49 +20,18 @@ const AboutScreen = () => {
 	const developRef = useRef(null);
 	const deployRef = useRef(null);
 	useEffect(() => {
-		window.scrollTo(0, 0);
 		window.addEventListener('scroll', handleScroll);
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);
-	const handleScroll = e => {
-		const discussHeight =
-			discussRef.current?.offsetTop -
-			window.innerHeight +
-			discussRef.current?.offsetHeight;
-		const designHeight =
-			designRef.current?.offsetTop -
-			window.innerHeight +
-			designRef.current?.offsetHeight;
-		const developHeight =
-			developRef.current?.offsetTop -
-			window.innerHeight +
-			developRef.current?.offsetHeight;
-		const deployHeight =
-			deployRef.current?.offsetTop -
-			window.innerHeight +
-			deployRef.current?.offsetHeight;
-		if (window.scrollY >= discussHeight) {
-			setAnimateDiscuss(true);
-		} else {
-			setAnimateDiscuss(false);
-		}
-		if (window.scrollY >= designHeight) {
-			setAnimateDesign(true);
-		} else {
-			setAnimateDesign(false);
-		}
-		if (window.scrollY >= developHeight) {
-			setAnimateDevelop(true);
-		} else {
-			setAnimateDevelop(false);
-		}
-		if (window.scrollY >= deployHeight) {
-			setAnimateDeploy(true);
-		} else {
-			setAnimateDeploy(false);
-		}
-	};
 	const classes = useStyles();
+	const handleScroll = e => {
+		const getScrollHeight = ref =>
+			ref.current?.offsetTop + ref.current?.offsetHeight - window.innerHeight;
+		setAnimateDiscuss(window.scrollY >= getScrollHeight(discussRef));
+		setAnimateDesign(window.scrollY >= getScrollHeight(designRef));
+		setAnimateDevelop(window.scrollY >= getScrollHeight(developRef));
+		setAnimateDeploy(window.scrollY >= getScrollHeight(deployRef));
+	};
 	return (
 		<Grid container direction='column' alignItems='center'>
 			<div className={classes.textBox1}>

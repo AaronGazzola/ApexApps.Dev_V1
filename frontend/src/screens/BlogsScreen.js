@@ -19,7 +19,6 @@ const BlogsScreen = () => {
 	const { loading, blogs, error } = getBlogs;
 
 	useEffect(() => {
-		window.scrollTo(0, 0);
 		dispatch(getBlogsAction());
 	}, []);
 

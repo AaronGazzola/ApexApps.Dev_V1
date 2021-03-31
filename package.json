@@ -1,7 +1,7 @@
 {
   "name": "apexapps",
   "version": "1.0.0",
-  "description": "ApexApps.dev is the portfolio, blog, and information website for Apex Apps, a web application development business owned and operated by Aaron Gazzola.",
+  "description": "ApexApps.dev is the portfolio, blog, and information website for Apex Apps - a web application development business owned and operated by Aaron Gazzola.",
   "main": "server.js",
   "type": "module",
   "scripts": {
@@ -29,7 +29,7 @@
     "excelence"
   ],
   "author": "Aaron Gazzola",
-  "license": "MIT",
+  "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/AaronGazzola/ApexApps.dev/issues"
   },

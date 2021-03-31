@@ -1,18 +1,15 @@
 import moment from 'moment';
 
-// set booking times (GMT +!!)
+// set booking times (GMT, hours only - half hour intervals will be populated)
 const times = [7, 8, 9, 13, 14, 15, 18, 19, 20];
 // set number of days to populate`
 const datesToPopulate = 90;
 
 // determine hourly increments from first booking;
-const hourlyIncrements = times.map((time, i) => {
-	if (i > 0) {
-		return time - times[i - 1];
-	} else {
-		return 0;
-	}
-});
+const hourlyIncrements = times.map((time, i) =>
+	i > 0 ? time - times[i - 1] : 0
+);
+
 // determine time from last appointment to first
 const resetIncrement = 24 - hourlyIncrements.reduce((a, b) => a + b, 0);
 
@@ -28,6 +25,9 @@ for (let i = 0; i < datesToPopulate; i++) {
 		booking.add(increment, 'h');
 		bookings.push({
 			timestamp: booking.unix()
+		});
+		bookings.push({
+			timestamp: moment(booking).add(30, 'm').unix()
 		});
 	});
 	booking.add(resetIncrement, 'h');

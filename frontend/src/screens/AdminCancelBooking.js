@@ -1,10 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 const AdminCancelBooking = () => {
-	useEffect(() => {
-		window.scrollTo(0, 0);
-	}, []);
-
 	return <div></div>;
 };
 

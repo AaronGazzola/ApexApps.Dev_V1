@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { CircularProgress, Grid, Typography } from '@material-ui/core';
 import styles from 'styles/contentStyles';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,11 +16,6 @@ const CancelBookingScreen = ({ match }) => {
 
 	const cancelBooking = useSelector(state => state.cancelBooking);
 	const { loading, error, success } = cancelBooking;
-
-	useEffect(() => {
-		window.scrollTo(0, 0);
-		dispatch(cancelBookingAction(bookingId, isClient));
-	}, []);
 
 	return (
 		<>

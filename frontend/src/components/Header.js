@@ -12,6 +12,11 @@ const Header = () => {
 	const location = useLocation();
 	const classes = useStyles();
 
+	// scroll to top on navigation
+	useEffect(() => {
+		window.scrollTo(0, 0);
+	}, [location]);
+
 	// update selected tab with router location on page reload
 	useEffect(() => {
 		switch (location.pathname) {

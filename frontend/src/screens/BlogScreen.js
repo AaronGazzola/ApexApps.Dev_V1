@@ -19,10 +19,6 @@ const BlogScreen = ({ match }) => {
 	const getBlog = useSelector(state => state.getBlog);
 	const { blog, error, loading } = getBlog;
 
-	useEffect(() => {
-		window.scrollTo(0, 0);
-		dispatch(getBlogAction(slug));
-	}, []);
 	return (
 		<>
 			<Message

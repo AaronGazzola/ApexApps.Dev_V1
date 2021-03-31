@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { Email, GitHub, Twitter } from '@material-ui/icons';
 import styles from 'styles/contentStyles';
@@ -9,9 +9,6 @@ const useStyles = styles;
 
 const ContactScreen = () => {
 	const classes = useStyles();
-	useEffect(() => {
-		window.scrollTo(0, 0);
-	}, []);
 
 	const [bookingModalIsOpen, setBookingModalIsOpen] = useState(false);
 	const [booking, setBooking] = useState(null);
