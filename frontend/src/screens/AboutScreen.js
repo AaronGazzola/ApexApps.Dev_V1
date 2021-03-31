@@ -10,35 +10,54 @@ import Deploy from 'components/animations/Deploy';
 import { Link } from 'react-router-dom';
 
 const AboutScreen = () => {
+	const classes = useStyles();
 	const [animateProfile, setAnimateProfile] = useState(false);
 	const [animateDiscuss, setAnimateDiscuss] = useState(false);
 	const [animateDesign, setAnimateDesign] = useState(false);
 	const [animateDevelop, setAnimateDevelop] = useState(false);
 	const [animateDeploy, setAnimateDeploy] = useState(false);
+	const [imagesLoaded, setImagesLoaded] = useState([]);
 	const discussRef = useRef(null);
 	const designRef = useRef(null);
 	const developRef = useRef(null);
 	const deployRef = useRef(null);
 	const profileImageRef = useRef(null);
 	useEffect(() => {
-		window.addEventListener('scroll', handleScroll);
-		return () => window.removeEventListener('scroll', handleScroll);
+		window.addEventListener('scroll', handleScroll1);
+		return () => window.removeEventListener('scroll', handleScroll1);
 	}, []);
-	const classes = useStyles();
-	const handleScroll = e => {
-		const getScrollHeight = ref =>
-			ref.current?.offsetTop + ref.current?.offsetHeight - window.innerHeight;
+
+	useEffect(() => {
+		if (imagesLoaded.length === 3) {
+			window.addEventListener('scroll', handleScroll2);
+		}
+		return () => window.removeEventListener('scroll', handleScroll2);
+	}, [imagesLoaded]);
+
+	useEffect(() => {
+		if (animateProfile) setTimeout(() => setAnimateProfile(false), 2500);
+	}, [animateProfile]);
+
+	const getScrollHeight = ref =>
+		ref.current?.offsetTop + ref.current?.offsetHeight - window.innerHeight;
+
+	const handleScroll1 = e => {
 		setAnimateDiscuss(window.scrollY >= getScrollHeight(discussRef));
 		setAnimateDesign(window.scrollY >= getScrollHeight(designRef));
 		setAnimateDevelop(window.scrollY >= getScrollHeight(developRef));
 		setAnimateDeploy(window.scrollY >= getScrollHeight(deployRef));
-		if (window.scrollY > profileImageRef.current?.offsetTop) {
-			setAnimateProfile(false);
-		} else if (window.scrollY < getScrollHeight(profileImageRef)) {
-			setAnimateProfile(false);
-		} else {
+	};
+
+	const handleScroll2 = e => {
+		if (
+			getScrollHeight(profileImageRef) < window.scrollY &&
+			window.scrollY < profileImageRef.current?.offsetTop
+		)
 			setAnimateProfile(true);
-		}
+	};
+
+	const handleImageLoaded = e => {
+		setImagesLoaded([...imagesLoaded, e]);
 	};
 
 	return (
@@ -64,30 +83,33 @@ const AboutScreen = () => {
 			>
 				<div className={classes.avatar} ref={profileImageRef}>
 					<img
+						onLoad={e => handleImageLoaded(e)}
 						className={
 							animateProfile
 								? clsx(classes.animateProfile1, classes.profileImage1)
 								: classes.profileImage1
 						}
-						src='images/1.jpg'
+						src='images/profile1.jpg'
 						alt='Aaron Gazzola profile image 1'
 					/>
 					<img
+						onLoad={e => handleImageLoaded(e)}
 						className={
 							animateProfile
 								? clsx(classes.animateProfile2, classes.profileImage2)
 								: classes.profileImage2
 						}
-						src='images/2.jpg'
+						src='images/profile2.jpg'
 						alt='Aaron Gazzola profile image 2'
 					/>
 					<img
+						onLoad={e => handleImageLoaded(e)}
 						className={
 							animateProfile
 								? clsx(classes.animateProfile3, classes.profileImage3)
 								: classes.profileImage3
 						}
-						src='images/3.jpg'
+						src='images/profile3.jpg'
 						alt='Aaron Gazzola profile image 3'
 					/>
 					<img
@@ -96,7 +118,7 @@ const AboutScreen = () => {
 								? clsx(classes.animateProfile4, classes.profileImage4)
 								: classes.profileImage4
 						}
-						src='images/1.jpg'
+						src='images/profile1.jpg'
 						alt='Aaron Gazzola profile image 3'
 					/>
 				</div>
