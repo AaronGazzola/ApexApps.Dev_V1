@@ -1,16 +1,16 @@
 import React, { useEffect, useState, useRef } from 'react';
+import clsx from 'clsx';
 import { Avatar, Button, Grid, Typography } from '@material-ui/core';
 import { Phone } from '@material-ui/icons';
-import styles from 'styles/contentStyles';
+import useStyles from 'styles/contentStyles';
 import Discuss from 'components/animations/Discuss';
 import Design from 'components/animations/Design';
 import Develop from 'components/animations/Develop';
 import Deploy from 'components/animations/Deploy';
 import { Link } from 'react-router-dom';
 
-const useStyles = styles;
-
 const AboutScreen = () => {
+	const [animateProfile, setAnimateProfile] = useState(false);
 	const [animateDiscuss, setAnimateDiscuss] = useState(false);
 	const [animateDesign, setAnimateDesign] = useState(false);
 	const [animateDevelop, setAnimateDevelop] = useState(false);
@@ -19,6 +19,7 @@ const AboutScreen = () => {
 	const designRef = useRef(null);
 	const developRef = useRef(null);
 	const deployRef = useRef(null);
+	const profileImageRef = useRef(null);
 	useEffect(() => {
 		window.addEventListener('scroll', handleScroll);
 		return () => window.removeEventListener('scroll', handleScroll);
@@ -31,7 +32,15 @@ const AboutScreen = () => {
 		setAnimateDesign(window.scrollY >= getScrollHeight(designRef));
 		setAnimateDevelop(window.scrollY >= getScrollHeight(developRef));
 		setAnimateDeploy(window.scrollY >= getScrollHeight(deployRef));
+		if (window.scrollY > profileImageRef.current?.offsetTop) {
+			setAnimateProfile(false);
+		} else if (window.scrollY < getScrollHeight(profileImageRef)) {
+			setAnimateProfile(false);
+		} else {
+			setAnimateProfile(true);
+		}
 	};
+
 	return (
 		<Grid container direction='column' alignItems='center'>
 			<div className={classes.textBox1}>
@@ -53,7 +62,44 @@ const AboutScreen = () => {
 				alignItems='center'
 				direction='column'
 			>
-				<Avatar className={classes.avatar} />
+				<div className={classes.avatar} ref={profileImageRef}>
+					<img
+						className={
+							animateProfile
+								? clsx(classes.animateProfile1, classes.profileImage1)
+								: classes.profileImage1
+						}
+						src='images/1.jpg'
+						alt='Aaron Gazzola profile image 1'
+					/>
+					<img
+						className={
+							animateProfile
+								? clsx(classes.animateProfile2, classes.profileImage2)
+								: classes.profileImage2
+						}
+						src='images/2.jpg'
+						alt='Aaron Gazzola profile image 2'
+					/>
+					<img
+						className={
+							animateProfile
+								? clsx(classes.animateProfile3, classes.profileImage3)
+								: classes.profileImage3
+						}
+						src='images/3.jpg'
+						alt='Aaron Gazzola profile image 3'
+					/>
+					<img
+						className={
+							animateProfile
+								? clsx(classes.animateProfile4, classes.profileImage4)
+								: classes.profileImage4
+						}
+						src='images/1.jpg'
+						alt='Aaron Gazzola profile image 3'
+					/>
+				</div>
 				<div className={classes.textBox2} style={{ maxWidth: 500 }}>
 					<Typography variant='h2' className={classes.subTitle}>
 						Aaron Gazzola

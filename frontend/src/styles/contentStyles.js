@@ -75,10 +75,78 @@ const styles = makeStyles(theme => ({
 		padding: theme.spacing(3)
 	},
 	avatar: {
-		width: 150,
-		height: 150,
-		backgroundColor: theme.palette.grey[800],
-		margin: theme.spacing(1)
+		transform: 'translateZ(0)',
+		zIndex: 10,
+		position: 'relative',
+		width: 250,
+		height: 250,
+		borderRadius: '50%',
+		overflow: 'hidden',
+		margin: theme.spacing(1),
+		'& img': {
+			width: '100%',
+			position: 'absolute'
+		}
+	},
+	profileImage1: {
+		transform: 'translateY(0)'
+	},
+	profileImage2: {
+		transform: 'translateY(100%)'
+	},
+	profileImage3: {
+		transform: 'translateY(100%)'
+	},
+	profileImage4: {
+		transform: 'translateY(100%)'
+	},
+	animateProfile1: {
+		animation: '$profileImage1 2.5s ease .1s'
+	},
+	animateProfile2: {
+		animation: '$profileImage2 1.5s ease forwards'
+	},
+	animateProfile3: {
+		animation: '$profileImage2 1.5s ease .9s forwards'
+	},
+	animateProfile4: {
+		animation: '$profileImage3 .5s ease 1.85s forwards'
+	},
+	'@keyframes profileImage1': {
+		'0%': {
+			transform: 'translateY(0%)'
+		},
+		'20%': {
+			transform: 'translateY(-100%)'
+		},
+		'99%': {
+			transform: 'translateY(-100%)'
+		},
+		'100%': {
+			transform: 'translateY(0%)'
+		}
+	},
+	'@keyframes profileImage2': {
+		'0%': {
+			transform: 'translateY(100%)'
+		},
+		'33%': {
+			transform: 'translateY(0%)'
+		},
+		'66%': {
+			transform: 'translateY(0%)'
+		},
+		'100%': {
+			transform: 'translateY(-100%)'
+		}
+	},
+	'@keyframes profileImage3': {
+		'0%': {
+			transform: 'translateY(100%)'
+		},
+		'100%': {
+			transform: 'translateY(0%)'
+		}
 	},
 	link: {
 		color: theme.palette.secondary.main,
