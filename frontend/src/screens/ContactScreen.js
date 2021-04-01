@@ -27,7 +27,8 @@ const ContactScreen = () => {
 							Book a Call
 						</Typography>
 						<Typography className={classes.paragraph}>
-							Select a date and time to discuss your web app.
+							Select a date and time to discuss your web app. <br />
+							I'll call by phone for best availability and connection
 						</Typography>
 					</div>
 				</Grid>

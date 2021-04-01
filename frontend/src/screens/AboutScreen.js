@@ -34,10 +34,6 @@ const AboutScreen = () => {
 		return () => window.removeEventListener('scroll', handleScroll2);
 	}, [imagesLoaded]);
 
-	useEffect(() => {
-		if (animateProfile) setTimeout(() => setAnimateProfile(false), 2500);
-	}, [animateProfile]);
-
 	const getScrollHeight = ref =>
 		ref.current?.offsetTop + ref.current?.offsetHeight - window.innerHeight;
 
@@ -54,6 +50,13 @@ const AboutScreen = () => {
 			window.scrollY < profileImageRef.current?.offsetTop
 		)
 			setAnimateProfile(true);
+		if (
+			window.scrollY >
+				profileImageRef.current?.offsetTop +
+					profileImageRef.current?.offsetHeight ||
+			window.scrollY < profileImageRef.current?.offsetTop - window.innerHeight
+		)
+			setAnimateProfile(false);
 	};
 
 	const handleImageLoaded = e => {
