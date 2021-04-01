@@ -12,13 +12,13 @@ import {
 	CANCEL_BOOKING_FAIL
 } from 'constants/bookingConstants';
 
-export const getBookingsAction = midnightSunday => async dispatch => {
+export const getBookingsAction = (start, end) => async dispatch => {
 	try {
 		dispatch({
 			type: GET_BOOKINGS_REQUEST
 		});
 		const { data } = await axios.get(
-			`/api/v1/bookings/calendar/${midnightSunday.utc().unix()}`
+			`/api/v1/bookings/calendar/${start.utc().unix()}/${end.utc().unix()}`
 		);
 
 		const bookings = data.bookings.map(booking => ({

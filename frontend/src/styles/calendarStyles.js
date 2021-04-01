@@ -33,6 +33,9 @@ const styles = makeStyles(theme => ({
 		},
 		'&:last-of-type': {
 			borderRight: `none`
+		},
+		[theme.breakpoints.down('xs')]: {
+			width: '33.33%'
 		}
 	},
 	today: {
@@ -57,9 +60,9 @@ const styles = makeStyles(theme => ({
 		}
 	},
 	skeleton: {
-		width: '90%',
-		height: 33,
-		margin: 0,
+		width: '80%',
+		height: 50,
+		margin: 'auto',
 		padding: 0
 	},
 	hour: {

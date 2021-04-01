@@ -6,19 +6,17 @@ import moment from 'moment';
 import sendEmail from '../utils/sendEmail.js';
 
 // @desc    Get all available bookings
-// @route   GET /api/bookings/calendar/:timestamp
+// @route   GET /api/bookings/calendar/:start/:end
 // @access    Public
 const getAvailableBookings = asyncHandler(async (req, res, next) => {
-	const midnightSunday = Number(req.params.timestamp);
-	const unixTimeNow = moment().add(1, 'h').unix();
-	const minTime = unixTimeNow > midnightSunday ? unixTimeNow : midnightSunday;
-	const maxTime = moment.unix(minTime).add(7, 'd').unix();
+	const start = Number(req.params.start);
+	const end = Number(req.params.end);
 
 	const bookings = await Booking.find({
 		booked: false,
 		timestamp: {
-			$gte: minTime,
-			$lte: maxTime
+			$gte: start,
+			$lte: end
 		}
 	});
 

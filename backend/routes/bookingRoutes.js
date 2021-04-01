@@ -7,7 +7,7 @@ import {
 
 const router = express.Router();
 
-router.route('/calendar/:timestamp').get(getAvailableBookings);
+router.route('/calendar/:start/:end').get(getAvailableBookings);
 router.route('/confirm/:id').post(confirmBooking);
 router.route('/cancel/:id/:client').post(cancelBooking);
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import clsx from 'clsx';
-import styles from 'styles/calendarStyles';
+import useStyles from 'styles/calendarStyles';
 import { Grid, IconButton, Typography, useMediaQuery } from '@material-ui/core';
 import { ArrowBackIos, ArrowForwardIos } from '@material-ui/icons';
 import { Skeleton } from '@material-ui/lab';
@@ -10,31 +10,10 @@ import { getBookingsAction } from 'actions/bookingActions';
 import { CONFIRM_BOOKING_CLEAR } from 'constants/bookingConstants';
 import Message from 'components/Message';
 
-const useStyles = styles;
-
-const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thur', 'Fri', 'Sat'];
-const months = [
-	'January',
-	'February',
-	'March',
-	'April',
-	'May',
-	'June',
-	'July',
-	'August',
-	'September',
-	'October',
-	'November',
-	'December'
-];
-
 const Calendar = ({ setOpen, setBooking }) => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const matchesXS = useMediaQuery(theme => theme.breakpoints.down('xs'));
-	const [dates, setDates] = useState(
-		days.map((day, i) => moment().subtract(moment().day(), 'd').add(i, 'd'))
-	);
 
 	const getBookings = useSelector(state => state.getBookings);
 	const { bookings, loading } = getBookings;
@@ -42,24 +21,53 @@ const Calendar = ({ setOpen, setBooking }) => {
 	const confirmBooking = useSelector(state => state.confirmBooking);
 	const { success, error } = confirmBooking;
 
+	const [page, setPage] = useState(0);
+	const [dates, setDates] = useState(
+		[...Array(matchesXS ? 3 : 7).keys()].map(key =>
+			moment()
+				.hour(0)
+				.minute(0)
+				.subtract(!matchesXS ? moment().day() : 0, 'd')
+				.add(key + page * (matchesXS ? 3 : 7), 'd')
+		)
+	);
+
 	useEffect(() => {
-		dispatch(getBookingsAction(moment(dates[0]).hour(0).minute(0)));
-	}, []);
+		let newDates = [...Array(matchesXS ? 3 : 7).keys()].map(key =>
+			moment()
+				.subtract(!matchesXS ? moment().day() : 0, 'd')
+				.add(key + page * (matchesXS ? 3 : 7), 'd')
+		);
+		setDates(newDates);
+		dispatch(
+			getBookingsAction(
+				page === 0 ? moment() : moment(newDates[0]).hour(0).minute(0),
+				moment(newDates[newDates.length - 1])
+					.hour(23)
+					.minute(59)
+			)
+		);
+	}, [matchesXS, page, dispatch]);
 
 	useEffect(() => {
 		if (success || error) {
-			dispatch(getBookingsAction(moment(dates[0]).hour(0).minute(0)));
+			dispatch(
+				getBookingsAction(
+					page === 0 ? moment() : moment(dates[0]).hour(0).minute(0),
+					moment(dates[dates.length - 1])
+						.hour(23)
+						.minute(59)
+				)
+			);
 		}
 	}, [success, dispatch, error]);
 
-	const handleNextWeek = () => {
-		setDates(dates.map(date => date.add(7, 'd')));
-		dispatch(getBookingsAction(moment(dates[0]).hour(0).minute(0)));
+	const handleNextPage = () => {
+		setPage(page + 1);
 	};
 
-	const handlePrevWeek = () => {
-		setDates(dates.map(date => date.subtract(7, 'd')));
-		dispatch(getBookingsAction(moment(dates[0]).hour(0).minute(0)));
+	const handlePrevPage = () => {
+		if (page > 0) setPage(page - 1);
 	};
 
 	const handleSelectBooking = timestamp => {
@@ -76,28 +84,31 @@ const Calendar = ({ setOpen, setBooking }) => {
 			/>
 			<div className={classes.header}>
 				<IconButton
-					disabled={dates[0] === moment() || dates[0].isBefore(moment())}
+					disabled={
+						dates[0] === moment().hour(0).minute(0) ||
+						dates[0].isBefore(moment())
+					}
 					color='secondary'
-					onClick={handlePrevWeek}
+					onClick={handlePrevPage}
 					className={classes.arrowBack}
 				>
 					<ArrowBackIos color='secondary' />
 				</IconButton>
 				<Grid container alignItems='flex-end' justify='center'>
 					<Typography variant='h2'>
-						{dates[0].month() === dates[6].month()
-							? months[dates[0].month()]
-							: `${months[dates[0].month()].substring(0, 3)} - ${months[
-									dates[6].month()
-							  ].substring(0, 3)}`}
+						{dates[0].month() === dates[dates.length - 1].month()
+							? dates[0].format('MMMM')
+							: `${dates[0].format('MMM')} - ${dates[dates.length - 1].format(
+									'MMM'
+							  )}`}
 					</Typography>
 					<Typography className={classes.year}>
-						{dates[0].year() === dates[6].year()
+						{dates[0].year() === dates[dates.length - 1].year()
 							? dates[0].year()
-							: `${dates[0].year()} - ${dates[6].year()}`}
+							: `${dates[0].year()} - ${dates[dates.length - 1].year()}`}
 					</Typography>
 				</Grid>
-				<IconButton color='secondary' onClick={handleNextWeek}>
+				<IconButton color='secondary' onClick={handleNextPage}>
 					<ArrowForwardIos color='secondary' />
 				</IconButton>
 			</div>
@@ -113,14 +124,14 @@ const Calendar = ({ setOpen, setBooking }) => {
 						key={date._d}
 					>
 						<Typography variant='h4' className={classes.dayName}>
-							{days[i]}
+							{date.format('ddd')}
 						</Typography>
 						<Typography variant='h4' className={classes.date}>
 							{date.date()}
 						</Typography>
 						{loading
 							? [
-									...Array(Math.floor(Math.random() * 5 + 5)).keys()
+									...Array(Math.floor(Math.random() * 10 + 10)).keys()
 							  ].map(key => (
 									<Skeleton key={key} className={classes.skeleton} />
 							  ))
