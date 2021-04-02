@@ -40,6 +40,14 @@ const styles = makeStyles(theme => ({
 		}
 	},
 	main: {
+		position: 'relative',
+		overflow: 'visible',
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center',
+		margin: '0 auto',
+		paddingTop: theme.spacing(2),
+		paddingBottom: theme.spacing(4),
 		minHeight: `calc(100vh - ${
 			appBarHeight + footerHeight + theme.spacing(3)
 		}px)`,

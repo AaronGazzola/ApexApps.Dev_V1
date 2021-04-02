@@ -1,10 +1,16 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+	BrowserRouter as Router,
+	Route,
+	Switch,
+	Redirect
+} from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import { CssBaseline, ThemeProvider } from '@material-ui/core';
 import { getTheme } from 'styles/theme';
 import Header from 'components/Header';
 import Footer from 'components/Footer';
-import styles from 'styles/appStyles';
+import useStyles from 'styles/appStyles';
 import PageNotFoundScreen from 'screens/PageNotFoundScreen';
 import PortfolioScreen from 'screens/PortfolioScreen';
 import AboutScreen from 'screens/AboutScreen';
@@ -13,13 +19,14 @@ import BlogsScreen from 'screens/BlogsScreen';
 import BlogScreen from 'screens/BlogScreen';
 import CancelBookingScreen from 'screens/CancelBookingScreen';
 import AdminCancelBooking from 'screens/AdminCancelBooking';
-
-const useStyles = styles;
+import LoginScreen from 'screens/LoginScreen';
 
 const theme = getTheme();
 
 const App = () => {
 	const classes = useStyles();
+
+	const { isAuth } = useSelector(state => state.login);
 	return (
 		<Router>
 			<ThemeProvider theme={theme}>
@@ -33,10 +40,15 @@ const App = () => {
 						<Route path='/blog/:slug' component={BlogScreen} />
 						<Route path='/contact' exact component={ContactScreen} />
 						<Route path='/cancel/:id/:client' component={CancelBookingScreen} />
-						<Route
-							path='/admin/cancelbooking/:id'
-							component={AdminCancelBooking}
-						/>
+						<Route path='/login' exact component={LoginScreen} />
+						{isAuth ? (
+							<Route
+								path='/admin/cancelbooking/:id'
+								component={AdminCancelBooking}
+							/>
+						) : (
+							<Redirect path='/admin/' to='/login' />
+						)}
 						<Route path='/' component={PageNotFoundScreen} />
 					</Switch>
 				</main>

@@ -38,22 +38,22 @@ const styles = makeStyles(theme => ({
 	},
 	error: {
 		'& .Mui-error': {
-			color: theme.palette.error.light,
+			color: theme.palette.error.main,
 			'& .MuiInputBase-input': {
 				color: theme.palette.text.primary
 			},
 			'&:after': {
-				borderColor: theme.palette.error.light
+				borderColor: theme.palette.error.main
 			}
 		},
 		'& .MuiInputBase-root': {
 			'& .MuiOutlinedInput-notchedOutline': {
-				borderColor: theme.palette.error.light
+				borderColor: theme.palette.error.main
 			}
 		}
 	},
 	cancelButton: {
-		color: theme.palette.error.light
+		color: theme.palette.error.main
 	},
 	submitButton: {
 		minWidth: 100,

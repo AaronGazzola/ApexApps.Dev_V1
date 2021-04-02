@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import clsx from 'clsx';
-import { Avatar, Button, Grid, Typography } from '@material-ui/core';
+import { Button, Grid, Typography } from '@material-ui/core';
 import { Phone } from '@material-ui/icons';
 import useStyles from 'styles/contentStyles';
 import Discuss from 'components/animations/Discuss';

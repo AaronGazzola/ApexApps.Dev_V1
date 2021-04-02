@@ -27,7 +27,7 @@ export const getTheme = () =>
 				main: apexGreen
 			},
 			error: {
-				main: '#970026'
+				main: 'rgb(171, 51, 81)'
 			},
 			common: {
 				orange1: '#CF3919',
@@ -54,7 +54,8 @@ export const getTheme = () =>
 			contrastThreshold: 3,
 			tonalOffset: 0.2,
 			background: {
-				default: '#000'
+				default: '#000',
+				paper: '#0A0A0A'
 			},
 			text: {
 				primary: '#bdbdbd',
