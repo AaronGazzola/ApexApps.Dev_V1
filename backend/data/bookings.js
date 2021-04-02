@@ -1,36 +1,43 @@
 import moment from 'moment';
 
-// set booking times (GMT, hours only - half hour intervals will be populated)
-const times = [7, 8, 9, 13, 14, 15, 18, 19, 20];
-// set number of days to populate`
+// set booking times
+//  Format = 24hr, colon separated, local time
+const times = [
+	'7:00',
+	'7:30',
+	'8:00',
+	'8:30',
+	'9:00',
+	'9:30',
+	'13:00',
+	'13:30',
+	'14:00',
+	'14:30',
+	'15:00',
+	'15:30',
+	'18:00',
+	'18:30',
+	'19:00',
+	'19:30',
+	'20:00',
+	'20:30'
+];
+
+// convert booking times to moment instances for tomorrow's date
+const momentTimes = times.map(time =>
+	moment().add(1, 'd').hour(time.split(':')[0]).minute(time.split(':')[1])
+);
+
+//set number of dates to populate
 const datesToPopulate = 90;
 
-// determine hourly increments from first booking;
-const hourlyIncrements = times.map((time, i) =>
-	i > 0 ? time - times[i - 1] : 0
-);
-
-// determine time from last appointment to first
-const resetIncrement = 24 - hourlyIncrements.reduce((a, b) => a + b, 0);
-
-// determine UTC date and time of first booking
-let booking = moment.utc(
-	moment().add(1, 'd').hour(times[0]).minute(0).second(0)
-);
-
-// loop through dates to populate bookings
+// populate array of bookings from momentTimes
 let bookings = [];
-for (let i = 0; i < datesToPopulate; i++) {
-	hourlyIncrements.forEach(increment => {
-		booking.add(increment, 'h');
-		bookings.push({
-			timestamp: booking.unix()
-		});
-		bookings.push({
-			timestamp: moment(booking).add(30, 'm').unix()
-		});
+for (let i = 0; i <= datesToPopulate; i++) {
+	momentTimes.forEach(time => {
+		bookings.push({ timestamp: time.unix() });
+		time.add(1, 'd');
 	});
-	booking.add(resetIncrement, 'h');
 }
 
 export default bookings;
