@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import clsx from 'clsx';
-import styles from 'styles/logoStyles';
+import useStyles from 'styles/logoStyles';
 import { isIE } from 'react-device-detect';
 import { useHistory } from 'react-router-dom';
-
-const useStyles = styles;
 
 const Logo = ({ handleTabChange }) => {
 	const history = useHistory();

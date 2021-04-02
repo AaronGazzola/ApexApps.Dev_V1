@@ -1,9 +1,7 @@
 import React from 'react';
 import { Tab, Tabs } from '@material-ui/core';
-import styles from 'styles/tabStyles';
+import useStyles from 'styles/tabStyles';
 import { Link } from 'react-router-dom';
-
-const useStyles = styles;
 
 const NavTabs = ({ tabValue, handleTabChange }) => {
 	const classes = useStyles();

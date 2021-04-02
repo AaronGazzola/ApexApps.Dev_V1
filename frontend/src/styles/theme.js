@@ -21,10 +21,10 @@ export const getTheme = () =>
 			},
 			secondary: {
 				main: apexGreen,
-				contrastText: '#fff'
+				contrastText: '#000'
 			},
 			success: {
-				main: apexGreen
+				main: 'rgb(33, 105, 79)'
 			},
 			error: {
 				main: 'rgb(171, 51, 81)'

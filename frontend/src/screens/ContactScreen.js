@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import { Grid, Typography } from '@material-ui/core';
 import { Email, GitHub, Twitter } from '@material-ui/icons';
-import styles from 'styles/contentStyles';
+import useStyles from 'styles/contentStyles';
 import Calendar from 'components/Calendar';
 import BookingDialog from 'components/BookingDialog';
-
-const useStyles = styles;
 
 const ContactScreen = () => {
 	const classes = useStyles();

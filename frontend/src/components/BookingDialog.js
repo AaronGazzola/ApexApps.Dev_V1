@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer } from 'react';
-import styles from 'styles/dialogStyles';
+import useStyles from 'styles/formStyles';
 import moment from 'moment';
 import { produce } from 'immer';
 import clsx from 'clsx';
@@ -21,8 +21,6 @@ import {
 } from 'utils/validators';
 import { useDispatch, useSelector } from 'react-redux';
 import { confirmBookingAction } from 'actions/bookingActions';
-
-const useStyles = styles;
 
 const initialState = {
 	isValid: false,
@@ -197,7 +195,6 @@ const BookingDialog = ({ open, setOpen, booking }) => {
 					}
 				/>
 				<TextField
-					className={classes.textarea}
 					color='secondary'
 					margin='dense'
 					id='description'
@@ -209,8 +206,8 @@ const BookingDialog = ({ open, setOpen, booking }) => {
 					fullWidth
 					className={
 						description.isTouched && !description.isValid
-							? clsx(classes.input, classes.error)
-							: classes.input
+							? clsx(classes.textarea, classes.input, classes.error)
+							: clsx(classes.textarea, classes.input)
 					}
 					onChange={e =>
 						changeHandler(e, [
@@ -236,11 +233,11 @@ const BookingDialog = ({ open, setOpen, booking }) => {
 						onClick={submitHandler}
 						color='secondary'
 						disabled={!formState.isValid}
-						variant='outlined'
+						variant='contained'
 						className={classes.submitButton}
 					>
 						{loading ? (
-							<CircularProgress size={25} color='secondary' />
+							<CircularProgress size={25} className={classes.progress} />
 						) : (
 							'Confirm'
 						)}

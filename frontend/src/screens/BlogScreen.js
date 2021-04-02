@@ -1,12 +1,10 @@
 import React, { useEffect } from 'react';
 import clsx from 'clsx';
 import { useDispatch, useSelector } from 'react-redux';
-import styles from 'styles/contentStyles';
+import useStyles from 'styles/contentStyles';
 import { Grid, Typography } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
 import { getBlogAction } from 'actions/blogActions';
-
-const useStyles = styles;
 
 const BlogScreen = ({ match }) => {
 	const slug = match.params.slug;

@@ -28,6 +28,7 @@ import {
 	CONFIRM_BOOKING_CLEAR,
 	CANCEL_BOOKING_CLEAR
 } from 'constants/bookingConstants';
+import SnackBar from 'components/SnackBar';
 
 const App = () => {
 	const theme = getTheme();
@@ -38,70 +39,75 @@ const App = () => {
 		getBookings: { error: getBookingsError },
 		confirmBooking: {
 			error: confirmBookingError,
-			success: confirmBookinguccess
+			success: confirmBookingSuccess
 		},
 		cancelBooking: { error: cancelBookingError, success: cancelBookingSuccess },
 		getBlogs: { error: getBlogsError },
 		getBlog: { error: getBlogError }
 	} = useSelector(state => state);
 	return (
-		<>
-			<Message
-				error={
-					loginError ||
-					getBookingsError ||
-					confirmBookingError ||
-					cancelBookingError ||
-					getBlogsError ||
-					getBlogError
-				}
-				clearType={
-					loginError
-						? LOG_IN_CLEAR
-						: getBookingsError
-						? GET_BOOKINGS_CLEAR
-						: confirmBookingError
-						? CONFIRM_BOOKING_CLEAR
-						: cancelBookingError
-						? CANCEL_BOOKING_CLEAR
-						: getBlogsError
-						? GET_BLOGS_CLEAR
-						: getBlogError
-						? GET_BLOG_CLEAR
-						: null
-				}
-			/>
-			<Router>
-				<ThemeProvider theme={theme}>
-					<CssBaseline />
-					<Header />
-					<main className={classes.main}>
-						<Switch>
-							<Route path='/' exact component={AboutScreen} />
-							<Route path='/apps' exact component={PortfolioScreen} />
-							<Route path='/blog' exact component={BlogsScreen} />
-							<Route path='/blog/:slug' component={BlogScreen} />
-							<Route path='/contact' exact component={ContactScreen} />
+		<Router>
+			<ThemeProvider theme={theme}>
+				<CssBaseline />
+				<Header />
+				<main className={classes.main}>
+					<Message
+						error={
+							loginError ||
+							getBookingsError ||
+							confirmBookingError ||
+							cancelBookingError ||
+							getBlogsError ||
+							getBlogError
+						}
+						clearType={
+							loginError
+								? LOG_IN_CLEAR
+								: getBookingsError
+								? GET_BOOKINGS_CLEAR
+								: confirmBookingError
+								? CONFIRM_BOOKING_CLEAR
+								: cancelBookingError
+								? CANCEL_BOOKING_CLEAR
+								: getBlogsError
+								? GET_BLOGS_CLEAR
+								: getBlogError
+								? GET_BLOG_CLEAR
+								: null
+						}
+					/>
+					<SnackBar
+						message={confirmBookingSuccess || cancelBookingSuccess}
+						clearType={
+							confirmBookingSuccess
+								? CONFIRM_BOOKING_CLEAR
+								: cancelBookingSuccess
+								? CANCEL_BOOKING_CLEAR
+								: null
+						}
+					/>
+					<Switch>
+						<Route path='/' exact component={AboutScreen} />
+						<Route path='/apps' exact component={PortfolioScreen} />
+						<Route path='/blog' exact component={BlogsScreen} />
+						<Route path='/blog/:slug' component={BlogScreen} />
+						<Route path='/contact' exact component={ContactScreen} />
+						<Route path='/cancel/:id/:client' component={CancelBookingScreen} />
+						<Route path='/login' exact component={LoginScreen} />
+						{isAuth ? (
 							<Route
-								path='/cancel/:id/:client'
-								component={CancelBookingScreen}
+								path='/admin/cancelbooking/:id'
+								component={AdminCancelBooking}
 							/>
-							<Route path='/login' exact component={LoginScreen} />
-							{isAuth ? (
-								<Route
-									path='/admin/cancelbooking/:id'
-									component={AdminCancelBooking}
-								/>
-							) : (
-								<Redirect path='/admin/' to='/login' />
-							)}
-							<Route path='/' component={PageNotFoundScreen} />
-						</Switch>
-					</main>
-					<Footer />
-				</ThemeProvider>
-			</Router>
-		</>
+						) : (
+							<Redirect path='/admin/' to='/login' />
+						)}
+						<Route path='/' component={PageNotFoundScreen} />
+					</Switch>
+				</main>
+				<Footer />
+			</ThemeProvider>
+		</Router>
 	);
 };
 

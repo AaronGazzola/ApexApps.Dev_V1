@@ -3,10 +3,8 @@ import clsx from 'clsx';
 import { AppBar, Toolbar, Typography } from '@material-ui/core';
 import Logo from 'components/Logo';
 import NavTabs from 'components/NavTabs';
-import styles from 'styles/appStyles';
+import useStyles from 'styles/appStyles';
 import { useLocation } from 'react-router-dom';
-
-const useStyles = styles;
 
 const Header = () => {
 	const location = useLocation();

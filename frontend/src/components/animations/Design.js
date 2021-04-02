@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import styles from 'styles/animationStyles';
+import useStyles from 'styles/animationStyles';
 import clsx from 'clsx';
-
-const useStyles = styles;
 
 const Design = ({ animate }) => {
 	const classes = useStyles();

@@ -17,11 +17,29 @@ const styles = makeStyles(theme => ({
 		},
 		'& .MuiInputLabel-shrink, p': {
 			fontWeight: 700
+		},
+		'& .MuiFormLabel-root': {
+			// color: theme.palette.grey[600],
+			fontWeight: 500
 		}
 	},
 	error: {
 		'& label.Mui-focused': {
 			color: theme.palette.error.main
+		},
+		'& .Mui-error': {
+			color: theme.palette.error.main,
+			'& .MuiInputBase-input': {
+				color: theme.palette.text.primary
+			},
+			'&:after': {
+				borderColor: theme.palette.error.main
+			}
+		},
+		'& .MuiInputBase-root': {
+			'& .MuiOutlinedInput-notchedOutline': {
+				borderColor: theme.palette.error.main
+			}
 		}
 	},
 	button: {
@@ -98,6 +116,49 @@ const styles = makeStyles(theme => ({
 	},
 	greyText: {
 		color: theme.palette.grey[600]
+	},
+	paper: {
+		backgroundColor: theme.palette.grey[900]
+	},
+	title: {
+		fontWeight: 400,
+		fontSize: '2rem',
+		fontStyle: 'italic',
+		fontFamily: "'Montserrat', sans-serif"
+	},
+	titleIcon: {
+		marginLeft: theme.spacing(1)
+	},
+	subTitle: {
+		fontWeight: 300,
+		fontSize: '1.4rem',
+		fontFamily: "'Montserrat', sans-serif",
+		paddingTop: 0,
+		paddingBottom: 0
+	},
+	text: {
+		color: theme.palette.text.primary
+	},
+	date: {
+		fontWeight: 500,
+		fontSize: '1.1rem'
+	},
+	textarea: {
+		margin: theme.spacing(2, 0),
+		'& .MuiOutlinedInput-notchedOutline': {
+			borderColor: theme.palette.grey[800]
+		}
+	},
+	cancelButton: {
+		color: theme.palette.error.main
+	},
+	submitButton: {
+		minWidth: 100,
+		minHeight: 34,
+		fontWeight: 700
+	},
+	progress: {
+		color: '#000'
 	}
 }));
 
