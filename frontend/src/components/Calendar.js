@@ -7,8 +7,6 @@ import { ArrowBackIos, ArrowForwardIos } from '@material-ui/icons';
 import { Skeleton } from '@material-ui/lab';
 import { useDispatch, useSelector } from 'react-redux';
 import { getBookingsAction } from 'actions/bookingActions';
-import { CONFIRM_BOOKING_CLEAR } from 'constants/bookingConstants';
-import Message from 'components/Message';
 
 const Calendar = ({ setOpen, setBooking }) => {
 	const classes = useStyles();
@@ -77,11 +75,6 @@ const Calendar = ({ setOpen, setBooking }) => {
 
 	return (
 		<>
-			<Message
-				error={error}
-				success={success}
-				reset={() => dispatch({ type: CONFIRM_BOOKING_CLEAR })}
-			/>
 			<div className={classes.header}>
 				<IconButton
 					disabled={
