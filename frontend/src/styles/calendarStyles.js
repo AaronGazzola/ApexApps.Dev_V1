@@ -75,7 +75,7 @@ const styles = makeStyles(theme => ({
 		alignItems: 'center',
 		'& p': {
 			margin: 0,
-			color: theme.palette.secondary.main,
+			color: theme.palette.secondary.dark,
 			fontWeight: 500,
 			userSelect: 'none'
 		},

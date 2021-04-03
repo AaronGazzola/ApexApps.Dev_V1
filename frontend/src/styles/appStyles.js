@@ -14,27 +14,27 @@ const styles = makeStyles(theme => ({
 	},
 	headerTitle: {
 		fontFamily: "'Poiret One', Sans Serif",
-		fontSize: '3.5rem',
+		fontSize: '3rem',
 		color: theme.palette.secondary.main,
 		position: 'absolute',
-		top: 12,
+		top: 16,
 		left: '50%',
 		margin: 0,
 		padding: 0,
 		userSelect: 'none',
 		[theme.breakpoints.down('xs')]: {
-			fontSize: '3rem',
-			top: 20
+			fontSize: '2.5rem',
+			top: 22
 		}
 	},
 	headerTitle1: {
-		transform: 'translate(-140%, 0)',
+		transform: 'translate(-145%, 0)',
 		[theme.breakpoints.down('xs')]: {
 			transform: 'translate(-150%, 0)'
 		}
 	},
 	headerTitle2: {
-		transform: 'translate(35%, 0)',
+		transform: 'translate(45%, 0)',
 		[theme.breakpoints.down('xs')]: {
 			transform: 'translate(45%, 0)'
 		}
@@ -86,13 +86,13 @@ const styles = makeStyles(theme => ({
 		transform: 'translate(-50%, -50%)',
 		'& .MuiTabs-indicator': {
 			top: 0,
-			height: 2,
-			backgroundColor: theme.palette.secondary.dark
+			height: 1,
+			backgroundColor: theme.palette.secondary.main
 		}
 	},
 	tab: {
 		color: theme.palette.grey[400],
-		borderTop: `1px solid ${theme.palette.grey[700]}`,
+		borderTop: `1px solid ${theme.palette.grey[800]}`,
 		fontSize: '.95rem',
 		textTransform: 'none',
 		'&.Mui-selected': {

@@ -10,7 +10,7 @@ const styles = makeStyles(theme => ({
 		left: '50%',
 		transform: 'translate(-50%, 0%)',
 		stroke: theme.palette.primary.main,
-		strokeWidth: 3,
+		strokeWidth: 3.5,
 		strokeLinecap: 'round',
 		strokeLinejoin: 'round',
 		fill: 'none',

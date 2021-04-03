@@ -1,6 +1,6 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
-const apexOrange = '#CF3A19';
+const apexOrange = '#FF481F';
 const apexGreen = '#52FFBF';
 
 export const getTheme = () =>
