@@ -34,29 +34,25 @@ const AboutScreen = () => {
 		return () => window.removeEventListener('scroll', handleScroll2);
 	}, [imagesLoaded]);
 
-	const getScrollHeight = ref =>
-		ref.current?.offsetTop + ref.current?.offsetHeight - window.innerHeight;
+	const isInWindow = ref =>
+		ref.current?.offsetTop + 150 > window.scrollY &&
+		ref.current?.offsetTop + ref.current?.offsetHeight + 150 <
+			window.scrollY + window.innerHeight;
+
+	const isOutWindow = ref =>
+		ref.current?.offsetTop + ref.current?.offsetHeight + 150 < window.scrollY ||
+		ref.current?.offsetTop + 150 > window.scrollY + window.innerHeight;
 
 	const handleScroll1 = e => {
-		setAnimateDiscuss(window.scrollY >= getScrollHeight(discussRef));
-		setAnimateDesign(window.scrollY >= getScrollHeight(designRef));
-		setAnimateDevelop(window.scrollY >= getScrollHeight(developRef));
-		setAnimateDeploy(window.scrollY >= getScrollHeight(deployRef));
+		setAnimateDiscuss(isInWindow(discussRef));
+		setAnimateDesign(isInWindow(designRef));
+		setAnimateDevelop(isInWindow(developRef));
+		setAnimateDeploy(isInWindow(deployRef));
 	};
 
 	const handleScroll2 = e => {
-		if (
-			getScrollHeight(profileImageRef) < window.scrollY &&
-			window.scrollY < profileImageRef.current?.offsetTop
-		)
-			setAnimateProfile(true);
-		if (
-			window.scrollY >
-				profileImageRef.current?.offsetTop +
-					profileImageRef.current?.offsetHeight ||
-			window.scrollY < profileImageRef.current?.offsetTop - window.innerHeight
-		)
-			setAnimateProfile(false);
+		if (isInWindow(profileImageRef)) setAnimateProfile(true);
+		if (isOutWindow(profileImageRef)) setAnimateProfile(false);
 	};
 
 	const handleImageLoaded = e => {
