@@ -148,6 +148,9 @@ const styles = makeStyles(theme => ({
 	},
 	grid: {
 		margin: theme.spacing(2)
+	},
+	dialogText: {
+		color: theme.palette.text.primary
 	}
 }));
 

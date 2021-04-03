@@ -28,6 +28,7 @@ import { LOG_IN_CLEAR } from 'constants/adminConstants';
 import { GET_BLOGS_CLEAR, GET_BLOG_CLEAR } from 'constants/blogConstants';
 import {
 	GET_BOOKINGS_CLEAR,
+	LIST_BOOKINGS_CLEAR,
 	CONFIRM_BOOKING_CLEAR,
 	CANCEL_BOOKING_CLEAR
 } from 'constants/bookingConstants';
@@ -40,6 +41,7 @@ const App = () => {
 	const {
 		login: { isAuth, error: loginError },
 		getBookings: { error: getBookingsError },
+		listBookings: { error: listBookingsError },
 		confirmBooking: {
 			error: confirmBookingError,
 			success: confirmBookingSuccess
@@ -58,6 +60,7 @@ const App = () => {
 						error={
 							loginError ||
 							getBookingsError ||
+							listBookingsError ||
 							confirmBookingError ||
 							cancelBookingError ||
 							getBlogsError ||
@@ -68,6 +71,8 @@ const App = () => {
 								? LOG_IN_CLEAR
 								: getBookingsError
 								? GET_BOOKINGS_CLEAR
+								: listBookingsError
+								? LIST_BOOKINGS_CLEAR
 								: confirmBookingError
 								? CONFIRM_BOOKING_CLEAR
 								: cancelBookingError
@@ -89,34 +94,49 @@ const App = () => {
 								: null
 						}
 					/>
-					<Switch>
-						<Route path='/' exact component={AboutScreen} />
-						<Route path='/apps' exact component={PortfolioScreen} />
-						<Route path='/blog' exact component={BlogsScreen} />
-						<Route path='/blog/:slug' component={BlogScreen} />
-						<Route path='/contact' exact component={ContactScreen} />
-						<Route path='/cancel/:id/:client' component={CancelBookingScreen} />
-						<Route path='/login' exact component={LoginScreen} />
-						{isAuth ? (
-							<>
-								<Route
-									path='/admin/bookings'
-									exact
-									component={ListBookingsScreen}
-								/>
-								<Route
-									path='/admin/bookings'
-									exact
-									component={ListClientsScreen}
-								/>
-								<Route path='/admin/blogs' exact component={ListBlogsScreen} />
-								<Route path='/admin/blog/:id' component={EditBlogScreen} />
-							</>
-						) : (
+					{isAuth ? (
+						<Switch>
+							<Route path='/' exact component={AboutScreen} />
+							<Route path='/apps' exact component={PortfolioScreen} />
+							<Route path='/blog' exact component={BlogsScreen} />
+							<Route path='/blog/:slug' component={BlogScreen} />
+							<Route path='/contact' exact component={ContactScreen} />
+							<Route
+								path='/cancel/:id/:client'
+								component={CancelBookingScreen}
+							/>
+							<Route path='/login' exact component={LoginScreen} />
+							<Route
+								path='/admin/bookings'
+								exact
+								component={ListBookingsScreen}
+							/>
+							<Route
+								path='/admin/bookings'
+								exact
+								component={ListClientsScreen}
+							/>
+							<Route path='/admin/blogs' exact component={ListBlogsScreen} />
+							<Route path='/admin/blog/:id' component={EditBlogScreen} />
+						</Switch>
+					) : (
+						<Switch>
+							<Route path='/' exact component={AboutScreen} />
+							<Route path='/apps' exact component={PortfolioScreen} />
+							<Route path='/blog' exact component={BlogsScreen} />
+							<Route path='/blog/:slug' component={BlogScreen} />
+							<Route path='/contact' exact component={ContactScreen} />
+							<Route
+								path='/cancel/:id/:client'
+								component={CancelBookingScreen}
+							/>
+							<Route path='/login' exact component={LoginScreen} />
+
 							<Redirect path='/admin/' to='/login' />
-						)}
-						<Route path='/' component={PageNotFoundScreen} />
-					</Switch>
+
+							<Route path='/' component={PageNotFoundScreen} />
+						</Switch>
+					)}
 				</main>
 				<Footer />
 			</ThemeProvider>

@@ -18,7 +18,7 @@ const bookingSchema = mongoose.Schema({
 		required: false,
 		ref: 'Client'
 	},
-	canceled: {
+	isCanceled: {
 		type: Boolean,
 		default: false
 	}

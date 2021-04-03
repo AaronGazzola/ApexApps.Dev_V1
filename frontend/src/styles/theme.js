@@ -24,7 +24,7 @@ export const getTheme = () =>
 				contrastText: '#000'
 			},
 			success: {
-				main: 'rgb(33, 105, 79)'
+				main: '#129643'
 			},
 			error: {
 				main: 'rgb(171, 51, 81)'

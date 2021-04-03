@@ -150,23 +150,15 @@ const confirmBooking = asyncHandler(async (req, res, next) => {
 // @route   POST /api/bookings/cancel/:id/:client
 // @access    Public
 const cancelBooking = asyncHandler(async (req, res, next) => {
-	// find booking
 	const id = req.params.id;
-	const isClient = req.params.client === 'client';
+	const { isClient } = req.body;
 
 	let booking = await Booking.findById(id).populate({
 		path: 'client',
 		populate: { path: 'bookings' }
 	});
 	const { description } = booking;
-
-	// remove booking from client
-	let client = booking.client;
-	const {
-		name: [name],
-		email,
-		phone: [phone]
-	} = client;
+	const { name, email, phone } = booking.client;
 
 	// get base URL from request protocol and host domain
 	const protocol = req.protocol;
@@ -203,18 +195,17 @@ const cancelBooking = asyncHandler(async (req, res, next) => {
 
 		return next(
 			new ErrorResponse(
-				'Your booking has successfully been recorded, but an error occurred while the confirmation email. Please email aaron@apexapps.dev for confirmation.',
+				'Booking cancelled; could not send cancellation email',
 				500
 			)
 		);
 	}
-	// remove booking from client's bookings array
-	client.bookings = client.bookings.filter(x => x !== id);
-	await client.save();
 
-	// clear booking of client details
-	booking.booked = false;
+	// change booking to cancelled
+	booking.isCanceled = true;
 	await booking.save();
+	// replace with new booking
+	await Booking.create({ timestamp: booking.timestamp });
 
 	res.json({
 		success: true
@@ -224,12 +215,22 @@ const cancelBooking = asyncHandler(async (req, res, next) => {
 // @desc    Get booked bookings
 // @route   GET /api/bookings
 // @access    Private/admin
-const getBookings = asyncHandler(async (req, res, next) => {
-	const bookings = await Booking.find({ booked: true }).populate('client');
+const listBookings = asyncHandler(async (req, res, next) => {
+	const pastBookings = req.query.pastBookings === 'true';
+	const bookings = await Booking.find({
+		booked: true,
+		timestamp: pastBookings
+			? {
+					$lte: moment().unix()
+			  }
+			: {
+					$gte: moment().unix()
+			  }
+	}).populate('client');
 	res.status(200).json({
 		success: true,
 		bookings
 	});
 });
 
-export { getAvailableBookings, confirmBooking, cancelBooking, getBookings };
+export { getAvailableBookings, confirmBooking, cancelBooking, listBookings };

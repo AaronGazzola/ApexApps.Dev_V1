@@ -28,7 +28,8 @@ const styles = makeStyles(theme => ({
 		}
 	},
 	error: {
-		color: theme.palette.error.main
+		color: theme.palette.error.main,
+		fontWeight: 700
 	},
 	collapse: {
 		marginTop: -theme.spacing(2),
@@ -128,6 +129,25 @@ const styles = makeStyles(theme => ({
 		},
 		'& .Mui-checked + .MuiSwitch-track': {
 			backgroundColor: theme.palette.error.light
+		}
+	},
+	skeleton: {
+		width: '80%',
+		height: 50,
+		margin: 'auto',
+		padding: 0
+	},
+	switch: {
+		'& .MuiSwitch-track': {
+			backgroundColor: theme.palette.grey[600]
+		},
+		'& .MuiSwitch-thumb': {
+			backgroundColor: theme.palette.grey[500]
+		},
+		'& .Mui-checked': {
+			'& .MuiSwitch-thumb': {
+				backgroundColor: theme.palette.secondary.main
+			}
 		}
 	}
 }));

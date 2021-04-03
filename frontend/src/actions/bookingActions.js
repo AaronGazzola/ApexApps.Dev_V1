@@ -20,6 +20,7 @@ export const getBookingsAction = (start, end) => async dispatch => {
 		dispatch({
 			type: GET_BOOKINGS_REQUEST
 		});
+
 		const { data } = await axios.get(
 			`/api/v1/bookings/calendar/${start.utc().unix()}/${end.utc().unix()}`
 		);
@@ -43,12 +44,30 @@ export const getBookingsAction = (start, end) => async dispatch => {
 	}
 };
 
-export const listBookingsAction = () => async dispatch => {
+export const listBookingsAction = pastBookings => async (
+	dispatch,
+	getState
+) => {
 	try {
 		dispatch({
 			type: LIST_BOOKINGS_REQUEST
 		});
-		const { data } = await axios.get(`/api/v1/bookings/`);
+
+		const {
+			login: { token }
+		} = getState();
+
+		const config = {
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${token}`
+			}
+		};
+
+		const { data } = await axios.get(
+			`/api/v1/bookings?pastBookings=${pastBookings}`,
+			config
+		);
 
 		dispatch({ type: LIST_BOOKINGS_SUCCESS, payload: data.bookings });
 	} catch (error) {
@@ -105,11 +124,7 @@ export const cancelBookingAction = (id, isClient) => async dispatch => {
 
 		const config = {};
 
-		await axios.post(
-			`/api/v1/bookings/cancel/${id}/${isClient ? 'client' : 'admin'}`,
-			{},
-			config
-		);
+		await axios.post(`/api/v1/bookings/cancel/${id}/`, { isClient }, config);
 
 		dispatch({ type: CANCEL_BOOKING_SUCCESS });
 	} catch (error) {
