@@ -4,7 +4,7 @@ const styles = makeStyles(theme => ({
 	svg: {
 		strokeLinecap: 'round',
 		strokeLinejoin: 'round',
-		stroke: theme.palette.grey[500],
+		stroke: theme.palette.grey[300],
 		maxWidth: 200
 	},
 	orange: {

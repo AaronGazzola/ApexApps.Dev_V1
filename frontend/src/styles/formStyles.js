@@ -15,6 +15,9 @@ const styles = makeStyles(theme => ({
 		'&:first-of-type': {
 			marginTop: theme.spacing(2)
 		},
+		'&:last-of-type': {
+			marginBottom: theme.spacing(2)
+		},
 		'& .MuiInputLabel-shrink, p': {
 			fontWeight: 700
 		},
@@ -40,26 +43,6 @@ const styles = makeStyles(theme => ({
 			'& .MuiOutlinedInput-notchedOutline': {
 				borderColor: theme.palette.error.main
 			}
-		}
-	},
-	button: {
-		marginTop: theme.spacing(3),
-		fontWeight: 700
-	},
-	button2: {
-		marginTop: theme.spacing(2),
-		fontWeight: 700,
-		'&.Mui-disabled': {
-			background: theme.palette.grey[800]
-		}
-	},
-	button3: {
-		marginTop: theme.spacing(1),
-		color: theme.palette.secondary.main,
-		textTransform: 'none',
-		fontWeight: 700,
-		'&:hover': {
-			// color: theme.palette.primary.main
 		}
 	},
 	submitProgress: {
@@ -155,10 +138,16 @@ const styles = makeStyles(theme => ({
 	submitButton: {
 		minWidth: 100,
 		minHeight: 34,
-		fontWeight: 700
+		fontWeight: 700,
+		'&.Mui-disabled': {
+			background: theme.palette.grey[800]
+		}
 	},
 	progress: {
 		color: '#000'
+	},
+	grid: {
+		margin: theme.spacing(2)
 	}
 }));
 

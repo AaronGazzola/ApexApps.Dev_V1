@@ -4,18 +4,21 @@ import useStyles from 'styles/contentStyles';
 import { useDispatch, useSelector } from 'react-redux';
 import { cancelBookingAction } from 'actions/bookingActions';
 
-const CancelBookingScreen = ({ match }) => {
+const CancelBookingScreen = ({ match, history }) => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const bookingId = match.params.id;
 	const isClient = match.params.client === 'client';
 
 	const cancelBooking = useSelector(state => state.cancelBooking);
-	const { loading } = cancelBooking;
+	const { loading, success: cancelBookingSuccess } = cancelBooking;
 
 	useEffect(() => {
-		dispatch(cancelBookingAction(bookingId));
+		dispatch(cancelBookingAction(bookingId, isClient));
 	}, []);
+	useEffect(() => {
+		if (cancelBookingSuccess) history.push('/');
+	}, [cancelBookingSuccess]);
 
 	return (
 		<Grid container direction='column' alignItems='center'>

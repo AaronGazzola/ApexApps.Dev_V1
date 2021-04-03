@@ -69,7 +69,7 @@ const styles = makeStyles(theme => ({
 		width: 320,
 		margin: 'auto',
 		marginTop: theme.spacing(3),
-		borderTop: `1px solid ${theme.palette.grey[900]}`,
+		borderTop: `1px solid ${theme.palette.grey[700]}`,
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
@@ -77,6 +77,26 @@ const styles = makeStyles(theme => ({
 		paddingBottom: theme.spacing(1),
 		'& p': {
 			color: theme.palette.text.secondary
+		}
+	},
+	tabs: {
+		position: 'absolute',
+		left: '50%',
+		top: 130,
+		transform: 'translate(-50%, -50%)',
+		'& .MuiTabs-indicator': {
+			top: 0,
+			height: 2,
+			backgroundColor: theme.palette.secondary.dark
+		}
+	},
+	tab: {
+		color: theme.palette.grey[400],
+		borderTop: `1px solid ${theme.palette.grey[700]}`,
+		fontSize: '.95rem',
+		textTransform: 'none',
+		'&.Mui-selected': {
+			color: theme.palette.secondary.main
 		}
 	}
 }));

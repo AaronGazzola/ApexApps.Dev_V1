@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import useStyles from 'styles/formStyles';
-import { TextField, Button } from '@material-ui/core';
+import { TextField, Button, CircularProgress, Grid } from '@material-ui/core';
 import {
 	VALIDATOR_MINLENGTH,
 	VALIDATOR_REQUIRE,
@@ -13,7 +14,7 @@ import { loginAction, logoutAction } from 'actions/adminActions';
 const LoginScreen = () => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
-	const { isAuth } = useSelector(state => state.login);
+	const { isAuth, loading: loginLoading } = useSelector(state => state.login);
 	const [password, setPassword] = useState({
 		value: '',
 		isValid: false,
@@ -64,26 +65,67 @@ const LoginScreen = () => {
 					}
 				/>
 				<Button
-					className={classes.button2}
+					className={classes.submitButton}
 					variant='contained'
 					color='secondary'
 					disabled={!password.isValid}
 					type='submit'
 				>
-					Log in
+					{loginLoading ? (
+						<CircularProgress size={25} className={classes.submitProgress} />
+					) : (
+						'Log in'
+					)}
 				</Button>
 			</form>
 		);
 	if (isAuth)
 		return (
-			<Button
-				className={classes.button}
-				variant='contained'
-				color='secondary'
-				onClick={handleLogout}
+			<Grid
+				container
+				spacing={2}
+				direction='column'
+				alignItems='center'
+				className={classes.grid}
 			>
-				Log Out
-			</Button>
+				<Grid item>
+					<Button
+						className={classes.submitButton}
+						component={Link}
+						to='/admin/blogs'
+					>
+						Blogs
+					</Button>
+				</Grid>
+				<Grid item>
+					<Button
+						className={classes.submitButton}
+						component={Link}
+						to='/admin/bookings'
+					>
+						Bookings
+					</Button>
+				</Grid>
+				<Grid item>
+					<Button
+						className={classes.submitButton}
+						component={Link}
+						to='/admin/clients'
+					>
+						Clients
+					</Button>
+				</Grid>
+				<Grid item>
+					<Button
+						className={classes.submitButton}
+						variant='outlined'
+						color='primary'
+						onClick={handleLogout}
+					>
+						Log Out
+					</Button>
+				</Grid>
+			</Grid>
 		);
 };
 

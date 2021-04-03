@@ -3,6 +3,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import {
 	getBookingsReducer,
+	listBookingsReducer,
 	confirmBookingReducer,
 	cancelBookingReducer
 } from 'reducers/bookingReducers';
@@ -11,6 +12,7 @@ import { loginReducer } from 'reducers/adminReducers';
 
 const reducer = combineReducers({
 	getBookings: getBookingsReducer,
+	listBookings: listBookingsReducer,
 	confirmBooking: confirmBookingReducer,
 	cancelBooking: cancelBookingReducer,
 	getBlogs: getBlogsReducer,

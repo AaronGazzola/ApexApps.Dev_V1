@@ -221,4 +221,15 @@ const cancelBooking = asyncHandler(async (req, res, next) => {
 	});
 });
 
-export { getAvailableBookings, confirmBooking, cancelBooking };
+// @desc    Get booked bookings
+// @route   GET /api/bookings
+// @access    Private/admin
+const getBookings = asyncHandler(async (req, res, next) => {
+	const bookings = await Booking.find({ booked: true }).populate('client');
+	res.status(200).json({
+		success: true,
+		bookings
+	});
+});
+
+export { getAvailableBookings, confirmBooking, cancelBooking, getBookings };

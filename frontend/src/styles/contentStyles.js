@@ -60,9 +60,6 @@ const styles = makeStyles(theme => ({
 		marginTop: theme.spacing(2)
 	},
 	textBox3: {
-		backgroundColor: '#0d0d0d',
-		// borderLeft: `1px solid ${theme.palette.grey[200]}`,
-		// boxShadow: `inset 5px 0 7px -7px ${theme.palette.grey[200]}`,
 		padding: theme.spacing(3)
 	},
 	highlight: {
@@ -192,7 +189,7 @@ const styles = makeStyles(theme => ({
 		marginTop: theme.spacing(1),
 		width: '80%',
 		maxWidth: 600,
-		borderBottom: `1px solid ${theme.palette.grey[800]}`
+		borderBottom: `1px solid ${theme.palette.grey[600]}`
 	},
 	divider2: {
 		padding: theme.spacing(1),

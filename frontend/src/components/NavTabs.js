@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tab, Tabs } from '@material-ui/core';
-import useStyles from 'styles/tabStyles';
+import useStyles from 'styles/appStyles';
 import { Link } from 'react-router-dom';
 
 const NavTabs = ({ tabValue, handleTabChange }) => {

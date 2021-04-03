@@ -1,7 +1,7 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 
 const apexOrange = '#CF3A19';
-const apexGreen = '#309772';
+const apexGreen = '#52FFBF';
 
 export const getTheme = () =>
 	createMuiTheme({
@@ -58,8 +58,8 @@ export const getTheme = () =>
 				paper: '#0A0A0A'
 			},
 			text: {
-				primary: '#bdbdbd',
-				secondary: '#616161'
+				primary: '#fff',
+				secondary: '#b0b0b0'
 			}
 		},
 		typography: {

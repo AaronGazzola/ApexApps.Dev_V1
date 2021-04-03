@@ -9,7 +9,10 @@ import {
 	CONFIRM_BOOKING_FAIL,
 	CANCEL_BOOKING_REQUEST,
 	CANCEL_BOOKING_SUCCESS,
-	CANCEL_BOOKING_FAIL
+	CANCEL_BOOKING_FAIL,
+	LIST_BOOKINGS_REQUEST,
+	LIST_BOOKINGS_SUCCESS,
+	LIST_BOOKINGS_FAIL
 } from 'constants/bookingConstants';
 
 export const getBookingsAction = (start, end) => async dispatch => {
@@ -32,6 +35,25 @@ export const getBookingsAction = (start, end) => async dispatch => {
 	} catch (error) {
 		dispatch({
 			type: GET_BOOKINGS_FAIL,
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message
+		});
+	}
+};
+
+export const listBookingsAction = () => async dispatch => {
+	try {
+		dispatch({
+			type: LIST_BOOKINGS_REQUEST
+		});
+		const { data } = await axios.get(`/api/v1/bookings/`);
+
+		dispatch({ type: LIST_BOOKINGS_SUCCESS, payload: data.bookings });
+	} catch (error) {
+		dispatch({
+			type: LIST_BOOKINGS_FAIL,
 			payload:
 				error.response && error.response.data.message
 					? error.response.data.message

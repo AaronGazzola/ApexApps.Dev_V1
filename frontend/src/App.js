@@ -18,8 +18,11 @@ import ContactScreen from 'screens/ContactScreen';
 import BlogsScreen from 'screens/BlogsScreen';
 import BlogScreen from 'screens/BlogScreen';
 import CancelBookingScreen from 'screens/CancelBookingScreen';
-import AdminCancelBooking from 'screens/AdminCancelBooking';
 import LoginScreen from 'screens/LoginScreen';
+import ListBookingsScreen from 'screens/ListBookingsScreen';
+import ListClientsScreen from 'screens/ListClientsScreen';
+import ListBlogsScreen from 'screens/ListBlogsScreen';
+import EditBlogScreen from 'screens/EditBlogScreen';
 import Message from 'components/Message';
 import { LOG_IN_CLEAR } from 'constants/adminConstants';
 import { GET_BLOGS_CLEAR, GET_BLOG_CLEAR } from 'constants/blogConstants';
@@ -95,10 +98,20 @@ const App = () => {
 						<Route path='/cancel/:id/:client' component={CancelBookingScreen} />
 						<Route path='/login' exact component={LoginScreen} />
 						{isAuth ? (
-							<Route
-								path='/admin/cancelbooking/:id'
-								component={AdminCancelBooking}
-							/>
+							<>
+								<Route
+									path='/admin/bookings'
+									exact
+									component={ListBookingsScreen}
+								/>
+								<Route
+									path='/admin/bookings'
+									exact
+									component={ListClientsScreen}
+								/>
+								<Route path='/admin/blogs' exact component={ListBlogsScreen} />
+								<Route path='/admin/blog/:id' component={EditBlogScreen} />
+							</>
 						) : (
 							<Redirect path='/admin/' to='/login' />
 						)}

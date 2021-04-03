@@ -17,6 +17,10 @@ const bookingSchema = mongoose.Schema({
 		type: mongoose.Schema.Types.ObjectId,
 		required: false,
 		ref: 'Client'
+	},
+	canceled: {
+		type: Boolean,
+		default: false
 	}
 });
 
