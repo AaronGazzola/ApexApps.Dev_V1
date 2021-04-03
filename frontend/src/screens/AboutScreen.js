@@ -34,20 +34,20 @@ const AboutScreen = () => {
 		return () => window.removeEventListener('scroll', handleScroll2);
 	}, [imagesLoaded]);
 
-	const isInWindow = ref =>
-		ref.current?.offsetTop + 150 > window.scrollY &&
+	const isInWindow = (ref, spaceAround = 0) =>
+		ref.current?.offsetTop + 150 > window.scrollY - spaceAround &&
 		ref.current?.offsetTop + ref.current?.offsetHeight + 150 <
-			window.scrollY + window.innerHeight;
+			window.scrollY + window.innerHeight + spaceAround;
 
 	const isOutWindow = ref =>
 		ref.current?.offsetTop + ref.current?.offsetHeight + 150 < window.scrollY ||
 		ref.current?.offsetTop + 150 > window.scrollY + window.innerHeight;
 
 	const handleScroll1 = e => {
-		setAnimateDiscuss(isInWindow(discussRef));
-		setAnimateDesign(isInWindow(designRef));
-		setAnimateDevelop(isInWindow(developRef));
-		setAnimateDeploy(isInWindow(deployRef));
+		setAnimateDiscuss(isInWindow(discussRef, 50));
+		setAnimateDesign(isInWindow(designRef, 50));
+		setAnimateDevelop(isInWindow(developRef, 50));
+		setAnimateDeploy(isInWindow(deployRef, 50));
 	};
 
 	const handleScroll2 = e => {
