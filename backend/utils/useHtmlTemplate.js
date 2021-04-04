@@ -139,7 +139,7 @@ Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; 
                                       <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;">
                                       <br/> Feel free to reply to this email to get in touch with me. </p>
                                       <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;">
-                                      Click this link if you need to <a class="cancel-link a" href="${baseUrl}/cancel/${
+                                      Click this link if you need to <a class="cancel-link a" href="${baseUrl}/cancel/client/${
 					booking._id
 				}/client" style="color: #AB3351; text-decoration: none;"><span class="a__text" style="color: #AB3351; text-decoration: none;">Cancel your booking</span></a> </p>
                                       <p
@@ -324,7 +324,7 @@ Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; 
                                       <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;">
                                       <br/> Description: ${description}</p>
                                       <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;"><br/>
-                                      <a class="cancel-link a" href="${baseUrl}/cancel/${
+                                      <a class="cancel-link a" href="${baseUrl}/cancel/admin/${
 					booking._id
 				}/admin" style="color: #AB3351; text-decoration: none;"><span class="a__text" style="color: #AB3351; text-decoration: none;">Cancel booking</span></a> </p>
                                     

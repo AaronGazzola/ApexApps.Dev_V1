@@ -21,6 +21,10 @@ const bookingSchema = mongoose.Schema({
 	isCanceled: {
 		type: Boolean,
 		default: false
+	},
+	isAvailable: {
+		type: Boolean,
+		default: true
 	}
 });
 

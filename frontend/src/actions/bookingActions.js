@@ -7,12 +7,18 @@ import {
 	CONFIRM_BOOKING_REQUEST,
 	CONFIRM_BOOKING_SUCCESS,
 	CONFIRM_BOOKING_FAIL,
-	CANCEL_BOOKING_REQUEST,
-	CANCEL_BOOKING_SUCCESS,
-	CANCEL_BOOKING_FAIL,
+	ADMIN_CANCEL_BOOKING_REQUEST,
+	ADMIN_CANCEL_BOOKING_SUCCESS,
+	ADMIN_CANCEL_BOOKING_FAIL,
+	CLIENT_CANCEL_BOOKING_REQUEST,
+	CLIENT_CANCEL_BOOKING_SUCCESS,
+	CLIENT_CANCEL_BOOKING_FAIL,
 	LIST_BOOKINGS_REQUEST,
 	LIST_BOOKINGS_SUCCESS,
-	LIST_BOOKINGS_FAIL
+	LIST_BOOKINGS_FAIL,
+	SET_BOOKING_AVAILABILITY_REQUEST,
+	SET_BOOKING_AVAILABILITY_SUCCESS,
+	SET_BOOKING_AVAILABILITY_FAIL
 } from 'constants/bookingConstants';
 
 export const getBookingsAction = (start, end) => async dispatch => {
@@ -116,20 +122,94 @@ export const confirmBookingAction = (inputs, booking) => async dispatch => {
 	}
 };
 
-export const cancelBookingAction = (id, isClient) => async dispatch => {
+export const adminCancelBookingAction = id => async (dispatch, getState) => {
 	try {
 		dispatch({
-			type: CANCEL_BOOKING_REQUEST
+			type: ADMIN_CANCEL_BOOKING_REQUEST
 		});
 
-		const config = {};
+		const {
+			login: { token }
+		} = getState();
 
-		await axios.post(`/api/v1/bookings/cancel/${id}/`, { isClient }, config);
+		const config = {
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${token}`
+			}
+		};
 
-		dispatch({ type: CANCEL_BOOKING_SUCCESS });
+		await axios.post(`/api/v1/bookings/cancel/admin/${id}/`, {}, config);
+
+		dispatch({ type: ADMIN_CANCEL_BOOKING_SUCCESS });
 	} catch (error) {
 		dispatch({
-			type: CANCEL_BOOKING_FAIL,
+			type: ADMIN_CANCEL_BOOKING_FAIL,
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message
+		});
+	}
+};
+
+export const clientCancelBookingAction = id => async dispatch => {
+	try {
+		dispatch({
+			type: CLIENT_CANCEL_BOOKING_REQUEST
+		});
+
+		const config = {
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		};
+
+		await axios.post(`/api/v1/bookings/cancel/client/${id}/`, {}, config);
+
+		dispatch({ type: CLIENT_CANCEL_BOOKING_SUCCESS });
+	} catch (error) {
+		dispatch({
+			type: CLIENT_CANCEL_BOOKING_FAIL,
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message
+		});
+	}
+};
+
+export const setBookingAvailabilityAction = (
+	fromTimestamp,
+	toTimestamp,
+	makeAvailable
+) => async (dispatch, getState) => {
+	try {
+		dispatch({
+			type: SET_BOOKING_AVAILABILITY_REQUEST
+		});
+
+		const {
+			login: { token }
+		} = getState();
+
+		const config = {
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${token}`
+			}
+		};
+
+		await axios.post(
+			`/api/v1/bookings/available/${fromTimestamp}/${toTimestamp}`,
+			{ makeAvailable },
+			config
+		);
+
+		dispatch({ type: SET_BOOKING_AVAILABILITY_SUCCESS });
+	} catch (error) {
+		dispatch({
+			type: SET_BOOKING_AVAILABILITY_FAIL,
 			payload:
 				error.response && error.response.data.message
 					? error.response.data.message

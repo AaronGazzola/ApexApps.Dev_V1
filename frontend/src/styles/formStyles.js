@@ -143,6 +143,9 @@ const styles = makeStyles(theme => ({
 			background: theme.palette.grey[800]
 		}
 	},
+	button: {
+		margin: theme.spacing(2, 0)
+	},
 	progress: {
 		color: '#000'
 	},

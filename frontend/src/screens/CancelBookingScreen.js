@@ -2,7 +2,10 @@ import React, { useEffect } from 'react';
 import { CircularProgress, Grid, Typography } from '@material-ui/core';
 import useStyles from 'styles/contentStyles';
 import { useDispatch, useSelector } from 'react-redux';
-import { cancelBookingAction } from 'actions/bookingActions';
+import {
+	adminCancelBookingAction,
+	clientCancelBookingAction
+} from 'actions/bookingActions';
 
 const CancelBookingScreen = ({ match, history }) => {
 	const classes = useStyles();
@@ -10,28 +13,39 @@ const CancelBookingScreen = ({ match, history }) => {
 	const bookingId = match.params.id;
 	const isClient = match.params.client === 'client';
 
-	const cancelBooking = useSelector(state => state.cancelBooking);
-	const { loading, success: cancelBookingSuccess } = cancelBooking;
+	const {
+		loading: adminCancelBookingLoading,
+		success: adminCancelBookingSuccess
+	} = useSelector(state => state.adminCancelBooking);
+
+	const {
+		loading: clientCancelBookingLoading,
+		success: clientCancelBookingSuccess
+	} = useSelector(state => state.clientCancelBooking);
 
 	useEffect(() => {
-		dispatch(cancelBookingAction(bookingId, isClient));
-	}, []);
+		if (isClient) dispatch(clientCancelBookingAction(bookingId));
+		if (!isClient) dispatch(clientCancelBookingAction(bookingId));
+	}, [isClient, dispatch, bookingId]);
 	useEffect(() => {
-		if (cancelBookingSuccess) history.push('/');
-	}, [cancelBookingSuccess]);
+		if (clientCancelBookingSuccess || adminCancelBookingSuccess)
+			history.push('/');
+	}, [clientCancelBookingSuccess, adminCancelBookingSuccess]);
 
 	return (
 		<Grid container direction='column' alignItems='center'>
 			<Typography variant='h1' className={classes.title}>
 				Cancelling {isClient && 'your'} Booking
 			</Typography>
-			{loading && (
+			{clientCancelBookingLoading || adminCancelBookingLoading ? (
 				<CircularProgress
 					style={{ marginTop: 20 }}
 					size={50}
 					color='primary'
 					thickness={2}
 				/>
+			) : (
+				<></>
 			)}
 		</Grid>
 	);

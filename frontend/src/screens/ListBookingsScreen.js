@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
+import { Link } from 'react-router-dom';
 import {
 	Grid,
 	Paper,
@@ -19,8 +20,17 @@ import {
 	Dialog,
 	DialogContent,
 	DialogContentText,
-	DialogTitle
+	DialogTitle,
+	Button,
+	DialogActions,
+	CircularProgress
 } from '@material-ui/core';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+	MuiPickersUtilsProvider,
+	KeyboardTimePicker,
+	KeyboardDatePicker
+} from '@material-ui/pickers';
 import { Skeleton } from '@material-ui/lab';
 import { useSelector, useDispatch } from 'react-redux';
 import Message from 'components/Message';
@@ -28,9 +38,10 @@ import useStyles from 'styles/adminStyles';
 import useFormStyles from 'styles/formStyles';
 import {
 	listBookingsAction,
-	cancelBookingAction
+	adminCancelBookingAction,
+	setBookingAvailabilityAction
 } from 'actions/bookingActions';
-import { Cancel, ContactPhone } from '@material-ui/icons';
+import { ArrowBack, Cancel, ContactPhone } from '@material-ui/icons';
 
 const OrderListScreen = () => {
 	const classes = useStyles();
@@ -44,25 +55,47 @@ const OrderListScreen = () => {
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(5);
 	const [pastBookings, setPastBookings] = useState(false);
+	const [availabilityOpen, setAvailabilityOpen] = useState(false);
+	const [makeAvailable, setMakeAvailable] = useState(false);
 	const [detailsOpen, setDetailsOpen] = useState(false);
 	const [bookingDetails, setBookingDetails] = useState({});
-	const isClient = false;
+
+	const [fromDate, setFromDate] = useState(new Date());
+
+	const handleFromDateChange = date => {
+		setFromDate(date);
+	};
+
+	const [toDate, setToDate] = useState(new Date());
+
+	const handleToDateChange = date => {
+		setToDate(date);
+	};
 
 	const { bookings, loading: listBookingsLoading } = useSelector(
 		state => state.listBookings
 	);
 	const {
-		success: cancelBookingSuccess,
-		loading: cancelBookingLoading
-	} = useSelector(state => state.cancelBooking);
+		success: adminCancelBookingSuccess,
+		loading: adminCancelBookingLoading
+	} = useSelector(state => state.adminCancelBooking);
+
+	const {
+		success: setBookingAvailabilitySuccess,
+		loading: setBookingAvailabilityLoading
+	} = useSelector(state => state.setBookingAvailability);
 
 	useEffect(() => {
 		dispatch(listBookingsAction(pastBookings));
 	}, [dispatch, pastBookings]);
 
 	useEffect(() => {
-		if (cancelBookingSuccess) dispatch(listBookingsAction(pastBookings));
-	}, [dispatch, cancelBookingSuccess]);
+		if (adminCancelBookingSuccess || setBookingAvailabilitySuccess) {
+			dispatch(listBookingsAction(pastBookings));
+			setAvailabilityOpen(false);
+			setDetailsOpen(false);
+		}
+	}, [dispatch, adminCancelBookingSuccess, setBookingAvailabilitySuccess]);
 
 	const handleChangeRowsPerPage = e => {
 		setRowsPerPage(parseInt(e.target.value, 10));
@@ -73,15 +106,116 @@ const OrderListScreen = () => {
 		setPage(newPage);
 	};
 
+	const handleSetAvailability = () => {
+		const fromTimestamp = Math.floor(fromDate.getTime() / 1000);
+		const toTimestamp = Math.floor(toDate.getTime() / 1000);
+		dispatch(
+			setBookingAvailabilityAction(fromTimestamp, toTimestamp, makeAvailable)
+		);
+	};
+
 	return (
 		<>
 			<Message
 				confirm={confirmCancel}
 				setConfirm={setConfirmCancel}
 				onConfirm={() =>
-					dispatch(cancelBookingAction(confirmCancelBooking, isClient))
+					dispatch(adminCancelBookingAction(confirmCancelBooking))
 				}
 			/>
+			<Dialog
+				open={availabilityOpen}
+				onClose={() => setAvailabilityOpen(false)}
+				classes={{ paper: formClasses.paper }}
+			>
+				<MuiPickersUtilsProvider utils={DateFnsUtils}>
+					<DialogTitle disableTypography className={formClasses.title}>
+						Set Availability
+					</DialogTitle>
+					<DialogContent>
+						<KeyboardDatePicker
+							margin='normal'
+							id='from=date-picker'
+							label='From Date'
+							format='dd/MM/yyyy'
+							value={fromDate}
+							onChange={handleFromDateChange}
+							KeyboardButtonProps={{
+								'aria-label': 'change date'
+							}}
+						/>
+						<KeyboardTimePicker
+							margin='normal'
+							id='from-time-picker'
+							label='From Time'
+							value={fromDate}
+							onChange={handleFromDateChange}
+							KeyboardButtonProps={{
+								'aria-label': 'change time'
+							}}
+						/>
+						<KeyboardDatePicker
+							margin='normal'
+							id='to-date-picker-dialog'
+							label='To Date'
+							format='dd/MM/yyyy'
+							value={toDate}
+							onChange={handleToDateChange}
+							KeyboardButtonProps={{
+								'aria-label': 'change date'
+							}}
+						/>
+						<KeyboardTimePicker
+							margin='normal'
+							id='to-time-picker'
+							label='To Time'
+							value={toDate}
+							onChange={handleToDateChange}
+							KeyboardButtonProps={{
+								'aria-label': 'change time'
+							}}
+						/>
+					</DialogContent>
+				</MuiPickersUtilsProvider>
+				<DialogActions>
+					<Grid container justify='space-between'>
+						<FormControlLabel
+							label={makeAvailable ? 'Set as available' : 'Set as unavailable'}
+							labelPlacement='start'
+							control={
+								<Switch
+									checked={makeAvailable}
+									onChange={() => {
+										setMakeAvailable(!makeAvailable);
+									}}
+									color='secondary'
+									name='Set available'
+									inputProps={{
+										'aria-label': 'Set available'
+									}}
+									className={classes.switch}
+								/>
+							}
+						/>
+						<Button
+							variant='contained'
+							color='secondary'
+							className={formClasses.submitButton}
+							onClick={handleSetAvailability}
+							disabled={fromDate.getTime() > toDate.getTime()}
+						>
+							{setBookingAvailabilityLoading ? (
+								<CircularProgress
+									className={formClasses.submitProgress}
+									size={25}
+								/>
+							) : (
+								'Submit'
+							)}
+						</Button>
+					</Grid>
+				</DialogActions>
+			</Dialog>
 			<Dialog
 				open={detailsOpen}
 				onClose={() => setDetailsOpen(false)}
@@ -159,7 +293,7 @@ const OrderListScreen = () => {
 							</TableRow>
 						</TableHead>
 						<TableBody>
-							{listBookingsLoading || cancelBookingLoading ? (
+							{listBookingsLoading || adminCancelBookingLoading ? (
 								<TableRow>
 									{[...Array(matchesXs ? 3 : 4).keys()].map(key => (
 										<TableCell key={key}>
@@ -243,6 +377,26 @@ const OrderListScreen = () => {
 						/>
 					)}
 				</TableContainer>
+				<Grid container justify='space-between'>
+					<Button
+						variant='outlined'
+						component={Link}
+						to='/login'
+						className={formClasses.button}
+						startIcon={<ArrowBack />}
+						color='secondary'
+					>
+						Back
+					</Button>
+					<Button
+						variant='outlined'
+						className={formClasses.button}
+						color='secondary'
+						onClick={() => setAvailabilityOpen(true)}
+					>
+						Set availability
+					</Button>
+				</Grid>
 			</Grid>
 		</>
 	);

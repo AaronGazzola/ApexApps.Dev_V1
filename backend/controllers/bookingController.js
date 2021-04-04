@@ -14,6 +14,7 @@ const getAvailableBookings = asyncHandler(async (req, res, next) => {
 
 	const bookings = await Booking.find({
 		booked: false,
+		isAvailable: true,
 		timestamp: {
 			$gte: start,
 			$lte: end
@@ -146,12 +147,11 @@ const confirmBooking = asyncHandler(async (req, res, next) => {
 	});
 });
 
-// @desc    Cancel Booking
-// @route   POST /api/bookings/cancel/:id/:client
-// @access    Public
-const cancelBooking = asyncHandler(async (req, res, next) => {
+// @desc    Admin Cancel Booking
+// @route   POST /api/bookings/cancel/admin/:id
+// @access    Private/admin
+const adminCancelBooking = asyncHandler(async (req, res, next) => {
 	const id = req.params.id;
-	const { isClient } = req.body;
 
 	let booking = await Booking.findById(id).populate({
 		path: 'client',
@@ -169,9 +169,7 @@ const cancelBooking = asyncHandler(async (req, res, next) => {
 	try {
 		// send confirmation email to client with cancelation link
 		await sendEmail({
-			type: isClient
-				? 'BOOKING_CANCEL_BY_CLIENT_TO_CLIENT'
-				: 'BOOKING_CANCEL_BY_ADMIN_TO_CLIENT',
+			type: 'BOOKING_CANCEL_BY_ADMIN_TO_CLIENT',
 			email,
 			booking,
 			baseUrl,
@@ -180,9 +178,68 @@ const cancelBooking = asyncHandler(async (req, res, next) => {
 		});
 		// send email to self with booking and client details
 		await sendEmail({
-			type: isClient
-				? 'BOOKING_CANCEL_BY_CLIENT_TO_ADMIN'
-				: 'BOOKING_CANCEL_BY_ADMIN_TO_ADMIN',
+			type: 'BOOKING_CANCEL_BY_ADMIN_TO_ADMIN',
+			email,
+			booking,
+			baseUrl,
+			phone,
+			name,
+			description
+		});
+	} catch (error) {
+		console.log(error);
+
+		return next(
+			new ErrorResponse(
+				'Booking cancelled; could not send cancellation email',
+				500
+			)
+		);
+	}
+
+	// change booking to cancelled
+	booking.isCanceled = true;
+	await booking.save();
+	// replace with new booking
+	await Booking.create({ timestamp: booking.timestamp });
+
+	res.json({
+		success: true
+	});
+});
+
+// @desc    Client Cancel Booking
+// @route   POST /api/bookings/cancel/client/:id
+// @access    Public
+const clientCancelBooking = asyncHandler(async (req, res, next) => {
+	const id = req.params.id;
+
+	let booking = await Booking.findById(id).populate({
+		path: 'client',
+		populate: { path: 'bookings' }
+	});
+	const { description } = booking;
+	const { name, email, phone } = booking.client;
+
+	// get base URL from request protocol and host domain
+	const protocol = req.protocol;
+	const host =
+		process.env.NODE_ENV === 'production' ? req.get('host') : 'localhost:3000';
+	const baseUrl = `${protocol}://${host}`;
+
+	try {
+		// send confirmation email to client with cancelation link
+		await sendEmail({
+			type: 'BOOKING_CANCEL_BY_CLIENT_TO_CLIENT',
+			email,
+			booking,
+			baseUrl,
+			phone,
+			name
+		});
+		// send email to self with booking and client details
+		await sendEmail({
+			type: 'BOOKING_CANCEL_BY_CLIENT_TO_ADMIN',
 			email,
 			booking,
 			baseUrl,
@@ -233,4 +290,37 @@ const listBookings = asyncHandler(async (req, res, next) => {
 	});
 });
 
-export { getAvailableBookings, confirmBooking, cancelBooking, listBookings };
+// @desc    Get booked bookings
+// @route   GET /api/bookings
+// @access    Private/admin
+const setBookingAvailability = asyncHandler(async (req, res, next) => {
+	const fromTimestamp = req.params.from;
+	const toTimestamp = req.params.to;
+	const { makeAvailable } = req.body;
+
+	const bookings = await Booking.find({
+		timestamp: {
+			$gte: fromTimestamp,
+			$lte: toTimestamp
+		}
+	});
+
+	bookings.forEach(async booking => {
+		booking.isAvailable = makeAvailable;
+		await booking.save();
+	});
+
+	res.status(201).json({
+		success: true,
+		bookings
+	});
+});
+
+export {
+	getAvailableBookings,
+	confirmBooking,
+	adminCancelBooking,
+	clientCancelBooking,
+	listBookings,
+	setBookingAvailability
+};

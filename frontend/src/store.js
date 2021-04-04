@@ -5,16 +5,20 @@ import {
 	getBookingsReducer,
 	listBookingsReducer,
 	confirmBookingReducer,
-	cancelBookingReducer
+	adminCancelBookingReducer,
+	clientCancelBookingReducer,
+	setBookingAvailabilityReducer
 } from 'reducers/bookingReducers';
 import { getBlogsReducer, getBlogReducer } from 'reducers/blogReducers';
 import { loginReducer } from 'reducers/adminReducers';
 
 const reducer = combineReducers({
+	setBookingAvailability: setBookingAvailabilityReducer,
 	getBookings: getBookingsReducer,
 	listBookings: listBookingsReducer,
 	confirmBooking: confirmBookingReducer,
-	cancelBooking: cancelBookingReducer,
+	adminCancelBooking: adminCancelBookingReducer,
+	clientCancelBooking: clientCancelBookingReducer,
 	getBlogs: getBlogsReducer,
 	getBlog: getBlogReducer,
 	login: loginReducer

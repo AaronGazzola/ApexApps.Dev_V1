@@ -30,7 +30,9 @@ import {
 	GET_BOOKINGS_CLEAR,
 	LIST_BOOKINGS_CLEAR,
 	CONFIRM_BOOKING_CLEAR,
-	CANCEL_BOOKING_CLEAR
+	ADMIN_CANCEL_BOOKING_CLEAR,
+	CLIENT_CANCEL_BOOKING_CLEAR,
+	SET_BOOKING_AVAILABILITY_CLEAR
 } from 'constants/bookingConstants';
 import SnackBar from 'components/SnackBar';
 
@@ -46,7 +48,18 @@ const App = () => {
 			error: confirmBookingError,
 			success: confirmBookingSuccess
 		},
-		cancelBooking: { error: cancelBookingError, success: cancelBookingSuccess },
+		adminCancelBooking: {
+			error: adminCancelBookingError,
+			success: adminCancelBookingSuccess
+		},
+		setBookingAvailability: {
+			error: setBookingAvailabilityError,
+			success: setBookingAvailabilitySuccess
+		},
+		clientCancelBooking: {
+			error: clientCancelBookingError,
+			success: clientCancelBookingSuccess
+		},
 		getBlogs: { error: getBlogsError },
 		getBlog: { error: getBlogError }
 	} = useSelector(state => state);
@@ -62,9 +75,11 @@ const App = () => {
 							getBookingsError ||
 							listBookingsError ||
 							confirmBookingError ||
-							cancelBookingError ||
+							adminCancelBookingError ||
+							clientCancelBookingError ||
 							getBlogsError ||
-							getBlogError
+							getBlogError ||
+							setBookingAvailabilityError
 						}
 						clearType={
 							loginError
@@ -75,22 +90,35 @@ const App = () => {
 								? LIST_BOOKINGS_CLEAR
 								: confirmBookingError
 								? CONFIRM_BOOKING_CLEAR
-								: cancelBookingError
-								? CANCEL_BOOKING_CLEAR
+								: adminCancelBookingError
+								? ADMIN_CANCEL_BOOKING_CLEAR
+								: clientCancelBookingError
+								? CLIENT_CANCEL_BOOKING_CLEAR
 								: getBlogsError
 								? GET_BLOGS_CLEAR
 								: getBlogError
 								? GET_BLOG_CLEAR
+								: setBookingAvailabilityError
+								? SET_BOOKING_AVAILABILITY_CLEAR
 								: null
 						}
 					/>
 					<SnackBar
-						message={confirmBookingSuccess || cancelBookingSuccess}
+						message={
+							confirmBookingSuccess ||
+							adminCancelBookingSuccess ||
+							clientCancelBookingSuccess ||
+							setBookingAvailabilitySuccess
+						}
 						clearType={
 							confirmBookingSuccess
 								? CONFIRM_BOOKING_CLEAR
-								: cancelBookingSuccess
-								? CANCEL_BOOKING_CLEAR
+								: adminCancelBookingSuccess
+								? ADMIN_CANCEL_BOOKING_CLEAR
+								: clientCancelBookingSuccess
+								? CLIENT_CANCEL_BOOKING_CLEAR
+								: setBookingAvailabilitySuccess
+								? SET_BOOKING_AVAILABILITY_CLEAR
 								: null
 						}
 					/>
