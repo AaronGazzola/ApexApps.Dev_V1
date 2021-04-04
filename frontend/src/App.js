@@ -23,15 +23,16 @@ import ListBookingsScreen from 'screens/ListBookingsScreen';
 import ListClientsScreen from 'screens/ListClientsScreen';
 import ListBlogsScreen from 'screens/ListBlogsScreen';
 import EditBlogScreen from 'screens/EditBlogScreen';
+import VerifyClientScreen from 'screens/VerifyClientScreen';
 import Message from 'components/Message';
 import { LOG_IN_CLEAR } from 'constants/adminConstants';
 import { GET_BLOGS_CLEAR, GET_BLOG_CLEAR } from 'constants/blogConstants';
 import {
 	GET_BOOKINGS_CLEAR,
 	LIST_BOOKINGS_CLEAR,
-	CONFIRM_BOOKING_CLEAR,
-	ADMIN_CANCEL_BOOKING_CLEAR,
-	CLIENT_CANCEL_BOOKING_CLEAR,
+	SUBMIT_BOOKING_CLEAR,
+	CANCEL_BOOKING_CLEAR,
+	VERIFY_CLIENT_CLEAR,
 	SET_BOOKING_AVAILABILITY_CLEAR
 } from 'constants/bookingConstants';
 import SnackBar from 'components/SnackBar';
@@ -44,22 +45,13 @@ const App = () => {
 		login: { isAuth, error: loginError },
 		getBookings: { error: getBookingsError },
 		listBookings: { error: listBookingsError },
-		confirmBooking: {
-			error: confirmBookingError,
-			success: confirmBookingSuccess
-		},
-		adminCancelBooking: {
-			error: adminCancelBookingError,
-			success: adminCancelBookingSuccess
-		},
+		submitBooking: { error: submitBookingError, success: submitBookingSuccess },
 		setBookingAvailability: {
 			error: setBookingAvailabilityError,
 			success: setBookingAvailabilitySuccess
 		},
-		clientCancelBooking: {
-			error: clientCancelBookingError,
-			success: clientCancelBookingSuccess
-		},
+		cancelBooking: { error: cancelBookingError, success: cancelBookingSuccess },
+		verifyClient: { error: verifyClientError, success: verifyClientSuccess },
 		getBlogs: { error: getBlogsError },
 		getBlog: { error: getBlogError }
 	} = useSelector(state => state);
@@ -74,12 +66,17 @@ const App = () => {
 							loginError ||
 							getBookingsError ||
 							listBookingsError ||
-							confirmBookingError ||
-							adminCancelBookingError ||
-							clientCancelBookingError ||
+							submitBookingError ||
+							cancelBookingError ||
 							getBlogsError ||
 							getBlogError ||
-							setBookingAvailabilityError
+							setBookingAvailabilityError ||
+							verifyClientError
+						}
+						success={
+							submitBookingSuccess ===
+								'Please check your email inbox to confirm your booking' &&
+							submitBookingSuccess
 						}
 						clearType={
 							loginError
@@ -88,37 +85,42 @@ const App = () => {
 								? GET_BOOKINGS_CLEAR
 								: listBookingsError
 								? LIST_BOOKINGS_CLEAR
-								: confirmBookingError
-								? CONFIRM_BOOKING_CLEAR
-								: adminCancelBookingError
-								? ADMIN_CANCEL_BOOKING_CLEAR
-								: clientCancelBookingError
-								? CLIENT_CANCEL_BOOKING_CLEAR
+								: cancelBookingError
+								? CANCEL_BOOKING_CLEAR
 								: getBlogsError
 								? GET_BLOGS_CLEAR
 								: getBlogError
 								? GET_BLOG_CLEAR
 								: setBookingAvailabilityError
 								? SET_BOOKING_AVAILABILITY_CLEAR
+								: verifyClientError
+								? VERIFY_CLIENT_CLEAR
+								: submitBookingError ||
+								  submitBookingSuccess ===
+										'Please check your email inbox to confirm your booking'
+								? SUBMIT_BOOKING_CLEAR
 								: null
 						}
 					/>
 					<SnackBar
 						message={
-							confirmBookingSuccess ||
-							adminCancelBookingSuccess ||
-							clientCancelBookingSuccess ||
-							setBookingAvailabilitySuccess
+							submitBookingSuccess &&
+							submitBookingSuccess !=
+								'Please check your email inbox to confirm your booking'
+								? submitBookingSuccess
+								: cancelBookingSuccess ||
+								  setBookingAvailabilitySuccess ||
+								  verifyClientSuccess
 						}
 						clearType={
-							confirmBookingSuccess
-								? CONFIRM_BOOKING_CLEAR
-								: adminCancelBookingSuccess
-								? ADMIN_CANCEL_BOOKING_CLEAR
-								: clientCancelBookingSuccess
-								? CLIENT_CANCEL_BOOKING_CLEAR
+							submitBookingSuccess
+								? SUBMIT_BOOKING_CLEAR
+								: cancelBookingSuccess
+								? CANCEL_BOOKING_CLEAR
 								: setBookingAvailabilitySuccess
 								? SET_BOOKING_AVAILABILITY_CLEAR
+								: verifyClientSuccess
+								? VERIFY_CLIENT_CLEAR
 								: null
 						}
 					/>
@@ -130,8 +132,12 @@ const App = () => {
 							<Route path='/blog/:slug' component={BlogScreen} />
 							<Route path='/contact' exact component={ContactScreen} />
 							<Route
-								path='/cancel/:id/:client'
+								path='/cancel/:client/:id'
 								component={CancelBookingScreen}
+							/>
+							<Route
+								path='/verifyclient/:token'
+								component={VerifyClientScreen}
 							/>
 							<Route path='/login' exact component={LoginScreen} />
 							<Route
@@ -155,8 +161,12 @@ const App = () => {
 							<Route path='/blog/:slug' component={BlogScreen} />
 							<Route path='/contact' exact component={ContactScreen} />
 							<Route
-								path='/cancel/:id/:client'
+								path='/cancel/:client/:id/'
 								component={CancelBookingScreen}
+							/>
+							<Route
+								path='/verifyclient/:token'
+								component={VerifyClientScreen}
 							/>
 							<Route path='/login' exact component={LoginScreen} />
 

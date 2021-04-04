@@ -4,24 +4,24 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import {
 	getBookingsReducer,
 	listBookingsReducer,
-	confirmBookingReducer,
-	adminCancelBookingReducer,
-	clientCancelBookingReducer,
-	setBookingAvailabilityReducer
+	submitBookingReducer,
+	cancelBookingReducer,
+	setBookingAvailabilityReducer,
+	verifyClientReducer
 } from 'reducers/bookingReducers';
 import { getBlogsReducer, getBlogReducer } from 'reducers/blogReducers';
 import { loginReducer } from 'reducers/adminReducers';
 
 const reducer = combineReducers({
-	setBookingAvailability: setBookingAvailabilityReducer,
+	login: loginReducer,
 	getBookings: getBookingsReducer,
 	listBookings: listBookingsReducer,
-	confirmBooking: confirmBookingReducer,
-	adminCancelBooking: adminCancelBookingReducer,
-	clientCancelBooking: clientCancelBookingReducer,
+	submitBooking: submitBookingReducer,
+	setBookingAvailability: setBookingAvailabilityReducer,
+	cancelBooking: cancelBookingReducer,
 	getBlogs: getBlogsReducer,
 	getBlog: getBlogReducer,
-	login: loginReducer
+	verifyClient: verifyClientReducer
 });
 
 const middleware = [thunk];

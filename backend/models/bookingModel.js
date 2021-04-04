@@ -5,7 +5,7 @@ const bookingSchema = mongoose.Schema({
 		type: Number,
 		requried: true
 	},
-	booked: {
+	isBooked: {
 		type: Boolean,
 		default: false
 	},

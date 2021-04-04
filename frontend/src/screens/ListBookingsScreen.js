@@ -38,7 +38,7 @@ import useStyles from 'styles/adminStyles';
 import useFormStyles from 'styles/formStyles';
 import {
 	listBookingsAction,
-	adminCancelBookingAction,
+	cancelBookingAction,
 	setBookingAvailabilityAction
 } from 'actions/bookingActions';
 import { ArrowBack, Cancel, ContactPhone } from '@material-ui/icons';
@@ -48,10 +48,10 @@ const OrderListScreen = () => {
 	const formClasses = useFormStyles();
 	const dispatch = useDispatch();
 	const theme = useTheme();
-	const matchesXs = useMediaQuery(theme => theme.breakpoints.down('xs'));
+	const matchesXS = useMediaQuery(theme => theme.breakpoints.down('xs'));
 
 	const [confirmCancel, setConfirmCancel] = useState('');
-	const [confirmCancelBooking, setConfirmCancelBooking] = useState(null);
+	const [cancelBookingId, setCancelBookingId] = useState(null);
 	const [page, setPage] = useState(0);
 	const [rowsPerPage, setRowsPerPage] = useState(5);
 	const [pastBookings, setPastBookings] = useState(false);
@@ -59,14 +59,13 @@ const OrderListScreen = () => {
 	const [makeAvailable, setMakeAvailable] = useState(false);
 	const [detailsOpen, setDetailsOpen] = useState(false);
 	const [bookingDetails, setBookingDetails] = useState({});
-
 	const [fromDate, setFromDate] = useState(new Date());
+	const [toDate, setToDate] = useState(new Date());
+	const isClient = false;
 
 	const handleFromDateChange = date => {
 		setFromDate(date);
 	};
-
-	const [toDate, setToDate] = useState(new Date());
 
 	const handleToDateChange = date => {
 		setToDate(date);
@@ -76,9 +75,9 @@ const OrderListScreen = () => {
 		state => state.listBookings
 	);
 	const {
-		success: adminCancelBookingSuccess,
-		loading: adminCancelBookingLoading
-	} = useSelector(state => state.adminCancelBooking);
+		success: cancelBookingSuccess,
+		loading: cancelBookingLoading
+	} = useSelector(state => state.cancelBooking);
 
 	const {
 		success: setBookingAvailabilitySuccess,
@@ -90,12 +89,12 @@ const OrderListScreen = () => {
 	}, [dispatch, pastBookings]);
 
 	useEffect(() => {
-		if (adminCancelBookingSuccess || setBookingAvailabilitySuccess) {
+		if (cancelBookingSuccess || setBookingAvailabilitySuccess) {
 			dispatch(listBookingsAction(pastBookings));
 			setAvailabilityOpen(false);
 			setDetailsOpen(false);
 		}
-	}, [dispatch, adminCancelBookingSuccess, setBookingAvailabilitySuccess]);
+	}, [dispatch, cancelBookingSuccess, setBookingAvailabilitySuccess]);
 
 	const handleChangeRowsPerPage = e => {
 		setRowsPerPage(parseInt(e.target.value, 10));
@@ -120,13 +119,14 @@ const OrderListScreen = () => {
 				confirm={confirmCancel}
 				setConfirm={setConfirmCancel}
 				onConfirm={() =>
-					dispatch(adminCancelBookingAction(confirmCancelBooking))
+					dispatch(cancelBookingAction(cancelBookingId, isClient))
 				}
 			/>
 			<Dialog
 				open={availabilityOpen}
 				onClose={() => setAvailabilityOpen(false)}
 				classes={{ paper: formClasses.paper }}
+				fullScreen={matchesXS}
 			>
 				<MuiPickersUtilsProvider utils={DateFnsUtils}>
 					<DialogTitle disableTypography className={formClasses.title}>
@@ -220,6 +220,7 @@ const OrderListScreen = () => {
 				open={detailsOpen}
 				onClose={() => setDetailsOpen(false)}
 				classes={{ paper: formClasses.paper }}
+				fullScreen={matchesXS}
 			>
 				<DialogTitle disableTypography className={formClasses.title}>
 					Booking Details
@@ -284,7 +285,7 @@ const OrderListScreen = () => {
 					<Table className={classes.table} aria-label='simple table'>
 						<TableHead>
 							<TableRow className={classes.headerRow}>
-								{!matchesXs && <TableCell align='left'>Name</TableCell>}
+								{!matchesXS && <TableCell align='left'>Name</TableCell>}
 								<TableCell align='center'>Time</TableCell>
 								<TableCell align='center'>Details</TableCell>
 								<TableCell align='center' className={classes.error}>
@@ -293,9 +294,9 @@ const OrderListScreen = () => {
 							</TableRow>
 						</TableHead>
 						<TableBody>
-							{listBookingsLoading || adminCancelBookingLoading ? (
+							{listBookingsLoading || cancelBookingLoading ? (
 								<TableRow>
-									{[...Array(matchesXs ? 3 : 4).keys()].map(key => (
+									{[...Array(matchesXS ? 3 : 4).keys()].map(key => (
 										<TableCell key={key}>
 											<Skeleton className={classes.skeleton} />
 										</TableCell>
@@ -303,7 +304,7 @@ const OrderListScreen = () => {
 								</TableRow>
 							) : bookings?.length === 0 ? (
 								<TableRow>
-									<TableCell align='center' colSpan={matchesXs ? 3 : 4}>
+									<TableCell align='center' colSpan={matchesXS ? 3 : 4}>
 										No bookings
 									</TableCell>
 								</TableRow>
@@ -312,7 +313,7 @@ const OrderListScreen = () => {
 									?.sort((a, b) => a.timestamp - b.timestamp)
 									.map(booking => (
 										<TableRow className={classes.tableRow} key={booking._id}>
-											{!matchesXs && (
+											{!matchesXS && (
 												<TableCell align='left'>
 													{booking.client.name}
 												</TableCell>
@@ -352,7 +353,7 @@ const OrderListScreen = () => {
 																	.unix(booking.timestamp)
 																	.format('h:mm a Do MMM')}?`
 															);
-															setConfirmCancelBooking(booking._id);
+															setCancelBookingId(booking._id);
 														}}
 														style={{ color: theme.palette.error.main }}
 													>

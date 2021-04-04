@@ -2,33 +2,32 @@ import React, { useEffect } from 'react';
 import { CircularProgress, Grid, Typography } from '@material-ui/core';
 import useStyles from 'styles/contentStyles';
 import { useDispatch, useSelector } from 'react-redux';
-import { cancelBookingAction } from 'actions/bookingActions';
+import { verifyClientAction } from 'actions/bookingActions';
 
 const CancelBookingScreen = ({ match, history }) => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
-	const bookingId = match.params.id;
-	const isClient = match.params.client === 'client';
+	const token = match.params.token;
 
 	const {
-		loading: cancelBookingLoading,
-		success: cancelBookingSuccess
-	} = useSelector(state => state.cancelBooking);
+		loading: verifyClientLoading,
+		success: verifyClientSuccess
+	} = useSelector(state => state.verifyClient);
 
 	useEffect(() => {
-		dispatch(cancelBookingAction(bookingId, isClient));
+		dispatch(verifyClientAction(token));
 	}, []);
 
 	useEffect(() => {
-		if (cancelBookingSuccess) history.push('/contact');
-	}, [cancelBookingSuccess, history]);
+		if (verifyClientSuccess) history.push('/contact');
+	}, [verifyClientSuccess, history]);
 
 	return (
 		<Grid container direction='column' alignItems='center'>
 			<Typography variant='h1' className={classes.title}>
-				Cancelling {isClient && 'your'} Booking
+				Verifying Your Booking
 			</Typography>
-			{cancelBookingLoading && (
+			{verifyClientLoading && (
 				<CircularProgress
 					style={{ marginTop: 20 }}
 					size={50}

@@ -16,8 +16,8 @@ const Calendar = ({ setOpen, setBooking }) => {
 	const getBookings = useSelector(state => state.getBookings);
 	const { bookings, loading } = getBookings;
 
-	const confirmBooking = useSelector(state => state.confirmBooking);
-	const { success, error } = confirmBooking;
+	const submitBooking = useSelector(state => state.submitBooking);
+	const { success, error } = submitBooking;
 
 	const [page, setPage] = useState(0);
 	const [dates, setDates] = useState(

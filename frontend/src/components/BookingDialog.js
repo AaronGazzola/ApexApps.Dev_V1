@@ -10,7 +10,8 @@ import {
 	DialogActions,
 	DialogContent,
 	DialogTitle,
-	TextField
+	TextField,
+	useMediaQuery
 } from '@material-ui/core';
 import {
 	validate,
@@ -20,7 +21,7 @@ import {
 	VALIDATOR_REQUIRE
 } from 'utils/validators';
 import { useDispatch, useSelector } from 'react-redux';
-import { confirmBookingAction } from 'actions/bookingActions';
+import { submitBookingAction } from 'actions/bookingActions';
 
 const initialState = {
 	isValid: false,
@@ -82,13 +83,13 @@ const reducer = (formState, action) =>
 const BookingDialog = ({ open, setOpen, booking }) => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
+	const matchesXS = useMediaQuery(theme => theme.breakpoints.down('xs'));
 	const [formState, formDispatch] = useReducer(reducer, initialState);
 	const {
 		inputs: { name, email, phone, description }
 	} = formState;
 
-	const confirmBooking = useSelector(state => state.confirmBooking);
-	const { success, loading, error } = confirmBooking;
+	const { success, loading, error } = useSelector(state => state.submitBooking);
 
 	useEffect(() => {
 		if (success || error) {
@@ -111,7 +112,7 @@ const BookingDialog = ({ open, setOpen, booking }) => {
 	};
 
 	const submitHandler = () => {
-		dispatch(confirmBookingAction(formState.inputs, booking));
+		dispatch(submitBookingAction(formState.inputs, booking));
 	};
 
 	return (
@@ -119,9 +120,10 @@ const BookingDialog = ({ open, setOpen, booking }) => {
 			open={open}
 			onClose={handleClose}
 			classes={{ paper: classes.paper }}
+			fullScreen={matchesXS}
 		>
 			<DialogTitle disableTypography className={classes.title}>
-				Confirm Call Booking
+				Booking details
 			</DialogTitle>
 			<DialogTitle disableTypography className={classes.subTitle}>
 				{moment.unix(booking?.timestamp).format('h:mma dddd Do MMMM YYYY')}
@@ -144,7 +146,9 @@ const BookingDialog = ({ open, setOpen, booking }) => {
 					onBlur={touchHandler}
 					value={name.value}
 					error={name.isTouched && !name.isValid}
-					helperText={name.isTouched && !name.isValid && 'Name is requried'}
+					helperText={
+						name.isTouched && !name.isValid ? 'Name is requried' : ' '
+					}
 				/>
 				<TextField
 					color='secondary'
@@ -165,9 +169,9 @@ const BookingDialog = ({ open, setOpen, booking }) => {
 					value={email.value}
 					error={email.isTouched && !email.isValid}
 					helperText={
-						email.isTouched &&
-						!email.isValid &&
-						'Please add a valid email address'
+						email.isTouched && !email.isValid
+							? 'Please add a valid email address'
+							: ' '
 					}
 				/>
 				<TextField
@@ -189,9 +193,9 @@ const BookingDialog = ({ open, setOpen, booking }) => {
 					value={phone.value}
 					error={phone.isTouched && !phone.isValid}
 					helperText={
-						phone.isTouched &&
-						!phone.isValid &&
-						'Please add a valid phone number'
+						phone.isTouched && !phone.isValid
+							? 'Please add a valid phone number'
+							: ' '
 					}
 				/>
 				<TextField
@@ -220,9 +224,9 @@ const BookingDialog = ({ open, setOpen, booking }) => {
 					value={description.value}
 					error={description.isTouched && !description.isValid}
 					helperText={
-						description.isTouched &&
-						!description.isValid &&
-						'Please include a brief description of your project'
+						description.isTouched && !description.isValid
+							? 'Please include a brief description of your project'
+							: ' '
 					}
 				/>
 				<DialogActions>
@@ -239,7 +243,7 @@ const BookingDialog = ({ open, setOpen, booking }) => {
 						{loading ? (
 							<CircularProgress size={25} className={classes.progress} />
 						) : (
-							'Confirm'
+							'Submit'
 						)}
 					</Button>
 				</DialogActions>
