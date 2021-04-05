@@ -24,4 +24,15 @@ const getBlog = asyncHandler(async (req, res, next) => {
 		blog
 	});
 });
-export { getBlogs, getBlog };
+
+// @desc    Delete blog by id
+// @route   GET /api/blogs/delete/:id
+// @access    Private/admin
+const deleteBlog = asyncHandler(async (req, res, next) => {
+	await Blog.findByIdAndDelete(req.params.id);
+	res.json({
+		success: true
+	});
+});
+
+export { getBlogs, getBlog, deleteBlog };

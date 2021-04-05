@@ -229,15 +229,20 @@ export const setBookingAvailabilityAction = (
 	}
 };
 
-export const listClientsAction = () => async dispatch => {
+export const listClientsAction = () => async (dispatch, getState) => {
 	try {
 		dispatch({
 			type: LIST_CLIENTS_REQUEST
 		});
 
+		const {
+			login: { token }
+		} = getState();
+
 		const config = {
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${token}`
 			}
 		};
 

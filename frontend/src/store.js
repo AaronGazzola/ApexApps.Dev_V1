@@ -10,7 +10,11 @@ import {
 	verifyClientReducer,
 	listClientsReducer
 } from 'reducers/bookingReducers';
-import { getBlogsReducer, getBlogReducer } from 'reducers/blogReducers';
+import {
+	getBlogsReducer,
+	getBlogReducer,
+	deleteBlogReducer
+} from 'reducers/blogReducers';
 import { loginReducer } from 'reducers/adminReducers';
 
 const reducer = combineReducers({
@@ -22,6 +26,7 @@ const reducer = combineReducers({
 	cancelBooking: cancelBookingReducer,
 	getBlogs: getBlogsReducer,
 	getBlog: getBlogReducer,
+	deleteBlog: deleteBlogReducer,
 	verifyClient: verifyClientReducer,
 	listClients: listClientsReducer
 });

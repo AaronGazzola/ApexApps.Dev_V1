@@ -26,7 +26,11 @@ import EditBlogScreen from 'screens/EditBlogScreen';
 import VerifyClientScreen from 'screens/VerifyClientScreen';
 import Message from 'components/Message';
 import { LOG_IN_CLEAR } from 'constants/adminConstants';
-import { GET_BLOGS_CLEAR, GET_BLOG_CLEAR } from 'constants/blogConstants';
+import {
+	GET_BLOGS_CLEAR,
+	GET_BLOG_CLEAR,
+	DELETE_BLOG_CLEAR
+} from 'constants/blogConstants';
 import {
 	GET_BOOKINGS_CLEAR,
 	LIST_BOOKINGS_CLEAR,
@@ -55,6 +59,7 @@ const App = () => {
 		verifyClient: { error: verifyClientError, success: verifyClientSuccess },
 		getBlogs: { error: getBlogsError },
 		getBlog: { error: getBlogError },
+		deleteBlog: { error: deleteBlogError, success: deleteBlogSuccess },
 		listClients: { error: listClientsError }
 	} = useSelector(state => state);
 	return (
@@ -74,7 +79,8 @@ const App = () => {
 							getBlogError ||
 							setBookingAvailabilityError ||
 							verifyClientError ||
-							listClientsError
+							listClientsError ||
+							deleteBlogError
 						}
 						success={
 							submitBookingSuccess ===
@@ -100,6 +106,8 @@ const App = () => {
 								? VERIFY_CLIENT_CLEAR
 								: listClientsError
 								? LIST_CLIENTS_CLEAR
+								: deleteBlogError
+								? DELETE_BLOG_CLEAR
 								: submitBookingError ||
 								  submitBookingSuccess ===
 										'Please check your email inbox to confirm your booking'
@@ -115,7 +123,8 @@ const App = () => {
 								? submitBookingSuccess
 								: cancelBookingSuccess ||
 								  setBookingAvailabilitySuccess ||
-								  verifyClientSuccess
+								  verifyClientSuccess ||
+								  deleteBlogSuccess
 						}
 						clearType={
 							submitBookingSuccess
@@ -126,6 +135,8 @@ const App = () => {
 								? SET_BOOKING_AVAILABILITY_CLEAR
 								: verifyClientSuccess
 								? VERIFY_CLIENT_CLEAR
+								: deleteBlogSuccess
+								? DELETE_BLOG_CLEAR
 								: null
 						}
 					/>
