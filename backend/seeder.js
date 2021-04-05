@@ -4,7 +4,7 @@ import colors from 'colors';
 import Booking from './models/bookingModel.js';
 import Client from './models/clientModel.js';
 import Blog from './models/blogModel.js';
-import bookings from './data/bookings.js';
+import { bookings } from './data/bookings.js';
 import blogs from './data/blogs.js';
 import connectDB from './config/db.js';
 

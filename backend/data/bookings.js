@@ -40,4 +40,4 @@ for (let i = 0; i <= datesToPopulate; i++) {
 	});
 }
 
-export default bookings;
+export { times, datesToPopulate, bookings };

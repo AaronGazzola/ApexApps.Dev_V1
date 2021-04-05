@@ -11,7 +11,11 @@ import rateLimit from 'express-rate-limit';
 import hpp from 'hpp';
 import cors from 'cors';
 import connectDB from './config/db.js';
+import schedule from 'node-schedule';
+import moment from 'moment';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+import Booking from './models/bookingModel.js';
+import { datesToPopulate, times } from './data/bookings.js';
 
 import bookingRoutes from './routes/bookingRoutes.js';
 import blogRoutes from './routes/blogRoutes.js';
@@ -93,6 +97,35 @@ app.listen(
 		`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`.yellow.bold
 	)
 );
+
+// schedule function everyday at midnight
+// delete past bookings that are not booked or cancelled
+// insert another day of bookings
+schedule.scheduleJob('0 0 * * *', async () => {
+	await Booking.deleteMany({
+		isBooked: false,
+		isCancelled: false,
+		timestamp: {
+			$lte: moment().unix()
+		}
+	});
+	// convert booking times to moment instances for tomorrow's date
+	const momentTimes = times.map(time =>
+		moment()
+			.add(datesToPopulate + 1, 'd')
+			.hour(time.split(':')[0])
+			.minute(time.split(':')[1])
+	);
+
+	// populate array of bookings from momentTimes
+	let bookings = [];
+	momentTimes.forEach(time => {
+		bookings.push({ timestamp: time.unix() });
+	});
+	console.log(bookings);
+
+	await Booking.insertMany(bookings);
+});
 
 // Handle unhandled promise rejections
 process.on('unhandledRejection', (err, promise) => {
