@@ -111,7 +111,7 @@ const useHtmlTemplate = ({
                                     <table class="row__table" width="100%" align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
                                       <tr class="row__row"> <a class="logo-link a" large="12" href="${baseUrl}" style="width: min-content; color: #000000; text-decoration: none;"><span class="a__text" style="color: #000000; text-decoration: none;">
                     <img class="logo img__block" src="${baseUrl}/images/apex-apps-logo.png" alt="
-        Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; text-align: center; margin: 0 auto; font-size: 30px; color: #309772;"/>
+        Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; text-align: center; margin: 0 auto; font-size: 30px; color: #52FFBF;"/>
                   </span></a> </tr>
                                     </table>
                                   </div>
@@ -128,15 +128,15 @@ const useHtmlTemplate = ({
                           <table class="container__table" role="presentation" border="0" align="center" cellpadding="0" cellspacing="0" width="100%">
                             <tr class="container__row">
                               <td class="container__cell" width="100%" align="left" valign="top">
-                                <div class="content row" style="border-left: 1px solid #CF3A19; margin: 10px 10px 30px; padding: 20px; background-color: #090909;">
+                                <div class="content row" style="border-left: 1px solid #FF481F; margin: 10px 10px 30px; padding: 20px; background-color: #090909;">
                                   <table class="row__table" width="100%" align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
                                     <tr class="row__row">
                                       <td class="column col-sm-12" width="600" style="width: 100%" align="left" valign="top">
-                                        <h1 class="title header h1" style="margin: 20px 0; line-height: 40px; width: 100%; font-family: Helvetica,Arial,sans-serif; padding-left: 10px; background-color: transparent; margin-bottom: 20px; margin-top: 0; height: min-content; color: #BDBDBD; font-weight: 500;">Hi ${
+                                        <h1 class="title header h1" style="margin: 20px 0; line-height: 40px; width: 100%; font-family: Helvetica,Arial,sans-serif; padding-left: 10px; background-color: transparent; margin-bottom: 20px; margin-top: 0; height: min-content; color: #FFFFFF; font-weight: 300;">Hi ${
 																					client.name
 																				},</h1>
-                                        <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;">${message1}</p>
-                                        <div class="secondary-button button" style="background-color: #2A7855; background-color: rgba(42,120,85,1); margin: 10px auto 25px;">
+                                        <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;">${message1}</p>
+                                        <div class="secondary-button button" style="background-color: #52FFBF; background-color: rgba(82,255,191,1); margin: 10px auto 25px;">
                                           <table role="presentation" width="100%" align="left" border="0" cellpadding="0" cellspacing="0">
                                             <tr>
                                               <td>
@@ -153,10 +153,10 @@ const useHtmlTemplate = ({
                                             </tr>
                                           </table>
                                         </div>
-                                        <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;"> <br/> Feel free to reply to this email to get in touch with me. </p>
-                                        <p class="content-text signature1 text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px; margin-left: 20px;">
+                                        <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;"> <br/> Feel free to reply to this email to get in touch with me. </p>
+                                        <p class="content-text signature1 text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px; margin-left: 20px;">
                                         <br/> Kind Regards, </p>
-                                        <p class="content-text signature2 text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px; font-style: italic; margin-left: 40px;">Aaron Gazzola</p>
+                                        <p class="content-text signature2 text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px; font-style: italic; margin-left: 40px;">Aaron Gazzola</p>
                                       </td>
                                     </tr>
                                   </table>
@@ -177,15 +177,15 @@ const useHtmlTemplate = ({
                                   <div class="footer-row row" style="padding: 10px 25px;">
                                     <table class="row__table" width="100%" align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
                                       <tr class="row__row">
-                                        <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0; color: #616161; font-size: 14px; margin: 0;"> This email was sent by Apex Apps, ABN: 81700757157. </p>
-                                        <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0; color: #616161; font-size: 14px; margin: 0;">
+                                        <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0; color: #BDBDBD; font-size: 14px; margin: 0;"> This email was sent by Apex Apps, ABN: 81700757157. </p>
+                                        <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0; color: #BDBDBD; font-size: 14px; margin: 0;">
                                         Make sure you add aaron@apexapps.dev to your address book and safe list. </p>
-                                        <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0; color: #616161; font-size: 14px; margin: 0;">
+                                        <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0; color: #BDBDBD; font-size: 14px; margin: 0;">
                                         ${reason} </p>
-                                        <p class="footer-text footer-center text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0; text-align: center;">
+                                        <p class="footer-text footer-center text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0; text-align: center;">
                                         <br/> &copy; Copyright ${moment().year()}, Apex Apps </p>
-                                        <p class="footer-text footer-center text p" large="4" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0; text-align: center;">
-                                        Designed and developed by <a class="link a" href="${baseUrl}" style="color: #309772; text-decoration: none;"><span class="a__text" style="color: #309772; text-decoration: none;">Apex Apps</span></a> </p>
+                                        <p class="footer-text footer-center text p" large="4" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0; text-align: center;">
+                                        Designed and developed by <a class="link a" href="${baseUrl}" style="color: #52FFBF; text-decoration: none;"><span class="a__text" style="color: #52FFBF; text-decoration: none;">Apex Apps</span></a> </p>
                                       </tr>
                                     </table>
                                   </div>
@@ -303,7 +303,7 @@ const useHtmlTemplate = ({
                                   <table class="row__table" width="100%" align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
                                     <tr class="row__row"> <a class="logo-link a" large="12" href="${baseUrl}" style="width: min-content; color: #000000; text-decoration: none;"><span class="a__text" style="color: #000000; text-decoration: none;">
                 <img class="logo img__block" src="${baseUrl}/images/apex-apps-logo.png" alt="
-Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; text-align: center; margin: 0 auto; font-size: 30px; color: #309772;"/>
+Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; text-align: center; margin: 0 auto; font-size: 30px; color: #52FFBF;"/>
                 </span></a> </tr>
                                   </table>
                                 </div>
@@ -320,28 +320,28 @@ Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; 
                         <table class="container__table" role="presentation" border="0" align="center" cellpadding="0" cellspacing="0" width="100%">
                           <tr class="container__row">
                             <td class="container__cell" width="100%" align="left" valign="top">
-                              <div class="content row" style="border-left: 1px solid #CF3A19; margin: 10px 10px 30px; padding: 20px; background-color: #090909;">
+                              <div class="content row" style="border-left: 1px solid #FF481F; margin: 10px 10px 30px; padding: 20px; background-color: #090909;">
                                 <table class="row__table" width="100%" align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
                                   <tr class="row__row">
                                     <td class="column col-sm-12" width="600" style="width: 100%" align="left" valign="top">
-                                      <h1 class="title header h1" style="margin: 20px 0; line-height: 40px; width: 100%; font-family: Helvetica,Arial,sans-serif; padding-left: 10px; background-color: transparent; margin-bottom: 20px; margin-top: 0; height: min-content; color: #BDBDBD; font-weight: 500;">Hi ${
+                                      <h1 class="title header h1" style="margin: 20px 0; line-height: 40px; width: 100%; font-family: Helvetica,Arial,sans-serif; padding-left: 10px; background-color: transparent; margin-bottom: 20px; margin-top: 0; height: min-content; color: #FFFFFF; font-weight: 300;">Hi ${
 																				client.name
 																			},</h1>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;"> Thank you for booking a call to discuss your web application. </p>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;"><br/>
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;"> Thank you for booking a call to discuss your web application. </p>
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;"><br/>
                                       I will give you a call on ${
 																				client.phone
 																			} at ${moment
 					.unix(booking.timestamp)
 					.format('h:mm a dddd Do MMMM YYYY')} </p>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;">
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;">
                                       <br/> Feel free to reply to this email to get in touch with me. </p>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;">
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;">
                                       Click this link if you need to <a class="cancel-link a" href="${actionLink}" style="color: #AB3351; text-decoration: none;"><span class="a__text" style="color: #AB3351; text-decoration: none;">Cancel your booking</span></a> </p>
                                       <p
-                                        class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;"> <br/> I look forward to speaking with you! </p>
-                                        <p class="content-text signature1 text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px; margin-left: 20px;"><br/> Kind Regards,</p>
-                                        <p class="content-text signature2 text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px; font-style: italic; margin-left: 40px;">Aaron Gazzola</p>
+                                        class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;"> <br/> I look forward to speaking with you! </p>
+                                        <p class="content-text signature1 text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px; margin-left: 20px;"><br/> Kind Regards,</p>
+                                        <p class="content-text signature2 text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px; font-style: italic; margin-left: 40px;">Aaron Gazzola</p>
                                     </td>
                                   </tr>
                                 </table>
@@ -362,11 +362,11 @@ Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; 
                                 <div class="footer-row row" style="padding: 10px 25px;">
                                   <table class="row__table" width="100%" align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
                                     <tr class="row__row">
-                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0;">This email was sent by Apex Apps, ABN: 81700757157.</p>
-                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0;">Make sure you add aaron@apexapps.dev to your address book and safe list.</p>
-                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0;">${reason}</p>
-                                      <p class="footer-text footer-center text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0; text-align: center;"><br/> &copy; Copyright ${moment().year()} Apex Apps</p>
-                                      <p class="footer-text footer-center text p" large="4" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0; text-align: center;">Designed and developed by <a class="link a" href="${baseUrl}" style="color: #309772; text-decoration: none;"><span class="a__text" style="color: #309772; text-decoration: none;">Apex Apps</span></a></p>
+                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0;">This email was sent by Apex Apps, ABN: 81700757157.</p>
+                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0;">Make sure you add aaron@apexapps.dev to your address book and safe list.</p>
+                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0;">${reason}</p>
+                                      <p class="footer-text footer-center text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0; text-align: center;"><br/> &copy; Copyright ${moment().year()} Apex Apps</p>
+                                      <p class="footer-text footer-center text p" large="4" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0; text-align: center;">Designed and developed by <a class="link a" href="${baseUrl}" style="color: #52FFBF; text-decoration: none;"><span class="a__text" style="color: #52FFBF; text-decoration: none;">Apex Apps</span></a></p>
                                     </tr>
                                   </table>
                                 </div>
@@ -485,7 +485,7 @@ Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; 
                                   <table class="row__table" width="100%" align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
                                     <tr class="row__row"> <a class="logo-link a" large="12" href="${baseUrl}" style="width: min-content; color: #000000; text-decoration: none;"><span class="a__text" style="color: #000000; text-decoration: none;">
                 <img class="logo img__block" src="${baseUrl}/images/apex-apps-logo.png" alt="
-Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; text-align: center; margin: 0 auto; font-size: 30px; color: #309772;"/>
+Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; text-align: center; margin: 0 auto; font-size: 30px; color: #52FFBF;"/>
                 </span></a> </tr>
                                   </table>
                                 </div>
@@ -502,27 +502,27 @@ Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; 
                         <table class="container__table" role="presentation" border="0" align="center" cellpadding="0" cellspacing="0" width="100%">
                           <tr class="container__row">
                             <td class="container__cell" width="100%" align="left" valign="top">
-                              <div class="content row" style="border-left: 1px solid #CF3A19; margin: 10px 10px 30px; padding: 20px; background-color: #090909;">
+                              <div class="content row" style="border-left: 1px solid #FF481F; margin: 10px 10px 30px; padding: 20px; background-color: #090909;">
                                 <table class="row__table" width="100%" align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
                                   <tr class="row__row">
                                     <td class="column col-sm-12" width="600" style="width: 100%" align="left" valign="top">
-                                      <h1 class="title header h1" style="margin: 20px 0; line-height: 40px; width: 100%; font-family: Helvetica,Arial,sans-serif; padding-left: 10px; background-color: transparent; margin-bottom: 20px; margin-top: 0; height: min-content; color: #BDBDBD; font-weight: 500;">Hi Aaron,</h1>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;"> You just recieved a new call booking.</p>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;"><br/>Name: ${
+                                      <h1 class="title header h1" style="margin: 20px 0; line-height: 40px; width: 100%; font-family: Helvetica,Arial,sans-serif; padding-left: 10px; background-color: transparent; margin-bottom: 20px; margin-top: 0; height: min-content; color: #FFFFFF; font-weight: 300;">Hi Aaron,</h1>
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;"> You just recieved a new call booking.</p>
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;"><br/>Name: ${
 																				client.name
 																			}</p>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;"><br/> Time: ${moment
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;"><br/> Time: ${moment
 																				.unix(booking.timestamp)
 																				.format('h:mma dddd Do MMMM YYYY')} </p>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;">
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;">
                                       <br/> Phone: ${client.phone} </p>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;">
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;">
                                       <br/> Email: ${client.email} </p>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;">
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;">
                                       <br/> Description: ${
 																				booking.description
 																			}</p>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;"><br/>
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;"><br/>
                                       <a class="cancel-link a" href="${actionLink}" style="color: #AB3351; text-decoration: none;"><span class="a__text" style="color: #AB3351; text-decoration: none;">Cancel booking</span></a> </p>
                                     
                                     </td>
@@ -545,11 +545,11 @@ Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; 
                                 <div class="footer-row row" style="padding: 10px 25px;">
                                   <table class="row__table" width="100%" align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
                                     <tr class="row__row">
-                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0;">This email was sent by Apex Apps, ABN: 81700757157.</p>
-                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0;">Make sure you add aaron@apexapps.dev to your address book and safe list.</p>
-                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0;">You have recieved this email because your email address was used to confirm a booking at ApexApps.dev. This is not a promotional email.</p>
-                                      <p class="footer-text footer-center text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0; text-align: center;"><br/> &copy; Copyright ${moment().year()} Apex Apps</p>
-                                      <p class="footer-text footer-center text p" large="4" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0; text-align: center;">Designed and developed by <a class="link a" href="${baseUrl}" style="color: #309772; text-decoration: none;"><span class="a__text" style="color: #309772; text-decoration: none;">Apex Apps</span></a></p>
+                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0;">This email was sent by Apex Apps, ABN: 81700757157.</p>
+                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0;">Make sure you add aaron@apexapps.dev to your address book and safe list.</p>
+                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0;">You have recieved this email because your email address was used to confirm a booking at ApexApps.dev. This is not a promotional email.</p>
+                                      <p class="footer-text footer-center text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0; text-align: center;"><br/> &copy; Copyright ${moment().year()} Apex Apps</p>
+                                      <p class="footer-text footer-center text p" large="4" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0; text-align: center;">Designed and developed by <a class="link a" href="${baseUrl}" style="color: #52FFBF; text-decoration: none;"><span class="a__text" style="color: #52FFBF; text-decoration: none;">Apex Apps</span></a></p>
                                     </tr>
                                   </table>
                                 </div>
@@ -666,7 +666,7 @@ Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; 
                                   <table class="row__table" width="100%" align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
                                     <tr class="row__row"> <a class="logo-link a" large="12" href="${baseUrl}" style="width: min-content; color: #000000; text-decoration: none;"><span class="a__text" style="color: #000000; text-decoration: none;">
                 <img class="logo img__block" src="${baseUrl}/images/apex-apps-logo.png" alt="
-Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; text-align: center; margin: 0 auto; font-size: 30px; color: #309772;"/>
+Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; text-align: center; margin: 0 auto; font-size: 30px; color: #52FFBF;"/>
                 </span></a> </tr>
                                   </table>
                                 </div>
@@ -683,16 +683,16 @@ Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; 
                         <table class="container__table" role="presentation" border="0" align="center" cellpadding="0" cellspacing="0" width="100%">
                           <tr class="container__row">
                             <td class="container__cell" width="100%" align="left" valign="top">
-                              <div class="content row" style="border-left: 1px solid #CF3A19; margin: 10px 10px 30px; padding: 20px; background-color: #090909;">
+                              <div class="content row" style="border-left: 1px solid #FF481F; margin: 10px 10px 30px; padding: 20px; background-color: #090909;">
                                 <table class="row__table" width="100%" align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
                                   <tr class="row__row">
                                     <td class="column col-sm-12" width="600" style="width: 100%" align="left" valign="top">
-                                      <h1 class="title header h1" style="margin: 20px 0; line-height: 40px; width: 100%; font-family: Helvetica,Arial,sans-serif; padding-left: 10px; background-color: transparent; margin-bottom: 20px; margin-top: 0; height: min-content; color: #BDBDBD; font-weight: 500;">Hi ${
+                                      <h1 class="title header h1" style="margin: 20px 0; line-height: 40px; width: 100%; font-family: Helvetica,Arial,sans-serif; padding-left: 10px; background-color: transparent; margin-bottom: 20px; margin-top: 0; height: min-content; color: #FFFFFF; font-weight: 300;">Hi ${
 																				client.name
 																			},</h1>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;"> Your booking has successfully been cancelled. Feel free to make another booking anytime!</p>
-                                        <p class="content-text signature1 text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px; margin-left: 20px;"><br/> Kind Regards,</p>
-                                        <p class="content-text signature2 text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px; font-style: italic; margin-left: 40px;">Aaron Gazzola</p>
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;"> Your booking has successfully been cancelled. Feel free to make another booking anytime!</p>
+                                        <p class="content-text signature1 text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px; margin-left: 20px;"><br/> Kind Regards,</p>
+                                        <p class="content-text signature2 text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px; font-style: italic; margin-left: 40px;">Aaron Gazzola</p>
                                     </td>
                                   </tr>
                                 </table>
@@ -713,11 +713,11 @@ Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; 
                                 <div class="footer-row row" style="padding: 10px 25px;">
                                   <table class="row__table" width="100%" align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
                                     <tr class="row__row">
-                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0;">This email was sent by Apex Apps, ABN: 81700757157.</p>
-                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0;">Make sure you add aaron@apexapps.dev to your address book and safe list.</p>
-                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0;">You have recieved this email because your email address was used to cancel a booking at ApexApps.dev. This is not a promotional email.</p>
-                                      <p class="footer-text footer-center text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0; text-align: center;"><br/> &copy; Copyright ${moment().year()} Apex Apps</p>
-                                      <p class="footer-text footer-center text p" large="4" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0; text-align: center;">Designed and developed by <a class="link a" href="${baseUrl}" style="color: #309772; text-decoration: none;"><span class="a__text" style="color: #309772; text-decoration: none;">Apex Apps</span></a></p>
+                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0;">This email was sent by Apex Apps, ABN: 81700757157.</p>
+                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0;">Make sure you add aaron@apexapps.dev to your address book and safe list.</p>
+                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0;">You have recieved this email because your email address was used to cancel a booking at ApexApps.dev. This is not a promotional email.</p>
+                                      <p class="footer-text footer-center text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0; text-align: center;"><br/> &copy; Copyright ${moment().year()} Apex Apps</p>
+                                      <p class="footer-text footer-center text p" large="4" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0; text-align: center;">Designed and developed by <a class="link a" href="${baseUrl}" style="color: #52FFBF; text-decoration: none;"><span class="a__text" style="color: #52FFBF; text-decoration: none;">Apex Apps</span></a></p>
                                     </tr>
                                   </table>
                                 </div>
@@ -836,7 +836,7 @@ Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; 
                                   <table class="row__table" width="100%" align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
                                     <tr class="row__row"> <a class="logo-link a" large="12" href="${baseUrl}" style="width: min-content; color: #000000; text-decoration: none;"><span class="a__text" style="color: #000000; text-decoration: none;">
                 <img class="logo img__block" src="${baseUrl}/images/apex-apps-logo.png" alt="
-Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; text-align: center; margin: 0 auto; font-size: 30px; color: #309772;"/>
+Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; text-align: center; margin: 0 auto; font-size: 30px; color: #52FFBF;"/>
                 </span></a> </tr>
                                   </table>
                                 </div>
@@ -853,24 +853,24 @@ Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; 
                         <table class="container__table" role="presentation" border="0" align="center" cellpadding="0" cellspacing="0" width="100%">
                           <tr class="container__row">
                             <td class="container__cell" width="100%" align="left" valign="top">
-                              <div class="content row" style="border-left: 1px solid #CF3A19; margin: 10px 10px 30px; padding: 20px; background-color: #090909;">
+                              <div class="content row" style="border-left: 1px solid #FF481F; margin: 10px 10px 30px; padding: 20px; background-color: #090909;">
                                 <table class="row__table" width="100%" align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
                                   <tr class="row__row">
                                     <td class="column col-sm-12" width="600" style="width: 100%" align="left" valign="top">
-                                      <h1 class="title header h1" style="margin: 20px 0; line-height: 40px; width: 100%; font-family: Helvetica,Arial,sans-serif; padding-left: 10px; background-color: transparent; margin-bottom: 20px; margin-top: 0; height: min-content; color: #BDBDBD; font-weight: 500;">Hi Aaron,</h1>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;"> A client has just cancelled their booking.</p>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;"><br/>Name: ${
+                                      <h1 class="title header h1" style="margin: 20px 0; line-height: 40px; width: 100%; font-family: Helvetica,Arial,sans-serif; padding-left: 10px; background-color: transparent; margin-bottom: 20px; margin-top: 0; height: min-content; color: #FFFFFF; font-weight: 300;">Hi Aaron,</h1>
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;"> A client has just cancelled their booking.</p>
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;"><br/>Name: ${
 																				client.name
 																			}</p>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;"><br/> Time: ${moment
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;"><br/> Time: ${moment
 																				.unix(booking.timestamp)
 																				.minute(0)
 																				.format('h:mma dddd Do MMMM YYYY')} </p>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;">
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;">
                                       <br/> Phone: ${client.phone} </p>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;">
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;">
                                       <br/> Email: ${client.email} </p>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;">
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;">
                                       <br/> Description: ${
 																				booking.description
 																			}</p>
@@ -894,11 +894,11 @@ Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; 
                                 <div class="footer-row row" style="padding: 10px 25px;">
                                   <table class="row__table" width="100%" align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
                                     <tr class="row__row">
-                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0;">This email was sent by Apex Apps, ABN: 81700757157.</p>
-                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0;">Make sure you add aaron@apexapps.dev to your address book and safe list.</p>
-                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0;">You have recieved this email because your email address was used to confirm a booking at ApexApps.dev. This is not a promotional email.</p>
-                                      <p class="footer-text footer-center text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0; text-align: center;"><br/> &copy; Copyright ${moment().year()} Apex Apps</p>
-                                      <p class="footer-text footer-center text p" large="4" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0; text-align: center;">Designed and developed by <a class="link a" href="${baseUrl}" style="color: #309772; text-decoration: none;"><span class="a__text" style="color: #309772; text-decoration: none;">Apex Apps</span></a></p>
+                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0;">This email was sent by Apex Apps, ABN: 81700757157.</p>
+                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0;">Make sure you add aaron@apexapps.dev to your address book and safe list.</p>
+                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0;">You have recieved this email because your email address was used to confirm a booking at ApexApps.dev. This is not a promotional email.</p>
+                                      <p class="footer-text footer-center text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0; text-align: center;"><br/> &copy; Copyright ${moment().year()} Apex Apps</p>
+                                      <p class="footer-text footer-center text p" large="4" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0; text-align: center;">Designed and developed by <a class="link a" href="${baseUrl}" style="color: #52FFBF; text-decoration: none;"><span class="a__text" style="color: #52FFBF; text-decoration: none;">Apex Apps</span></a></p>
                                     </tr>
                                   </table>
                                 </div>
@@ -1015,7 +1015,7 @@ Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; 
                                   <table class="row__table" width="100%" align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
                                     <tr class="row__row"> <a class="logo-link a" large="12" href="${baseUrl}" style="width: min-content; color: #000000; text-decoration: none;"><span class="a__text" style="color: #000000; text-decoration: none;">
                 <img class="logo img__block" src="${baseUrl}/images/apex-apps-logo.png" alt="
-Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; text-align: center; margin: 0 auto; font-size: 30px; color: #309772;"/>
+Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; text-align: center; margin: 0 auto; font-size: 30px; color: #52FFBF;"/>
                 </span></a> </tr>
                                   </table>
                                 </div>
@@ -1032,18 +1032,18 @@ Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; 
                         <table class="container__table" role="presentation" border="0" align="center" cellpadding="0" cellspacing="0" width="100%">
                           <tr class="container__row">
                             <td class="container__cell" width="100%" align="left" valign="top">
-                              <div class="content row" style="border-left: 1px solid #CF3A19; margin: 10px 10px 30px; padding: 20px; background-color: #090909;">
+                              <div class="content row" style="border-left: 1px solid #FF481F; margin: 10px 10px 30px; padding: 20px; background-color: #090909;">
                                 <table class="row__table" width="100%" align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
                                   <tr class="row__row">
                                     <td class="column col-sm-12" width="600" style="width: 100%" align="left" valign="top">
-                                      <h1 class="title header h1" style="margin: 20px 0; line-height: 40px; width: 100%; font-family: Helvetica,Arial,sans-serif; padding-left: 10px; background-color: transparent; margin-bottom: 20px; margin-top: 0; height: min-content; color: #BDBDBD; font-weight: 500;">Hi ${
+                                      <h1 class="title header h1" style="margin: 20px 0; line-height: 40px; width: 100%; font-family: Helvetica,Arial,sans-serif; padding-left: 10px; background-color: transparent; margin-bottom: 20px; margin-top: 0; height: min-content; color: #FFFFFF; font-weight: 300;">Hi ${
 																				client.name
 																			},</h1>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;">I'm sorry for the inconvenience, but your booking has been cancelled.<br/><br/>
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;">I'm sorry for the inconvenience, but your booking has been cancelled.<br/><br/>
                                       I will be in touch to arrange another call. <br/><br/>You can also contact me by replying to this email, or booking another call.
                                       </p>
-                                        <p class="content-text signature1 text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px; margin-left: 20px;"><br/> Kind Regards,</p>
-                                        <p class="content-text signature2 text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px; font-style: italic; margin-left: 40px;">Aaron Gazzola</p>
+                                        <p class="content-text signature1 text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px; margin-left: 20px;"><br/> Kind Regards,</p>
+                                        <p class="content-text signature2 text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px; font-style: italic; margin-left: 40px;">Aaron Gazzola</p>
                                     </td>
                                   </tr>
                                 </table>
@@ -1064,11 +1064,11 @@ Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; 
                                 <div class="footer-row row" style="padding: 10px 25px;">
                                   <table class="row__table" width="100%" align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
                                     <tr class="row__row">
-                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0;">This email was sent by Apex Apps, ABN: 81700757157.</p>
-                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0;">Make sure you add aaron@apexapps.dev to your address book and safe list.</p>
-                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0;">You have recieved this email because your email address was used to create a booking at ApexApps.dev. This is not a promotional email.</p>
-                                      <p class="footer-text footer-center text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0; text-align: center;"><br/> &copy; Copyright ${moment().year()} Apex Apps</p>
-                                      <p class="footer-text footer-center text p" large="4" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0; text-align: center;">Designed and developed by <a class="link a" href="${baseUrl}" style="color: #309772; text-decoration: none;"><span class="a__text" style="color: #309772; text-decoration: none;">Apex Apps</span></a></p>
+                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0;">This email was sent by Apex Apps, ABN: 81700757157.</p>
+                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0;">Make sure you add aaron@apexapps.dev to your address book and safe list.</p>
+                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0;">You have recieved this email because your email address was used to create a booking at ApexApps.dev. This is not a promotional email.</p>
+                                      <p class="footer-text footer-center text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0; text-align: center;"><br/> &copy; Copyright ${moment().year()} Apex Apps</p>
+                                      <p class="footer-text footer-center text p" large="4" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0; text-align: center;">Designed and developed by <a class="link a" href="${baseUrl}" style="color: #52FFBF; text-decoration: none;"><span class="a__text" style="color: #52FFBF; text-decoration: none;">Apex Apps</span></a></p>
                                     </tr>
                                   </table>
                                 </div>
@@ -1188,7 +1188,7 @@ Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; 
                                   <table class="row__table" width="100%" align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
                                     <tr class="row__row"> <a class="logo-link a" large="12" href="${baseUrl}" style="width: min-content; color: #000000; text-decoration: none;"><span class="a__text" style="color: #000000; text-decoration: none;">
                 <img class="logo img__block" src="${baseUrl}/images/apex-apps-logo.png" alt="
-Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; text-align: center; margin: 0 auto; font-size: 30px; color: #309772;"/>
+Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; text-align: center; margin: 0 auto; font-size: 30px; color: #52FFBF;"/>
                 </span></a> </tr>
                                   </table>
                                 </div>
@@ -1205,24 +1205,24 @@ Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; 
                         <table class="container__table" role="presentation" border="0" align="center" cellpadding="0" cellspacing="0" width="100%">
                           <tr class="container__row">
                             <td class="container__cell" width="100%" align="left" valign="top">
-                              <div class="content row" style="border-left: 1px solid #CF3A19; margin: 10px 10px 30px; padding: 20px; background-color: #090909;">
+                              <div class="content row" style="border-left: 1px solid #FF481F; margin: 10px 10px 30px; padding: 20px; background-color: #090909;">
                                 <table class="row__table" width="100%" align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
                                   <tr class="row__row">
                                     <td class="column col-sm-12" width="600" style="width: 100%" align="left" valign="top">
-                                      <h1 class="title header h1" style="margin: 20px 0; line-height: 40px; width: 100%; font-family: Helvetica,Arial,sans-serif; padding-left: 10px; background-color: transparent; margin-bottom: 20px; margin-top: 0; height: min-content; color: #BDBDBD; font-weight: 500;">Hi Aaron,</h1>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;"> You have cancelled a booking</p>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;"><br/>Name: ${
+                                      <h1 class="title header h1" style="margin: 20px 0; line-height: 40px; width: 100%; font-family: Helvetica,Arial,sans-serif; padding-left: 10px; background-color: transparent; margin-bottom: 20px; margin-top: 0; height: min-content; color: #FFFFFF; font-weight: 300;">Hi Aaron,</h1>
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;"> You have cancelled a booking</p>
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;"><br/>Name: ${
 																				client.name
 																			}</p>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;"><br/> Time: ${moment
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;"><br/> Time: ${moment
 																				.unix(booking.timestamp)
 																				.minute(0)
 																				.format('h:mma dddd Do MMMM YYYY')} </p>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;">
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;">
                                       <br/> Phone: ${client.phone} </p>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;">
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;">
                                       <br/> Email: ${client.email} </p>
-                                      <p class="content-text text p" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #BDBDBD; font-size: 18px; margin: 0 0 5px;">
+                                      <p class="content-text text p" style="font-weight: 100; display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; padding: 0 15px; color: #FFFFFF; font-size: 18px; margin: 0 0 5px;">
                                       <br/> Description: ${
 																				booking.description
 																			}</p>
@@ -1246,11 +1246,11 @@ Apex Apps" border="0" style="display: block; max-width: 100%; white-space: pre; 
                                 <div class="footer-row row" style="padding: 10px 25px;">
                                   <table class="row__table" width="100%" align="center" role="presentation" border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
                                     <tr class="row__row">
-                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0;">This email was sent by Apex Apps, ABN: 81700757157.</p>
-                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0;">Make sure you add aaron@apexapps.dev to your address book and safe list.</p>
-                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0;">You have recieved this email because your email address was used to confirm a booking at ApexApps.dev. This is not a promotional email.</p>
-                                      <p class="footer-text footer-center text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0; text-align: center;"><br/> &copy; Copyright ${moment().year()} Apex Apps</p>
-                                      <p class="footer-text footer-center text p" large="4" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #616161; font-size: 14px; padding: 0; margin: 0; text-align: center;">Designed and developed by <a class="link a" href="${baseUrl}" style="color: #309772; text-decoration: none;"><span class="a__text" style="color: #309772; text-decoration: none;">Apex Apps</span></a></p>
+                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0;">This email was sent by Apex Apps, ABN: 81700757157.</p>
+                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0;">Make sure you add aaron@apexapps.dev to your address book and safe list.</p>
+                                      <p class="footer-text text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0;">You have recieved this email because your email address was used to confirm a booking at ApexApps.dev. This is not a promotional email.</p>
+                                      <p class="footer-text footer-center text p" large="2" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0; text-align: center;"><br/> &copy; Copyright ${moment().year()} Apex Apps</p>
+                                      <p class="footer-text footer-center text p" large="4" style="display: block; line-height: 20px; font-family: Helvetica,Arial,sans-serif; color: #BDBDBD; font-size: 14px; padding: 0; margin: 0; text-align: center;">Designed and developed by <a class="link a" href="${baseUrl}" style="color: #52FFBF; text-decoration: none;"><span class="a__text" style="color: #52FFBF; text-decoration: none;">Apex Apps</span></a></p>
                                     </tr>
                                   </table>
                                 </div>
