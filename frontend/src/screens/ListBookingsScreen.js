@@ -43,7 +43,7 @@ import {
 } from 'actions/bookingActions';
 import { ArrowBack, Cancel, ContactPhone } from '@material-ui/icons';
 
-const OrderListScreen = () => {
+const ListBookingsScreen = () => {
 	const classes = useStyles();
 	const formClasses = useFormStyles();
 	const dispatch = useDispatch();
@@ -403,4 +403,4 @@ const OrderListScreen = () => {
 	);
 };
 
-export default OrderListScreen;
+export default ListBookingsScreen;

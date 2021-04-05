@@ -22,7 +22,11 @@ import {
 	VERIFY_CLIENT_REQUEST,
 	VERIFY_CLIENT_SUCCESS,
 	VERIFY_CLIENT_FAIL,
-	VERIFY_CLIENT_CLEAR
+	VERIFY_CLIENT_CLEAR,
+	LIST_CLIENTS_REQUEST,
+	LIST_CLIENTS_SUCCESS,
+	LIST_CLIENTS_FAIL,
+	LIST_CLIENTS_CLEAR
 } from 'constants/bookingConstants';
 
 export const getBookingsReducer = (state = {}, action) => {
@@ -128,6 +132,24 @@ export const verifyClientReducer = (state = {}, action) => {
 		case VERIFY_CLIENT_FAIL:
 			return { loading: false, error: action.payload };
 		case VERIFY_CLIENT_CLEAR:
+			return { ...state, error: null, success: null };
+		default:
+			return state;
+	}
+};
+
+export const listClientsReducer = (state = {}, action) => {
+	switch (action.type) {
+		case LIST_CLIENTS_REQUEST:
+			return { loading: true };
+		case LIST_CLIENTS_SUCCESS:
+			return {
+				loading: false,
+				clients: action.payload
+			};
+		case LIST_CLIENTS_FAIL:
+			return { loading: false, error: action.payload };
+		case LIST_CLIENTS_CLEAR:
 			return { ...state, error: null, success: null };
 		default:
 			return state;

@@ -18,7 +18,10 @@ import {
 	SET_BOOKING_AVAILABILITY_FAIL,
 	VERIFY_CLIENT_REQUEST,
 	VERIFY_CLIENT_SUCCESS,
-	VERIFY_CLIENT_FAIL
+	VERIFY_CLIENT_FAIL,
+	LIST_CLIENTS_REQUEST,
+	LIST_CLIENTS_SUCCESS,
+	LIST_CLIENTS_FAIL
 } from 'constants/bookingConstants';
 
 export const getBookingsAction = (start, end) => async dispatch => {
@@ -218,6 +221,35 @@ export const setBookingAvailabilityAction = (
 	} catch (error) {
 		dispatch({
 			type: SET_BOOKING_AVAILABILITY_FAIL,
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message
+		});
+	}
+};
+
+export const listClientsAction = () => async dispatch => {
+	try {
+		dispatch({
+			type: LIST_CLIENTS_REQUEST
+		});
+
+		const config = {
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		};
+
+		const { data } = await axios.get(`/api/v1/bookings/clients/`, config);
+
+		dispatch({
+			type: LIST_CLIENTS_SUCCESS,
+			payload: data.clients
+		});
+	} catch (error) {
+		dispatch({
+			type: LIST_CLIENTS_FAIL,
 			payload:
 				error.response && error.response.data.message
 					? error.response.data.message

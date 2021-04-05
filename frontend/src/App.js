@@ -33,7 +33,8 @@ import {
 	SUBMIT_BOOKING_CLEAR,
 	CANCEL_BOOKING_CLEAR,
 	VERIFY_CLIENT_CLEAR,
-	SET_BOOKING_AVAILABILITY_CLEAR
+	SET_BOOKING_AVAILABILITY_CLEAR,
+	LIST_CLIENTS_CLEAR
 } from 'constants/bookingConstants';
 import SnackBar from 'components/SnackBar';
 
@@ -53,7 +54,8 @@ const App = () => {
 		cancelBooking: { error: cancelBookingError, success: cancelBookingSuccess },
 		verifyClient: { error: verifyClientError, success: verifyClientSuccess },
 		getBlogs: { error: getBlogsError },
-		getBlog: { error: getBlogError }
+		getBlog: { error: getBlogError },
+		listClients: { error: listClientsError }
 	} = useSelector(state => state);
 	return (
 		<Router>
@@ -71,7 +73,8 @@ const App = () => {
 							getBlogsError ||
 							getBlogError ||
 							setBookingAvailabilityError ||
-							verifyClientError
+							verifyClientError ||
+							listClientsError
 						}
 						success={
 							submitBookingSuccess ===
@@ -95,6 +98,8 @@ const App = () => {
 								? SET_BOOKING_AVAILABILITY_CLEAR
 								: verifyClientError
 								? VERIFY_CLIENT_CLEAR
+								: listClientsError
+								? LIST_CLIENTS_CLEAR
 								: submitBookingError ||
 								  submitBookingSuccess ===
 										'Please check your email inbox to confirm your booking'
@@ -146,7 +151,7 @@ const App = () => {
 								component={ListBookingsScreen}
 							/>
 							<Route
-								path='/admin/bookings'
+								path='/admin/clients'
 								exact
 								component={ListClientsScreen}
 							/>

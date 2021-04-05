@@ -5,13 +5,15 @@ import {
 	listBookings,
 	setBookingAvailability,
 	submitBooking,
-	verifyClient
+	verifyClient,
+	listClients
 } from '../controllers/bookingController.js';
 import { protect } from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
 router.route('/').get(protect, listBookings);
+router.route('/clients').get(listClients);
 router.route('/submit/:id').post(submitBooking);
 router.route('/verifyclient/:token').post(verifyClient);
 router.route('/calendar/:start/:end').get(getAvailableBookings);

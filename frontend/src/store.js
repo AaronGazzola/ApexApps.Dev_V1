@@ -7,7 +7,8 @@ import {
 	submitBookingReducer,
 	cancelBookingReducer,
 	setBookingAvailabilityReducer,
-	verifyClientReducer
+	verifyClientReducer,
+	listClientsReducer
 } from 'reducers/bookingReducers';
 import { getBlogsReducer, getBlogReducer } from 'reducers/blogReducers';
 import { loginReducer } from 'reducers/adminReducers';
@@ -21,7 +22,8 @@ const reducer = combineReducers({
 	cancelBooking: cancelBookingReducer,
 	getBlogs: getBlogsReducer,
 	getBlog: getBlogReducer,
-	verifyClient: verifyClientReducer
+	verifyClient: verifyClientReducer,
+	listClients: listClientsReducer
 });
 
 const middleware = [thunk];

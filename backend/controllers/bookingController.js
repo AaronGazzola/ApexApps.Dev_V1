@@ -381,11 +381,24 @@ const setBookingAvailability = asyncHandler(async (req, res, next) => {
 	});
 });
 
+// @desc    List all verified clients
+// @route   GET /api/bookings/clients
+// @access    Public
+const listClients = asyncHandler(async (req, res, next) => {
+	const clients = await Client.find({
+		isVerified: true
+	});
+	res.status(200).json({
+		clients
+	});
+});
+
 export {
 	getAvailableBookings,
 	submitBooking,
 	cancelBooking,
 	listBookings,
 	setBookingAvailability,
-	verifyClient
+	verifyClient,
+	listClients
 };
