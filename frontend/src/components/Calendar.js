@@ -39,7 +39,9 @@ const Calendar = ({ setOpen, setBooking }) => {
 		setDates(newDates);
 		dispatch(
 			getBookingsAction(
-				page === 0 ? moment() : moment(newDates[0]).hour(0).minute(0),
+				page === 0
+					? moment().add(1, 'h')
+					: moment(newDates[0]).hour(0).minute(0),
 				moment(newDates[newDates.length - 1])
 					.hour(23)
 					.minute(59)
@@ -51,7 +53,9 @@ const Calendar = ({ setOpen, setBooking }) => {
 		if (success || error) {
 			dispatch(
 				getBookingsAction(
-					page === 0 ? moment() : moment(dates[0]).hour(0).minute(0),
+					page === 0
+						? moment().add(1, 'h')
+						: moment(dates[0]).hour(0).minute(0),
 					moment(dates[dates.length - 1])
 						.hour(23)
 						.minute(59)
