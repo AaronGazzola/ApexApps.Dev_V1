@@ -89,7 +89,7 @@ export const deleteBlogAction = id => async (dispatch, getState) => {
 	}
 };
 
-export const updateBlogAction = (slug, blog) => async (dispatch, getState) => {
+export const updateBlogAction = (blog, id) => async (dispatch, getState) => {
 	try {
 		dispatch({
 			type: UPDATE_BLOG_REQUEST
@@ -106,14 +106,7 @@ export const updateBlogAction = (slug, blog) => async (dispatch, getState) => {
 			}
 		};
 
-		await axios.put(
-			`/api/v1/blogs/${slug}`,
-			{
-				title: blog.title,
-				paragraphs: blog.paragraphs
-			},
-			config
-		);
+		await axios.put(`/api/v1/blogs/${id}`, blog, config);
 
 		dispatch({ type: UPDATE_BLOG_SUCCESS, payload: 'Blog updated' });
 	} catch (error) {
@@ -165,7 +158,7 @@ export const uploadImageAction = file => async (dispatch, getState) => {
 		});
 
 		const {
-			userData: { token }
+			login: { token }
 		} = getState();
 
 		const config = {

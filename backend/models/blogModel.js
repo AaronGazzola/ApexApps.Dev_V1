@@ -16,16 +16,14 @@ const blogSchema = mongoose.Schema({
 			subtitle: {
 				type: String
 			},
-			content: {
+			body: {
 				type: String
 			},
-			image: {
-				path: {
-					type: String
-				},
-				label: {
-					type: String
-				}
+			imagePath: {
+				type: String
+			},
+			imageLabel: {
+				type: String
 			}
 		}
 	],
@@ -44,7 +42,7 @@ blogSchema.pre('validate', function () {
 	if (this.title) {
 		this.slug = slugify(this.title, { lower: true, strict: true });
 	}
-	this.paragraphs?.map(p => (p.content = sanitizeHtml(p.content)));
+	this.paragraphs?.map(p => (p.body = sanitizeHtml(p.body)));
 });
 
 const Blog = mongoose.model('Blog', blogSchema);

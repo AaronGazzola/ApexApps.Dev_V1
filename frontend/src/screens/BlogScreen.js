@@ -44,8 +44,8 @@ const BlogScreen = ({ match }) => {
 					>
 						{blog?.title}
 					</Typography>
-					{blog?.paragraphs.map(p => (
-						<>
+					{blog?.paragraphs.map((p, i) => (
+						<div key={i}>
 							<div
 								className={clsx(classes.textBox3, classes.blogTextBox)}
 								key={p._id}
@@ -57,17 +57,17 @@ const BlogScreen = ({ match }) => {
 								)}
 								<Typography
 									className={classes.paragraph}
-									dangerouslySetInnerHTML={{ __html: p.content }}
+									dangerouslySetInnerHTML={{ __html: p.body }}
 								></Typography>
 							</div>
-							{p.image && (
+							{p.imagePath && (
 								<img
 									className={classes.image}
-									src={p.image.path}
-									alt={p.image.label}
+									src={p.imagePath}
+									alt={p.imageLabel}
 								/>
 							)}
-						</>
+						</div>
 					))}
 				</>
 			)}

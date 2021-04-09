@@ -65,9 +65,11 @@ const styles = makeStyles(theme => ({
 		}
 	},
 	imageButton: {
+		border: `2px solid ${theme.palette.grey[800]}`,
+		borderRadius: 2,
+		padding: theme.spacing(2),
 		position: 'relative',
 		margin: theme.spacing(3, 1, 2, 1),
-		padding: theme.spacing(1),
 		width: 'min-content',
 		maxWidth: '80%',
 		[theme.breakpoints.down('xs')]: {
@@ -87,14 +89,6 @@ const styles = makeStyles(theme => ({
 		'&:hover': {
 			cursor: 'pointer'
 		}
-	},
-	imagePaper: {
-		padding: theme.spacing(2),
-		marginBottom: theme.spacing(2),
-		display: 'flex',
-		flexDirection: 'column',
-		alignItems: 'center',
-		background: theme.palette.background.default
 	},
 	stepper: {
 		width: 200,
@@ -150,8 +144,12 @@ const styles = makeStyles(theme => ({
 		}
 	},
 	paper: {
-		marginBottom: theme.spacing(2),
+		margin: theme.spacing(1, 0, 2, 0),
 		borderLeft: `1px solid ${theme.palette.primary.main}`
+	},
+	blogImage: {
+		width: '80%',
+		margin: `${theme.spacing(1)} auto`
 	}
 }));
 

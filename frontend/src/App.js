@@ -30,7 +30,10 @@ import { LOG_IN_CLEAR } from 'constants/adminConstants';
 import {
 	GET_BLOGS_CLEAR,
 	GET_BLOG_CLEAR,
-	DELETE_BLOG_CLEAR
+	DELETE_BLOG_CLEAR,
+	UPDATE_BLOG_CLEAR,
+	CREATE_BLOG_CLEAR,
+	UPLOAD_IMAGE_CLEAR
 } from 'constants/blogConstants';
 import {
 	GET_BOOKINGS_CLEAR,
@@ -61,7 +64,10 @@ const App = () => {
 		getBlogs: { error: getBlogsError },
 		getBlog: { error: getBlogError },
 		deleteBlog: { error: deleteBlogError, success: deleteBlogSuccess },
-		listClients: { error: listClientsError }
+		listClients: { error: listClientsError },
+		updateBlog: { error: updateBlogError, success: updateBlogSuccess },
+		createBlog: { error: createBlogError, success: createBlogSuccess },
+		uploadImage: { error: uploadImageError, success: uploadImageSuccess }
 	} = useSelector(state => state);
 	return (
 		<Router>
@@ -81,7 +87,10 @@ const App = () => {
 							setBookingAvailabilityError ||
 							verifyClientError ||
 							listClientsError ||
-							deleteBlogError
+							deleteBlogError ||
+							createBlogError ||
+							updateBlogError ||
+							uploadImageError
 						}
 						success={
 							submitBookingSuccess ===
@@ -109,6 +118,12 @@ const App = () => {
 								? LIST_CLIENTS_CLEAR
 								: deleteBlogError
 								? DELETE_BLOG_CLEAR
+								: updateBlogError
+								? UPDATE_BLOG_CLEAR
+								: createBlogError
+								? CREATE_BLOG_CLEAR
+								: uploadImageError
+								? UPLOAD_IMAGE_CLEAR
 								: submitBookingError ||
 								  submitBookingSuccess ===
 										'Please check your email inbox to confirm your booking'
@@ -125,7 +140,10 @@ const App = () => {
 								: cancelBookingSuccess ||
 								  setBookingAvailabilitySuccess ||
 								  verifyClientSuccess ||
-								  deleteBlogSuccess
+								  deleteBlogSuccess ||
+								  updateBlogSuccess ||
+								  createBlogSuccess ||
+								  uploadImageSuccess
 						}
 						clearType={
 							submitBookingSuccess
@@ -138,6 +156,12 @@ const App = () => {
 								? VERIFY_CLIENT_CLEAR
 								: deleteBlogSuccess
 								? DELETE_BLOG_CLEAR
+								: createBlogSuccess
+								? CREATE_BLOG_CLEAR
+								: updateBlogSuccess
+								? UPDATE_BLOG_CLEAR
+								: uploadImageSuccess
+								? UPLOAD_IMAGE_CLEAR
 								: null
 						}
 					/>
@@ -168,7 +192,7 @@ const App = () => {
 								component={ListClientsScreen}
 							/>
 							<Route path='/admin/blogs' exact component={ListBlogsScreen} />
-							<Route path='/admin/blog/:id' component={EditBlogScreen} />
+							<Route path='/admin/blog/:slug' component={EditBlogScreen} />
 							<Route path='/admin/blog/' component={EditBlogScreen} />
 							<Route path='/test' exact component={TestScreen} />
 							<Route path='/' component={PageNotFoundScreen} />

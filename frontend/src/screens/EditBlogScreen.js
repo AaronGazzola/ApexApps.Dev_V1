@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 import useStyles from 'styles/adminStyles';
@@ -20,7 +20,13 @@ import {
 } from '@material-ui/icons';
 import { VALIDATOR_MAXLENGTH, VALIDATOR_REQUIRE } from 'utils/validators';
 import { useDispatch, useSelector } from 'react-redux';
-import { getBlogAction } from 'actions/blogActions';
+import {
+	getBlogAction,
+	uploadImageAction,
+	updateBlogAction,
+	createBlogAction
+} from 'actions/blogActions';
+import { GET_BLOG_CLEAR } from 'constants/blogConstants';
 
 const EditBlogScreen = ({ match, history }) => {
 	const classes = useStyles();
@@ -38,40 +44,98 @@ const EditBlogScreen = ({ match, history }) => {
 	} = useSelector(state => state.createBlog);
 
 	const {
+		image: uploadedImage,
 		success: uploadImageSuccess,
 		loading: uploadImageLoading
 	} = useSelector(state => state.uploadImage);
 
+	const [uploadImageIndex, setUploadImageIndex] = useState(0);
 	const [formState, formDispatch] = useBlogForm(slug && blog);
-	const { formIsValid, paragraphs, title } = formState;
+	const { formIsValid, paragraphs, title, description } = formState;
 
 	useEffect(() => {
 		if (slug && slug !== blog?.slug) dispatch(getBlogAction(slug));
 	}, [dispatch, slug, blog]);
 
 	useEffect(() => {
-		if (getBlogSuccess) formDispatch({ type: 'RESET' });
+		if (getBlogSuccess) {
+			formDispatch({ type: 'RESET' });
+			dispatch({ type: GET_BLOG_CLEAR });
+		}
 	}, [getBlogSuccess, formDispatch]);
 
 	useEffect(() => {
 		if (updateBlogSuccess || createBlogSuccess) history.push('/admin/blogs');
 	}, [history, updateBlogSuccess, createBlogSuccess]);
 
+	useEffect(() => {
+		if (uploadImageSuccess)
+			formDispatch({
+				type: 'UPLOAD_IMAGE',
+				payload: uploadedImage,
+				i: uploadImageIndex
+			});
+	}, [
+		uploadImageSuccess,
+		uploadedImage,
+		uploadImageIndex,
+		dispatch,
+		formDispatch
+	]);
+
 	const submitHandler = e => {
 		e.preventDefault();
+		const newBlog = {
+			title: title.value,
+			description: description.value,
+			paragraphs: paragraphs.map(p => ({
+				subtitle: p.subtitle || '',
+				body: p.body || '',
+				imagePath: p.imagePath,
+				imageLabel: p.imageLabel
+			}))
+		};
+		if (slug) {
+			dispatch(updateBlogAction(newBlog, blog?._id));
+		} else {
+			dispatch(createBlogAction(newBlog));
+		}
 	};
 
-	const changeHandler = (e, validators) => {};
+	const changeHandler = (e, validators = [], i = 0) => {
+		formDispatch({ type: 'CHANGE', payload: e.target, validators, i });
+	};
 
-	const touchHandler = () => {};
+	const touchHandler = (e, i = 0) => {
+		formDispatch({ type: 'TOUCH', payload: e.target, i });
+	};
 
-	const uploadFileHandler = () => {};
+	const addParagraphHandler = () => {
+		formDispatch({ type: 'ADD_PARAGRAPH' });
+	};
 
-	const deleteParagraphHandler = () => {};
+	const deleteParagraphHandler = i => {
+		formDispatch({ type: 'DELETE_PARAGRAPH', i });
+	};
 
+	const uploadFileHandler = (e, i) => {
+		const file = e.target.files[0];
+		dispatch(uploadImageAction(file));
+		setUploadImageIndex(i);
+	};
 	return (
 		<>
 			<Typography variant='h1'>{slug ? 'Edit ' : 'Create '}Blog</Typography>
+			<Button
+				variant='outlined'
+				component={Link}
+				to='/admin/blogs'
+				className={formClasses.button}
+				startIcon={<ArrowBack />}
+				color='secondary'
+			>
+				Back
+			</Button>
 			<form onSubmit={submitHandler} className={formClasses.formWide}>
 				<TextField
 					id='title'
@@ -91,7 +155,7 @@ const EditBlogScreen = ({ match, history }) => {
 							? clsx(formClasses.input, formClasses.changed)
 							: formClasses.input
 					}
-					onBlur={touchHandler}
+					onBlur={e => touchHandler(e)}
 					error={title.isTouched && !title.isValid}
 					helperText={
 						title.isTouched && !title.isValid
@@ -99,9 +163,36 @@ const EditBlogScreen = ({ match, history }) => {
 							: ' '
 					}
 				/>
+				<TextField
+					id='description'
+					label='Description'
+					type='textarea'
+					variant='outlined'
+					placeholder='Description'
+					fullWidth
+					color='secondary'
+					value={description.value}
+					onChange={e =>
+						changeHandler(e, [VALIDATOR_REQUIRE(), VALIDATOR_MAXLENGTH(300)])
+					}
+					className={
+						description.isTouched && !description.isValid
+							? clsx(formClasses.input, formClasses.error)
+							: description.isChanged
+							? clsx(formClasses.input, formClasses.changed)
+							: formClasses.input
+					}
+					onBlur={e => touchHandler(e)}
+					error={description.isTouched && !description.isValid}
+					helperText={
+						description.isTouched && !description.isValid
+							? 'Add a blog description below 300 characters'
+							: ' '
+					}
+				/>
 				{paragraphs.map((p, i) => (
 					<Paper
-						key={i}
+						key={p.key}
 						variant='outlined'
 						component={Grid}
 						container
@@ -117,7 +208,7 @@ const EditBlogScreen = ({ match, history }) => {
 							fullWidth
 							color='secondary'
 							value={p.subtitle}
-							onChange={e => changeHandler(e, [])}
+							onChange={e => changeHandler(e, [], i)}
 							className={formClasses.input}
 						/>
 						<TextField
@@ -131,7 +222,7 @@ const EditBlogScreen = ({ match, history }) => {
 							fullWidth
 							color='secondary'
 							value={p.body}
-							onChange={e => changeHandler(e, [VALIDATOR_REQUIRE()])}
+							onChange={e => changeHandler(e, [VALIDATOR_REQUIRE()], i)}
 							className={
 								p.isTouched && !p.isValid
 									? clsx(formClasses.input, formClasses.error)
@@ -139,7 +230,7 @@ const EditBlogScreen = ({ match, history }) => {
 									? clsx(formClasses.input, formClasses.changed)
 									: formClasses.input
 							}
-							onBlur={touchHandler}
+							onBlur={e => touchHandler(e, i)}
 							error={p.isTouched && !p.isValid}
 							helperText={
 								p.isTouched && !p.isValid
@@ -164,33 +255,33 @@ const EditBlogScreen = ({ match, history }) => {
 								name='userImage'
 								className={classes.imageInput}
 								value=''
-								onChange={uploadFileHandler}
+								onChange={e => uploadFileHandler(e, i)}
 							/>
 						</Button>
-						{p.image.path && (
+						{p.imagePath && (
 							<img
-								className={classes.image}
-								src={p.image.path}
-								alt={p.image.label || `Uploaded image ${i + 1}`}
+								className={classes.blogImage}
+								src={p.imagePath}
+								alt={p.imageLabel || `Uploaded image ${i + 1}`}
 							/>
 						)}
 
 						<TextField
-							id={`paragraph${i}Image`}
+							id='imageLabel'
 							label='Image label'
 							type='text'
 							placeholder='Image label'
 							fullWidth
 							color='secondary'
-							value={p.image.label}
-							onChange={changeHandler}
+							value={p.imageLabel}
+							onChange={e => changeHandler(e, [], i)}
 							className={formClasses.input}
 						/>
 						<Button
 							variant='outlined'
 							startIcon={<Delete />}
 							className={classes.deleteButton}
-							onClick={deleteParagraphHandler}
+							onClick={() => deleteParagraphHandler(i)}
 						>
 							Delete
 						</Button>
@@ -202,12 +293,14 @@ const EditBlogScreen = ({ match, history }) => {
 					className={formClasses.button}
 					startIcon={<AddCircleOutline />}
 					color='secondary'
+					onClick={addParagraphHandler}
 				>
 					Add Paragraph
 				</Button>
 				<Button
 					type='submit'
 					variant='contained'
+					color='secondary'
 					disabled={!formIsValid}
 					className={formClasses.submitButton}
 				>
@@ -218,16 +311,6 @@ const EditBlogScreen = ({ match, history }) => {
 					) : (
 						'Create Blog'
 					)}
-				</Button>
-				<Button
-					variant='outlined'
-					component={Link}
-					to='/admin/blogs'
-					className={formClasses.button}
-					startIcon={<ArrowBack />}
-					color='secondary'
-				>
-					Back
 				</Button>
 			</form>
 		</>

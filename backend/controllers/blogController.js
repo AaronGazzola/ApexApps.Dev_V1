@@ -1,4 +1,7 @@
 import asyncHandler from '../middleware/async.js';
+import path from 'path';
+import fs from 'fs';
+import moment from 'moment';
 import Blog from '../models/blogModel.js';
 import ErrorResponse from '../utils/errorResponse.js';
 
@@ -19,6 +22,10 @@ const getBlogs = asyncHandler(async (req, res, next) => {
 const getBlog = asyncHandler(async (req, res, next) => {
 	const slug = req.params.slug;
 	const blog = await Blog.findOne({ slug });
+
+	if (!blog) {
+		return next(new ErrorResponse('Could not find blog', 404));
+	}
 	res.json({
 		success: true,
 		blog
@@ -39,8 +46,45 @@ const deleteBlog = asyncHandler(async (req, res, next) => {
 // @route   POST /api/blogs/
 // @access    Private/admin
 const createBlog = asyncHandler(async (req, res, next) => {
+	const { title, description, paragraphs } = req.body;
+	// move images from uploads to images folder
+	paragraphs.forEach(p => {
+		if (p.imagePath) {
+			const oldPath = p.imagePath;
+			const newPath = oldPath.replace('uploads', 'images');
+			fs.rename(`.${oldPath}`, `.${newPath}`, err => {
+				if (err) {
+					return next(new ErrorResponse('Could not create blog', 500));
+				}
+			});
+			p.imagePath = newPath;
+		}
+	});
+
+	// delete remaining images in uploads folder
+	const directory = './uploads';
+	fs.readdir(directory, (err, files) => {
+		if (err) {
+			return next(new ErrorResponse('Could not create blog', 500));
+		} else if (files.length) {
+			for (const file of files) {
+				fs.unlink(path.join(directory, file), err => {
+					if (err && err.code !== 'ENOENT') {
+						return next(new ErrorResponse('Could not create blog', 500));
+					}
+				});
+			}
+		}
+	});
+	const blog = await Blog.create({
+		title,
+		description,
+		paragraphs
+	});
+
 	res.json({
-		success: true
+		success: true,
+		blog
 	});
 });
 
@@ -48,8 +92,50 @@ const createBlog = asyncHandler(async (req, res, next) => {
 // @route   PUT /api/blogs/:slug
 // @access    Private/admin
 const updateBlog = asyncHandler(async (req, res, next) => {
+	const id = req.params.id;
+	const { title, description, paragraphs } = req.body;
+	// move images from uploads to images folder
+	paragraphs.forEach(p => {
+		if (p.imagePath && p.imagePath.startsWith('/uploads')) {
+			const oldPath = p.imagePath;
+			const newPath = oldPath.replace('uploads', 'images');
+			fs.rename(`.${oldPath}`, `.${newPath}`, err => {
+				if (err) {
+					return next(new ErrorResponse('Could not create blog', 500));
+				}
+			});
+			p.imagePath = newPath;
+		}
+	});
+
+	// delete remaining images in uploads folder
+	const directory = './uploads';
+	fs.readdir(directory, (err, files) => {
+		if (err) {
+			return next(new ErrorResponse('Could not create blog', 500));
+		} else if (files.length) {
+			for (const file of files) {
+				fs.unlink(path.join(directory, file), err => {
+					if (err && err.code !== 'ENOENT') {
+						return next(new ErrorResponse('Could not create blog', 500));
+					}
+				});
+			}
+		}
+	});
+	const blog = await Blog.findByIdAndUpdate(id, {
+		title,
+		description,
+		paragraphs
+	});
+
+	if (!blog) {
+		return next(new ErrorResponse('Could not find blog to update', 404));
+	}
+
 	res.json({
-		success: true
+		success: true,
+		blog
 	});
 });
 
@@ -57,8 +143,47 @@ const updateBlog = asyncHandler(async (req, res, next) => {
 // @route   POST /api/blogs/image
 // @access    Private/admin
 const uploadImage = asyncHandler(async (req, res, next) => {
-	res.json({
-		success: true
+	// check for uploaded file
+	if (!req.files) {
+		return next(new ErrorResponse(`Please upload a file`, 400));
+	}
+
+	const file = Object.values(req.files)[0];
+
+	// Make sure the image is a photo
+	if (!file.mimetype.startsWith('image')) {
+		return next(new ErrorResponse(`Please upload an image file`, 400));
+	}
+
+	// Check filesize
+	if (file.size > process.env.MAX_FILE_UPLOAD) {
+		return next(
+			new ErrorResponse(
+				`Please upload an image smaller than ${
+					process.env.MAX_FILE_UPLOAD / 1000000
+				} Mb`,
+				400
+			)
+		);
+	}
+
+	// Create new custom filename
+	file.name = `${moment().valueOf()}${path.parse(file.name).ext}`;
+	//Create new image path
+	const newImagePath = `${process.env.FILE_UPLOAD_PATH}/${file.name}`;
+	// upload file
+	file.mv(newImagePath, async err => {
+		if (err) {
+			console.error(err);
+			return next(new ErrorResponse(`Problem with file upload`, 500));
+		}
+
+		const absoluteImagePath = newImagePath.slice(1);
+
+		res.status(200).json({
+			success: true,
+			image: absoluteImagePath
+		});
 	});
 });
 
