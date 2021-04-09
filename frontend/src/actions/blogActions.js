@@ -8,7 +8,16 @@ import {
 	GET_BLOG_FAIL,
 	DELETE_BLOG_REQUEST,
 	DELETE_BLOG_SUCCESS,
-	DELETE_BLOG_FAIL
+	DELETE_BLOG_FAIL,
+	CREATE_BLOG_REQUEST,
+	CREATE_BLOG_SUCCESS,
+	CREATE_BLOG_FAIL,
+	UPDATE_BLOG_REQUEST,
+	UPDATE_BLOG_SUCCESS,
+	UPDATE_BLOG_FAIL,
+	UPLOAD_IMAGE_REQUEST,
+	UPLOAD_IMAGE_SUCCESS,
+	UPLOAD_IMAGE_FAIL
 } from 'constants/blogConstants';
 
 export const getBlogsAction = () => async dispatch => {
@@ -72,6 +81,113 @@ export const deleteBlogAction = id => async (dispatch, getState) => {
 	} catch (error) {
 		dispatch({
 			type: DELETE_BLOG_FAIL,
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message
+		});
+	}
+};
+
+export const updateBlogAction = (slug, blog) => async (dispatch, getState) => {
+	try {
+		dispatch({
+			type: UPDATE_BLOG_REQUEST
+		});
+
+		const {
+			login: { token }
+		} = getState();
+
+		const config = {
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${token}`
+			}
+		};
+
+		await axios.put(
+			`/api/v1/blogs/${slug}`,
+			{
+				title: blog.title,
+				paragraphs: blog.paragraphs
+			},
+			config
+		);
+
+		dispatch({ type: UPDATE_BLOG_SUCCESS, payload: 'Blog updated' });
+	} catch (error) {
+		dispatch({
+			type: UPDATE_BLOG_FAIL,
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message
+		});
+	}
+};
+
+export const createBlogAction = blog => async (dispatch, getState) => {
+	try {
+		dispatch({
+			type: CREATE_BLOG_REQUEST
+		});
+
+		const {
+			login: { token }
+		} = getState();
+
+		const config = {
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${token}`
+			}
+		};
+
+		await axios.post(`/api/v1/blogs/`, blog, config);
+
+		dispatch({ type: CREATE_BLOG_SUCCESS, payload: 'Blog created' });
+	} catch (error) {
+		dispatch({
+			type: CREATE_BLOG_FAIL,
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message
+		});
+	}
+};
+
+export const uploadImageAction = file => async (dispatch, getState) => {
+	try {
+		dispatch({
+			type: UPLOAD_IMAGE_REQUEST
+		});
+
+		const {
+			userData: { token }
+		} = getState();
+
+		const config = {
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${token}`
+			}
+		};
+
+		const formData = new FormData();
+		formData.append('image', file);
+
+		const { data } = await axios.post(`/api/v1/blogs/image`, formData, config);
+
+		dispatch({
+			type: UPLOAD_IMAGE_SUCCESS,
+			payload: 'Image uploaded',
+			image: data.image
+		});
+	} catch (error) {
+		dispatch({
+			type: UPLOAD_IMAGE_FAIL,
 			payload:
 				error.response && error.response.data.message
 					? error.response.data.message

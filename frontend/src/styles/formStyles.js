@@ -7,16 +7,27 @@ const styles = makeStyles(theme => ({
 		flexDirection: 'column',
 		alignItems: 'center'
 	},
+	formWide: {
+		maxWidth: 500,
+		width: '90%',
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center'
+	},
 	input: {
 		width: '90%',
+		marginTop: theme.spacing(3),
 		'& .MuiInput-input': {
 			borderBottom: `2px solid ${theme.palette.grey[800]}`
 		},
-		'&:first-of-type': {
-			marginTop: theme.spacing(2)
+		'& .MuiOutlinedInput-notchedOutline': {
+			border: `2px solid ${theme.palette.grey[800]}`
 		},
 		'&:last-of-type': {
 			marginBottom: theme.spacing(2)
+		},
+		'&:first-of-type': {
+			marginTop: theme.spacing(1)
 		},
 		'& .MuiInputLabel-shrink, p': {
 			fontWeight: 700
@@ -154,6 +165,10 @@ const styles = makeStyles(theme => ({
 	},
 	dialogText: {
 		color: theme.palette.text.primary
+	},
+	errorButton: {
+		color: theme.palette.error.main,
+		borderColor: theme.palette.error.main
 	}
 }));
 

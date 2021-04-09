@@ -11,7 +11,7 @@ import {
 } from 'utils/validators';
 import { loginAction, logoutAction } from 'actions/adminActions';
 
-const LoginScreen = () => {
+const AdminScreen = () => {
 	const classes = useStyles();
 	const dispatch = useDispatch();
 	const { isAuth, loading: loginLoading } = useSelector(state => state.login);
@@ -90,7 +90,9 @@ const LoginScreen = () => {
 			>
 				<Grid item>
 					<Button
-						className={classes.submitButton}
+						className={classes.blueButton}
+						variant='outlined'
+						color='secondary'
 						component={Link}
 						to='/admin/blogs'
 					>
@@ -99,7 +101,9 @@ const LoginScreen = () => {
 				</Grid>
 				<Grid item>
 					<Button
-						className={classes.submitButton}
+						className={classes.blueButton}
+						variant='outlined'
+						color='secondary'
 						component={Link}
 						to='/admin/bookings'
 					>
@@ -108,7 +112,9 @@ const LoginScreen = () => {
 				</Grid>
 				<Grid item>
 					<Button
-						className={classes.submitButton}
+						className={classes.blueButton}
+						variant='outlined'
+						color='secondary'
 						component={Link}
 						to='/admin/clients'
 					>
@@ -117,9 +123,8 @@ const LoginScreen = () => {
 				</Grid>
 				<Grid item>
 					<Button
-						className={classes.submitButton}
+						className={classes.errorButton}
 						variant='outlined'
-						color='primary'
 						onClick={handleLogout}
 					>
 						Log Out
@@ -129,4 +134,4 @@ const LoginScreen = () => {
 		);
 };
 
-export default LoginScreen;
+export default AdminScreen;

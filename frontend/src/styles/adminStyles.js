@@ -112,15 +112,14 @@ const styles = makeStyles(theme => ({
 	},
 	deleteButton: {
 		display: 'block',
-		marginLeft: 'auto',
+		margin: theme.spacing(1),
+		alignSelf: 'flex-end',
+		color: theme.palette.error.main,
+		borderColor: theme.palette.error.main,
 		'& .MuiButton-label': {
 			display: 'flex',
 			flexDirection: 'row',
 			flexWrap: 'nowrap'
-		},
-		'&:hover': {
-			color: theme.palette.error.main,
-			borderColor: theme.palette.error.main
 		}
 	},
 	banSwitch: {
@@ -149,6 +148,10 @@ const styles = makeStyles(theme => ({
 				backgroundColor: theme.palette.secondary.main
 			}
 		}
+	},
+	paper: {
+		marginBottom: theme.spacing(2),
+		borderLeft: `1px solid ${theme.palette.primary.main}`
 	}
 }));
 

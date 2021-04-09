@@ -13,7 +13,10 @@ import {
 import {
 	getBlogsReducer,
 	getBlogReducer,
-	deleteBlogReducer
+	deleteBlogReducer,
+	updateBlogReducer,
+	createBlogReducer,
+	uploadImageReducer
 } from 'reducers/blogReducers';
 import { loginReducer } from 'reducers/adminReducers';
 
@@ -28,7 +31,10 @@ const reducer = combineReducers({
 	getBlog: getBlogReducer,
 	deleteBlog: deleteBlogReducer,
 	verifyClient: verifyClientReducer,
-	listClients: listClientsReducer
+	listClients: listClientsReducer,
+	updateBlog: updateBlogReducer,
+	createBlog: createBlogReducer,
+	uploadImage: uploadImageReducer
 });
 
 const middleware = [thunk];

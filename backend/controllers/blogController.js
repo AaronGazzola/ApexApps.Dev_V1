@@ -35,4 +35,31 @@ const deleteBlog = asyncHandler(async (req, res, next) => {
 	});
 });
 
-export { getBlogs, getBlog, deleteBlog };
+// @desc    Create blog
+// @route   POST /api/blogs/
+// @access    Private/admin
+const createBlog = asyncHandler(async (req, res, next) => {
+	res.json({
+		success: true
+	});
+});
+
+// @desc    Update blog
+// @route   PUT /api/blogs/:slug
+// @access    Private/admin
+const updateBlog = asyncHandler(async (req, res, next) => {
+	res.json({
+		success: true
+	});
+});
+
+// @desc    Upload image
+// @route   POST /api/blogs/image
+// @access    Private/admin
+const uploadImage = asyncHandler(async (req, res, next) => {
+	res.json({
+		success: true
+	});
+});
+
+export { getBlogs, getBlog, deleteBlog, updateBlog, createBlog, uploadImage };

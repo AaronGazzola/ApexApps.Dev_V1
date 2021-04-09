@@ -18,11 +18,12 @@ import ContactScreen from 'screens/ContactScreen';
 import BlogsScreen from 'screens/BlogsScreen';
 import BlogScreen from 'screens/BlogScreen';
 import CancelBookingScreen from 'screens/CancelBookingScreen';
-import LoginScreen from 'screens/LoginScreen';
+import AdminScreen from 'screens/AdminScreen';
 import ListBookingsScreen from 'screens/ListBookingsScreen';
 import ListClientsScreen from 'screens/ListClientsScreen';
 import ListBlogsScreen from 'screens/ListBlogsScreen';
 import EditBlogScreen from 'screens/EditBlogScreen';
+import TestScreen from 'screens/TestScreen';
 import VerifyClientScreen from 'screens/VerifyClientScreen';
 import Message from 'components/Message';
 import { LOG_IN_CLEAR } from 'constants/adminConstants';
@@ -155,7 +156,7 @@ const App = () => {
 								path='/verifyclient/:token'
 								component={VerifyClientScreen}
 							/>
-							<Route path='/login' exact component={LoginScreen} />
+							<Route path='/admin' exact component={AdminScreen} />
 							<Route
 								path='/admin/bookings'
 								exact
@@ -168,6 +169,9 @@ const App = () => {
 							/>
 							<Route path='/admin/blogs' exact component={ListBlogsScreen} />
 							<Route path='/admin/blog/:id' component={EditBlogScreen} />
+							<Route path='/admin/blog/' component={EditBlogScreen} />
+							<Route path='/test' exact component={TestScreen} />
+							<Route path='/' component={PageNotFoundScreen} />
 						</Switch>
 					) : (
 						<Switch>
@@ -184,9 +188,9 @@ const App = () => {
 								path='/verifyclient/:token'
 								component={VerifyClientScreen}
 							/>
-							<Route path='/login' exact component={LoginScreen} />
+							<Route path='/admin' exact component={AdminScreen} />
 
-							<Redirect path='/admin/' to='/login' />
+							<Redirect path='/admin/' to='/admin' />
 
 							<Route path='/' component={PageNotFoundScreen} />
 						</Switch>

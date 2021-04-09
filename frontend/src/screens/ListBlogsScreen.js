@@ -160,7 +160,7 @@ const ListBlogsScreen = () => {
 					<Button
 						variant='outlined'
 						component={Link}
-						to='/login'
+						to='/admin'
 						className={formClasses.button}
 						startIcon={<ArrowBack />}
 						color='secondary'
