@@ -262,6 +262,40 @@ const styles = makeStyles(theme => ({
 	},
 	blogTitle: {
 		marginTop: theme.spacing(2)
+	},
+	video: {
+		position: 'relative',
+		width: '100%',
+		paddingTop: '56.25%',
+		margin: theme.spacing(1, 0),
+		'& iframe': {
+			position: 'absolute',
+			top: 0,
+			left: 0,
+			width: '100%',
+			height: '100%'
+		}
+	},
+	paper: {
+		margin: theme.spacing(4, 0),
+		padding: theme.spacing(2),
+		border: `1px solid ${theme.palette.grey[900]}`,
+		background: 'transparent',
+		width: '100%',
+		[theme.breakpoints.down('xs')]: {
+			width: '90%'
+		}
+	},
+	list: {
+		listStyle: 'none',
+		padding: 0,
+		marginTop: theme.spacing(3),
+		'& li': {
+			marginBottom: theme.spacing(2)
+		}
+	},
+	listText: {
+		marginLeft: theme.spacing(1)
 	}
 }));
 
