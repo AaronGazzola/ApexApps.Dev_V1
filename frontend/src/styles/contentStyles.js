@@ -41,7 +41,7 @@ const styles = makeStyles(theme => ({
 		borderLeft: `1px solid ${theme.palette.primary.main}`,
 		maxWidth: 650,
 		// borderLeft: `1px solid ${theme.palette.grey[200]}`,
-		boxShadow: `inset 6px 0 9px -7px ${theme.palette.primary.dark}`,
+		boxShadow: `inset 7px 0 9px -7px ${theme.palette.primary.dark}`,
 		// boxShadow: `inset 5px 0 7px -7px ${theme.palette.grey[200]}`,
 		padding: theme.spacing(3),
 		paddingTop: theme.spacing(2),
@@ -51,11 +51,11 @@ const styles = makeStyles(theme => ({
 		}
 	},
 	textBox2: {
-		backgroundColor: '#0A0A0A',
+		backgroundColor: '#090909',
 		// borderTop: `1px solid ${theme.palette.grey[200]}`,
 		borderTop: `1px solid ${theme.palette.primary.main}`,
 		// boxShadow: `inset 0 5px 7px -7px ${theme.palette.grey[200]}`,
-		boxShadow: `inset 0 6px 9px -7px ${theme.palette.primary.dark}`,
+		boxShadow: `inset 0 7px 9px -7px ${theme.palette.primary.dark}`,
 		padding: theme.spacing(3),
 		marginTop: theme.spacing(2)
 	},
@@ -240,6 +240,7 @@ const styles = makeStyles(theme => ({
 	},
 	blogTextBox: {
 		marginTop: theme.spacing(2),
+		backgroundColor: '#090909',
 		maxWidth: 800,
 		'& strong': {
 			borderBottom: `1px solid ${theme.palette.primary.main}`,
@@ -252,6 +253,10 @@ const styles = makeStyles(theme => ({
 			// fontStyle: 'italic',
 			textDecoration: 'none',
 			fontWeight: 400
+		},
+		'& span': {
+			fontSize: '.5rem'
+			// color: theme.palette.text.secondary
 		}
 	},
 	skeleton: {
@@ -298,6 +303,14 @@ const styles = makeStyles(theme => ({
 	},
 	listText: {
 		marginLeft: theme.spacing(1)
+	},
+	signature1: {
+		margin: theme.spacing(1, 2)
+	},
+	signature2: {
+		margin: theme.spacing(0, 4),
+		fontFamily: "'Yellowtail', cursive",
+		fontSize: '2.5rem'
 	}
 }));
 

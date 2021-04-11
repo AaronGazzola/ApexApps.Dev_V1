@@ -34,7 +34,7 @@ const PortfolioScreen = () => {
 						className={classes.link}
 						href='https://www.origami.cool'
 						target='_blank'
-						rel='noreferrer'
+						rel='noreferrer noopener'
 					>
 						Origami.cool
 					</a>

@@ -46,14 +46,14 @@ const ContactScreen = () => {
 					<a
 						href='https://github.com/AaronGazzola'
 						target='_blank'
-						rel='noreferrer'
+						rel='noreferrer noopener'
 					>
 						<GitHub fontSize='large' />
 					</a>
 					<a
 						href='https://twitter.com/aarongazzola'
 						target='_blank'
-						rel='noreferrer'
+						rel='noreferrer noopener'
 					>
 						<Twitter fontSize='large' />
 					</a>

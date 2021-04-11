@@ -58,7 +58,7 @@ export const getTheme = () =>
 				paper: '#0A0A0A'
 			},
 			text: {
-				primary: '#f3f3f3',
+				primary: '#f0f0f0',
 				secondary: '#b0b0b0'
 			}
 		},

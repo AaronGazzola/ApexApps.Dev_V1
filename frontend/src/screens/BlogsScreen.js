@@ -30,7 +30,7 @@ const BlogsScreen = () => {
 					&nbsp;and&nbsp;
 					<span className={classes.highlight}>reducing costs</span>
 					<br />
-					with the elegant power of web applications.
+					with the power of web applications.
 				</Typography>
 			</div>
 			{loading

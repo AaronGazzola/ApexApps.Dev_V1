@@ -146,11 +146,7 @@ const updateBlog = asyncHandler(async (req, res, next) => {
 
 	// paragraphs.map(p => (p.body = sanitizeHtml(p.body.replace(/&lt;/g, '<'))));
 	paragraphs.map(p => (p.body = p.body.replace(/&lt;/g, '<')));
-	const blog = await Blog.findById(id, {
-		title,
-		description,
-		paragraphs
-	});
+	const blog = await Blog.findById(id);
 
 	if (!blog) {
 		return next(new ErrorResponse('Could not find blog to update', 404));

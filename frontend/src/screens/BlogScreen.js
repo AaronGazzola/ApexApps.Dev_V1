@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 import clsx from 'clsx';
 import { useDispatch, useSelector } from 'react-redux';
@@ -61,7 +62,7 @@ const BlogScreen = ({ match }) => {
 									</Typography>
 								)}
 								<Typography
-									className={classes.paragraph}
+									className={p.subtitle ? classes.paragraph : null}
 									dangerouslySetInnerHTML={{ __html: p.body }}
 								></Typography>
 							</div>
@@ -74,6 +75,26 @@ const BlogScreen = ({ match }) => {
 							)}
 						</Grid>
 					))}
+					{blog && (
+						<div
+							className={classes.textBox3}
+							style={{ width: '100%', maxWidth: 800 }}
+						>
+							<Typography>
+								Feel free to{' '}
+								<Link className={classes.link} to='/contact'>
+									book a call
+								</Link>{' '}
+								to discuss your custom web application
+							</Typography>
+							<Typography className={classes.signature1}>
+								Hope to hear from you soon!
+							</Typography>
+							<Typography className={classes.signature2}>
+								Aaron Gazzola
+							</Typography>
+						</div>
+					)}
 				</>
 			)}
 		</Grid>
