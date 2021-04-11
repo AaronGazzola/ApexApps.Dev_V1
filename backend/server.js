@@ -122,7 +122,6 @@ schedule.scheduleJob('0 0 * * *', async () => {
 	momentTimes.forEach(time => {
 		bookings.push({ timestamp: time.unix() });
 	});
-	console.log(bookings);
 
 	await Booking.insertMany(bookings);
 });

@@ -12,7 +12,8 @@ import {
 } from 'reducers/bookingReducers';
 import {
 	getBlogsReducer,
-	getBlogReducer,
+	getBlogBySlugReducer,
+	getBlogByIdReducer,
 	deleteBlogReducer,
 	updateBlogReducer,
 	createBlogReducer,
@@ -28,7 +29,8 @@ const reducer = combineReducers({
 	setBookingAvailability: setBookingAvailabilityReducer,
 	cancelBooking: cancelBookingReducer,
 	getBlogs: getBlogsReducer,
-	getBlog: getBlogReducer,
+	getBlogById: getBlogByIdReducer,
+	getBlogBySlug: getBlogBySlugReducer,
 	deleteBlog: deleteBlogReducer,
 	verifyClient: verifyClientReducer,
 	listClients: listClientsReducer,

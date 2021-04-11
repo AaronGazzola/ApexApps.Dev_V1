@@ -24,16 +24,14 @@ const Header = () => {
 			case '/apps':
 				setTabValue(1);
 				break;
-			case '/blog':
-				setTabValue(2);
-				break;
 			case '/contact':
 				setTabValue(3);
 				break;
 			default:
 				break;
 		}
-	});
+		if (location.pathname.startsWith('/blog')) setTabValue(2);
+	}, [location.pathname]);
 
 	const [tabValue, setTabValue] = useState(0);
 

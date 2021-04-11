@@ -124,7 +124,7 @@ const ListBlogsScreen = () => {
 										<TableCell align='center'>
 											<IconButton
 												component={Link}
-												to={`/admin/blog/${blog.slug}`}
+												to={`/admin/blog/${blog._id}`}
 											>
 												<Edit color='secondary' />
 											</IconButton>

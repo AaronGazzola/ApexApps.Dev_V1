@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
+import moment from 'moment';
 import clsx from 'clsx';
 import { useDispatch, useSelector } from 'react-redux';
 import useStyles from 'styles/contentStyles';
-import { Grid, Typography } from '@material-ui/core';
-import { Skeleton } from '@material-ui/lab';
-import { getBlogAction } from 'actions/blogActions';
+import { CircularProgress, Grid, Typography } from '@material-ui/core';
+import { getBlogBySlugAction } from 'actions/blogActions';
 
 const BlogScreen = ({ match }) => {
 	const slug = match.params.slug;
@@ -12,40 +12,45 @@ const BlogScreen = ({ match }) => {
 
 	const dispatch = useDispatch();
 
-	const getBlog = useSelector(state => state.getBlog);
-	const { blog, loading } = getBlog;
+	const getBlogBySlug = useSelector(state => state.getBlogBySlug);
+	const { blog, loading } = getBlogBySlug;
 
 	useEffect(() => {
-		dispatch(getBlogAction(slug));
+		dispatch(getBlogBySlugAction(slug));
 	}, [dispatch, slug]);
 
 	return (
 		<Grid container direction='column' alignItems='center'>
 			{loading ? (
 				<>
-					<Skeleton
-						variant='rect'
-						width={400}
-						height={80}
+					<CircularProgress
 						style={{ marginTop: 20 }}
-					/>
-					<Skeleton
-						variant='text'
-						style={{ marginTop: 20 }}
-						width={600}
-						height={120}
+						size={50}
+						color='primary'
+						thickness={2}
 					/>
 				</>
 			) : (
 				<>
-					<Typography
-						variant='h1'
-						className={clsx(classes.title, classes.blogTitle)}
-					>
-						{blog?.title}
-					</Typography>
+					{blog && (
+						<div className={classes.textBox1}>
+							<Typography variant='h1' className={classes.title}>
+								{blog?.title}
+							</Typography>
+							<Typography
+								variant='body2'
+								style={{ marginLeft: 16 }}
+								className={classes.date}
+							>
+								{moment(blog?.createdAt.substring(0, 10)).format('Do MMM YYYY')}
+							</Typography>
+							<Typography className={classes.paragraph}>
+								{blog?.description}
+							</Typography>
+						</div>
+					)}
 					{blog?.paragraphs.map((p, i) => (
-						<div key={i}>
+						<Grid container direction='column' alignItems='center' key={i}>
 							<div
 								className={clsx(classes.textBox3, classes.blogTextBox)}
 								key={p._id}
@@ -67,7 +72,7 @@ const BlogScreen = ({ match }) => {
 									alt={p.imageLabel}
 								/>
 							)}
-						</div>
+						</Grid>
 					))}
 				</>
 			)}

@@ -29,7 +29,8 @@ import Message from 'components/Message';
 import { LOG_IN_CLEAR } from 'constants/adminConstants';
 import {
 	GET_BLOGS_CLEAR,
-	GET_BLOG_CLEAR,
+	GET_BLOG_BY_SLUG_CLEAR,
+	GET_BLOG_BY_ID_CLEAR,
 	DELETE_BLOG_CLEAR,
 	UPDATE_BLOG_CLEAR,
 	CREATE_BLOG_CLEAR,
@@ -62,7 +63,8 @@ const App = () => {
 		cancelBooking: { error: cancelBookingError, success: cancelBookingSuccess },
 		verifyClient: { error: verifyClientError, success: verifyClientSuccess },
 		getBlogs: { error: getBlogsError },
-		getBlog: { error: getBlogError },
+		getBlogBySlug: { error: getBlogBySlugError },
+		getBlogById: { error: getBlogByIdError },
 		deleteBlog: { error: deleteBlogError, success: deleteBlogSuccess },
 		listClients: { error: listClientsError },
 		updateBlog: { error: updateBlogError, success: updateBlogSuccess },
@@ -83,7 +85,8 @@ const App = () => {
 							submitBookingError ||
 							cancelBookingError ||
 							getBlogsError ||
-							getBlogError ||
+							getBlogBySlugError ||
+							getBlogByIdError ||
 							setBookingAvailabilityError ||
 							verifyClientError ||
 							listClientsError ||
@@ -108,8 +111,10 @@ const App = () => {
 								? CANCEL_BOOKING_CLEAR
 								: getBlogsError
 								? GET_BLOGS_CLEAR
-								: getBlogError
-								? GET_BLOG_CLEAR
+								: getBlogBySlugError
+								? GET_BLOG_BY_SLUG_CLEAR
+								: getBlogByIdError
+								? GET_BLOG_BY_ID_CLEAR
 								: setBookingAvailabilityError
 								? SET_BOOKING_AVAILABILITY_CLEAR
 								: verifyClientError
@@ -192,7 +197,7 @@ const App = () => {
 								component={ListClientsScreen}
 							/>
 							<Route path='/admin/blogs' exact component={ListBlogsScreen} />
-							<Route path='/admin/blog/:slug' component={EditBlogScreen} />
+							<Route path='/admin/blog/:id' component={EditBlogScreen} />
 							<Route path='/admin/blog/' component={EditBlogScreen} />
 							<Route path='/test' exact component={TestScreen} />
 							<Route path='/' component={PageNotFoundScreen} />

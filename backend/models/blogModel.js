@@ -38,7 +38,7 @@ const blogSchema = mongoose.Schema({
 	}
 });
 
-blogSchema.pre('validate', function () {
+blogSchema.pre(['validate', 'save', 'create'], function () {
 	if (this.title) {
 		this.slug = slugify(this.title, { lower: true, strict: true });
 	}

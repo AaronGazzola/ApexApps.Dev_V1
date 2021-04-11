@@ -3,10 +3,14 @@ import {
 	GET_BLOGS_SUCCESS,
 	GET_BLOGS_FAIL,
 	GET_BLOGS_CLEAR,
-	GET_BLOG_REQUEST,
-	GET_BLOG_SUCCESS,
-	GET_BLOG_FAIL,
-	GET_BLOG_CLEAR,
+	GET_BLOG_BY_SLUG_REQUEST,
+	GET_BLOG_BY_SLUG_SUCCESS,
+	GET_BLOG_BY_SLUG_FAIL,
+	GET_BLOG_BY_SLUG_CLEAR,
+	GET_BLOG_BY_ID_REQUEST,
+	GET_BLOG_BY_ID_SUCCESS,
+	GET_BLOG_BY_ID_FAIL,
+	GET_BLOG_BY_ID_CLEAR,
 	DELETE_BLOG_REQUEST,
 	DELETE_BLOG_SUCCESS,
 	DELETE_BLOG_FAIL,
@@ -44,19 +48,37 @@ export const getBlogsReducer = (state = {}, action) => {
 	}
 };
 
-export const getBlogReducer = (state = {}, action) => {
+export const getBlogBySlugReducer = (state = {}, action) => {
 	switch (action.type) {
-		case GET_BLOG_REQUEST:
+		case GET_BLOG_BY_SLUG_REQUEST:
 			return { loading: true };
-		case GET_BLOG_SUCCESS:
+		case GET_BLOG_BY_SLUG_SUCCESS:
 			return {
 				loading: false,
 				success: true,
 				blog: action.payload
 			};
-		case GET_BLOG_FAIL:
+		case GET_BLOG_BY_SLUG_FAIL:
 			return { loading: false, error: action.payload };
-		case GET_BLOG_CLEAR:
+		case GET_BLOG_BY_SLUG_CLEAR:
+			return { ...state, error: null, success: null };
+		default:
+			return state;
+	}
+};
+export const getBlogByIdReducer = (state = {}, action) => {
+	switch (action.type) {
+		case GET_BLOG_BY_ID_REQUEST:
+			return { loading: true };
+		case GET_BLOG_BY_ID_SUCCESS:
+			return {
+				loading: false,
+				success: true,
+				blog: action.payload
+			};
+		case GET_BLOG_BY_ID_FAIL:
+			return { loading: false, error: action.payload };
+		case GET_BLOG_BY_ID_CLEAR:
 			return { ...state, error: null, success: null };
 		default:
 			return state;

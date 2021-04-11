@@ -3,9 +3,12 @@ import {
 	GET_BLOGS_REQUEST,
 	GET_BLOGS_SUCCESS,
 	GET_BLOGS_FAIL,
-	GET_BLOG_REQUEST,
-	GET_BLOG_SUCCESS,
-	GET_BLOG_FAIL,
+	GET_BLOG_BY_SLUG_REQUEST,
+	GET_BLOG_BY_SLUG_SUCCESS,
+	GET_BLOG_BY_SLUG_FAIL,
+	GET_BLOG_BY_ID_REQUEST,
+	GET_BLOG_BY_ID_SUCCESS,
+	GET_BLOG_BY_ID_FAIL,
 	DELETE_BLOG_REQUEST,
 	DELETE_BLOG_SUCCESS,
 	DELETE_BLOG_FAIL,
@@ -39,17 +42,46 @@ export const getBlogsAction = () => async dispatch => {
 	}
 };
 
-export const getBlogAction = slug => async dispatch => {
+export const getBlogBySlugAction = slug => async dispatch => {
 	try {
 		dispatch({
-			type: GET_BLOG_REQUEST
+			type: GET_BLOG_BY_SLUG_REQUEST
 		});
-		const { data } = await axios.get(`/api/v1/blogs/${slug}`);
+		const { data } = await axios.get(`/api/v1/blogs/slug/${slug}`);
 
-		dispatch({ type: GET_BLOG_SUCCESS, payload: data.blog });
+		dispatch({ type: GET_BLOG_BY_SLUG_SUCCESS, payload: data.blog });
 	} catch (error) {
 		dispatch({
-			type: GET_BLOG_FAIL,
+			type: GET_BLOG_BY_SLUG_FAIL,
+			payload:
+				error.response && error.response.data.message
+					? error.response.data.message
+					: error.message
+		});
+	}
+};
+export const getBlogByIdAction = id => async (dispatch, getState) => {
+	try {
+		dispatch({
+			type: GET_BLOG_BY_ID_REQUEST
+		});
+
+		const {
+			login: { token }
+		} = getState();
+
+		const config = {
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${token}`
+			}
+		};
+		const { data } = await axios.get(`/api/v1/blogs/id/${id}`, config);
+
+		dispatch({ type: GET_BLOG_BY_ID_SUCCESS, payload: data.blog });
+	} catch (error) {
+		dispatch({
+			type: GET_BLOG_BY_ID_FAIL,
 			payload:
 				error.response && error.response.data.message
 					? error.response.data.message

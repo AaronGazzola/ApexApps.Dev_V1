@@ -1,4 +1,5 @@
 import asyncHandler from '../middleware/async.js';
+import sanitizeHtml from 'sanitize-html';
 import path from 'path';
 import fs from 'fs';
 import moment from 'moment';
@@ -21,7 +22,8 @@ const getBlogs = asyncHandler(async (req, res, next) => {
 // @access    Public
 const getBlog = asyncHandler(async (req, res, next) => {
 	const slug = req.params.slug;
-	const blog = await Blog.findOne({ slug });
+	const id = req.params.id;
+	const blog = slug ? await Blog.findOne({ slug }) : await Blog.findById(id);
 
 	if (!blog) {
 		return next(new ErrorResponse('Could not find blog', 404));
@@ -36,7 +38,24 @@ const getBlog = asyncHandler(async (req, res, next) => {
 // @route   GET /api/blogs/delete/:id
 // @access    Private/admin
 const deleteBlog = asyncHandler(async (req, res, next) => {
-	await Blog.findByIdAndDelete(req.params.id);
+	const blog = await Blog.findById(req.params.id);
+	if (!blog) {
+		return next(new ErrorResponse('Could not find blog to delete', 404));
+	}
+
+	// delete all images on blog
+	blog.paragraphs.forEach(p => {
+		if (p.imagePath) {
+			fs.unlink(`.${p.imagePath}`, err => {
+				if (err && err.code !== 'ENOENT') {
+					return next(new ErrorResponse('Could not create blog', 500));
+				}
+			});
+		}
+	});
+
+	await blog.delete();
+
 	res.json({
 		success: true
 	});
@@ -76,6 +95,7 @@ const createBlog = asyncHandler(async (req, res, next) => {
 			}
 		}
 	});
+	paragraphs.forEach(p => (p.body = p.body.replace(/&lt;/g, '<')));
 	const blog = await Blog.create({
 		title,
 		description,
@@ -123,7 +143,10 @@ const updateBlog = asyncHandler(async (req, res, next) => {
 			}
 		}
 	});
-	const blog = await Blog.findByIdAndUpdate(id, {
+
+	// paragraphs.map(p => (p.body = sanitizeHtml(p.body.replace(/&lt;/g, '<'))));
+	paragraphs.map(p => (p.body = p.body.replace(/&lt;/g, '<')));
+	const blog = await Blog.findById(id, {
 		title,
 		description,
 		paragraphs
@@ -132,6 +155,12 @@ const updateBlog = asyncHandler(async (req, res, next) => {
 	if (!blog) {
 		return next(new ErrorResponse('Could not find blog to update', 404));
 	}
+
+	blog.title = title;
+	blog.description = description;
+	blog.paragraphs = paragraphs;
+
+	await blog.save();
 
 	res.json({
 		success: true,

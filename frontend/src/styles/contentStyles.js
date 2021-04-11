@@ -154,7 +154,8 @@ const styles = makeStyles(theme => ({
 	},
 	linkReset: {
 		textDecoration: 'none',
-		color: theme.palette.text.primary
+		color: theme.palette.text.primary,
+		marginTop: theme.spacing(2)
 	},
 	contactButton: {
 		color: theme.palette.secondary.main,
@@ -239,6 +240,7 @@ const styles = makeStyles(theme => ({
 	},
 	blogTextBox: {
 		marginTop: theme.spacing(2),
+		maxWidth: 800,
 		'& strong': {
 			borderBottom: `1px solid ${theme.palette.primary.main}`,
 			fontStyle: 'italic',
@@ -256,9 +258,9 @@ const styles = makeStyles(theme => ({
 		marginTop: theme.spacing(2)
 	},
 	image: {
-		marginTop: theme.spacing(3),
-		maxWidth: 400,
-		maxHeight: 400
+		maxWidth: 800,
+		width: '100%',
+		padding: theme.spacing(2)
 	},
 	blogTitle: {
 		marginTop: theme.spacing(2)

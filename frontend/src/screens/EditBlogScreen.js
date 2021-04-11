@@ -21,19 +21,21 @@ import {
 import { VALIDATOR_MAXLENGTH, VALIDATOR_REQUIRE } from 'utils/validators';
 import { useDispatch, useSelector } from 'react-redux';
 import {
-	getBlogAction,
+	getBlogByIdAction,
 	uploadImageAction,
 	updateBlogAction,
 	createBlogAction
 } from 'actions/blogActions';
-import { GET_BLOG_CLEAR } from 'constants/blogConstants';
+import { GET_BLOG_BY_ID_CLEAR } from 'constants/blogConstants';
 
 const EditBlogScreen = ({ match, history }) => {
 	const classes = useStyles();
 	const formClasses = useFormStyles();
-	const slug = match.params.slug;
+	const id = match.params.id;
 	const dispatch = useDispatch();
-	const { blog, success: getBlogSuccess } = useSelector(state => state.getBlog);
+	const { blog, success: getBlogSuccess } = useSelector(
+		state => state.getBlogById
+	);
 	const {
 		success: updateBlogSuccess,
 		loading: updateBlogLoading
@@ -50,17 +52,17 @@ const EditBlogScreen = ({ match, history }) => {
 	} = useSelector(state => state.uploadImage);
 
 	const [uploadImageIndex, setUploadImageIndex] = useState(0);
-	const [formState, formDispatch] = useBlogForm(slug && blog);
+	const [formState, formDispatch] = useBlogForm(blog && blog);
 	const { formIsValid, paragraphs, title, description } = formState;
 
 	useEffect(() => {
-		if (slug && slug !== blog?.slug) dispatch(getBlogAction(slug));
-	}, [dispatch, slug, blog]);
+		if (id) dispatch(getBlogByIdAction(id));
+	}, [dispatch, id]);
 
 	useEffect(() => {
 		if (getBlogSuccess) {
 			formDispatch({ type: 'RESET' });
-			dispatch({ type: GET_BLOG_CLEAR });
+			dispatch({ type: GET_BLOG_BY_ID_CLEAR });
 		}
 	}, [getBlogSuccess, formDispatch]);
 
@@ -95,18 +97,18 @@ const EditBlogScreen = ({ match, history }) => {
 				imageLabel: p.imageLabel
 			}))
 		};
-		if (slug) {
+		if (id) {
 			dispatch(updateBlogAction(newBlog, blog?._id));
 		} else {
 			dispatch(createBlogAction(newBlog));
 		}
 	};
 
-	const changeHandler = (e, validators = [], i = 0) => {
+	const changeHandler = (e, validators = [], i) => {
 		formDispatch({ type: 'CHANGE', payload: e.target, validators, i });
 	};
 
-	const touchHandler = (e, i = 0) => {
+	const touchHandler = (e, i) => {
 		formDispatch({ type: 'TOUCH', payload: e.target, i });
 	};
 
@@ -125,7 +127,7 @@ const EditBlogScreen = ({ match, history }) => {
 	};
 	return (
 		<>
-			<Typography variant='h1'>{slug ? 'Edit ' : 'Create '}Blog</Typography>
+			<Typography variant='h1'>{id ? 'Edit ' : 'Create '}Blog</Typography>
 			<Button
 				variant='outlined'
 				component={Link}
@@ -165,6 +167,8 @@ const EditBlogScreen = ({ match, history }) => {
 				/>
 				<TextField
 					id='description'
+					multiline
+					rows={3}
 					label='Description'
 					type='textarea'
 					variant='outlined'
@@ -216,7 +220,7 @@ const EditBlogScreen = ({ match, history }) => {
 							rows={10}
 							id='body'
 							label='Paragraph Body'
-							type='textarea'
+							type='html'
 							variant='outlined'
 							placeholder='Paragraph Body'
 							fullWidth
@@ -306,7 +310,7 @@ const EditBlogScreen = ({ match, history }) => {
 				>
 					{createBlogLoading || updateBlogLoading ? (
 						<CircularProgress style={{ color: '#000' }} size={25} />
-					) : slug ? (
+					) : id ? (
 						'Update Blog'
 					) : (
 						'Create Blog'
