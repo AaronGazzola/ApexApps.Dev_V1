@@ -1,3 +1,14 @@
 #root {
   overflow: hidden;
 }
+
+
+.ie {
+  max-width: 500px;
+  width: 100%;
+  padding: 16px;
+  font-family:'Montserrat', sans-serif;
+  font-size: 1.4rem;
+  margin: 16px auto;
+  text-align: center;
+}
