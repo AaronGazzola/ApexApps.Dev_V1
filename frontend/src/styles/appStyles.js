@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 // const drawerWidth = 240;
 const appBarHeight = 150;
-const footerHeight = 55;
+const footerHeight = 75;
 
 const styles = makeStyles(theme => ({
 	appBar: {
@@ -98,6 +98,10 @@ const styles = makeStyles(theme => ({
 		'&.Mui-selected': {
 			color: theme.palette.secondary.main
 		}
+	},
+	link: {
+		color: theme.palette.secondary.dark,
+		textDecoration: 'none'
 	}
 }));
 

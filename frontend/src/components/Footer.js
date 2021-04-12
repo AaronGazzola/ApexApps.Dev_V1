@@ -1,4 +1,5 @@
 import { Typography } from '@material-ui/core';
+import { Link } from 'react-router-dom';
 import React from 'react';
 import useStyles from 'styles/appStyles';
 
@@ -11,6 +12,11 @@ const Footer = () => {
 			</Typography>
 			<Typography variant='body2'>
 				Copyright &copy; Apex Apps {new Date().getFullYear()}
+			</Typography>
+			<Typography variant='body2'>
+				<Link to='/terms' className={classes.link}>
+					Terms and Conditions
+				</Link>
 			</Typography>
 		</footer>
 	);

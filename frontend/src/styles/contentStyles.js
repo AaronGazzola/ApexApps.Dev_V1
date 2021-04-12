@@ -239,7 +239,7 @@ const styles = makeStyles(theme => ({
 		}
 	},
 	blogTextBox: {
-		marginTop: theme.spacing(2),
+		margin: theme.spacing(2, 2, 0, 2),
 		backgroundColor: '#090909',
 		maxWidth: 800,
 		'& strong': {
@@ -311,6 +311,20 @@ const styles = makeStyles(theme => ({
 		margin: theme.spacing(0, 4),
 		fontFamily: "'Yellowtail', cursive",
 		fontSize: '2.5rem'
+	},
+	padding2: {
+		padding: theme.spacing(2)
+	},
+	text: {
+		marginTop: theme.spacing(1),
+		marginLeft: theme.spacing(1),
+		'&:last-of-type': {
+			marginBottom: theme.spacing(1)
+		},
+		'& strong': {
+			fontWeight: 500,
+			fontStyle: 'italic'
+		}
 	}
 }));
 

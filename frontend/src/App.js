@@ -23,7 +23,8 @@ import ListBookingsScreen from 'screens/ListBookingsScreen';
 import ListClientsScreen from 'screens/ListClientsScreen';
 import ListBlogsScreen from 'screens/ListBlogsScreen';
 import EditBlogScreen from 'screens/EditBlogScreen';
-import TestScreen from 'screens/TestScreen';
+import TermsScreen from 'screens/TermsScreen';
+import PrivacyPolicyScreen from 'screens/PrivacyPolicyScreen';
 import VerifyClientScreen from 'screens/VerifyClientScreen';
 import Message from 'components/Message';
 import { LOG_IN_CLEAR } from 'constants/adminConstants';
@@ -199,7 +200,8 @@ const App = () => {
 							<Route path='/admin/blogs' exact component={ListBlogsScreen} />
 							<Route path='/admin/blog/:id' component={EditBlogScreen} />
 							<Route path='/admin/blog/' component={EditBlogScreen} />
-							<Route path='/test' exact component={TestScreen} />
+							<Route path='/terms' exact component={TermsScreen} />
+							<Route path='/privacy' exact component={PrivacyPolicyScreen} />
 							<Route path='/' component={PageNotFoundScreen} />
 						</Switch>
 					) : (
@@ -220,7 +222,8 @@ const App = () => {
 							<Route path='/admin' exact component={AdminScreen} />
 
 							<Redirect path='/admin/' to='/admin' />
-
+							<Route path='/terms' exact component={TermsScreen} />
+							<Route path='/privacy' exact component={PrivacyPolicyScreen} />
 							<Route path='/' component={PageNotFoundScreen} />
 						</Switch>
 					)}
