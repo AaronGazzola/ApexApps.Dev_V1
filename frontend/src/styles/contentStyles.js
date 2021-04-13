@@ -159,21 +159,23 @@ const styles = makeStyles(theme => ({
 		marginTop: theme.spacing(2)
 	},
 	contactButton: {
-		color: theme.palette.secondary.main,
-		border: `1px solid ${theme.palette.secondary.main}`,
-		// color: '#000',
-		fontSize: '2rem',
-		fontWeight: 300,
-		padding: theme.spacing(2),
-		paddingLeft: theme.spacing(3),
-		paddingRight: theme.spacing(3),
-		textTransform: 'none',
-		fontWeight: 500,
-		transition: 'none',
-		'&:hover': {
+		'&.MuiButtonBase-root': {
+			color: theme.palette.secondary.main,
 			border: `1px solid ${theme.palette.secondary.main}`,
-			backgroundColor: theme.palette.secondary.main,
-			color: '#000'
+			// color: '#000',
+			fontSize: '2rem',
+			fontWeight: 300,
+			padding: theme.spacing(2),
+			paddingLeft: theme.spacing(3),
+			paddingRight: theme.spacing(3),
+			textTransform: 'none',
+			fontWeight: 500,
+			transition: 'none',
+			'&:hover': {
+				border: `1px solid ${theme.palette.secondary.main}`,
+				backgroundColor: theme.palette.secondary.main,
+				color: '#000'
+			}
 		}
 	},
 	phoneIcon: {
@@ -326,6 +328,9 @@ const styles = makeStyles(theme => ({
 			fontWeight: 500,
 			fontStyle: 'italic'
 		}
+	},
+	margin1: {
+		margin: theme.spacing(1)
 	}
 }));
 

@@ -1,4 +1,5 @@
 import moment from 'moment';
+import tz from 'moment-timezone';
 
 // set booking times
 //  Format = 24hr, colon separated, local time
@@ -23,7 +24,11 @@ const times = [
 
 // convert booking times to moment instances for tomorrow's date
 const momentTimes = times.map(time =>
-	moment().add(1, 'd').hour(time.split(':')[0]).minute(time.split(':')[1])
+	moment()
+		.tz('Australia/Melbourne')
+		.add(1, 'd')
+		.hour(time.split(':')[0])
+		.minute(time.split(':')[1])
 );
 
 //set number of dates to populate

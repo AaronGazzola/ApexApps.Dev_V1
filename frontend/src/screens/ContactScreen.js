@@ -69,7 +69,9 @@ const ContactScreen = () => {
 					className={classes.email}
 				>
 					<a href='mailto: aaron@apexapps.dev'>
-						<Typography>Aaron@ApexApps.dev</Typography>
+						<Typography className={classes.margin1}>
+							Aaron@ApexApps.dev
+						</Typography>
 					</a>
 				</Grid>
 			</Grid>
