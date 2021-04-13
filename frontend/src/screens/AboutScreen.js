@@ -142,7 +142,7 @@ const AboutScreen = () => {
 					The Process:
 				</Typography>
 			</Grid>
-			<Grid item container xs spacing={3} className={classes.row}>
+			<Grid item container spacing={3} className={classes.row}>
 				<Grid
 					ref={discussRef}
 					item
@@ -173,7 +173,7 @@ const AboutScreen = () => {
 					</div>
 				</Grid>
 			</Grid>
-			<Grid item container xs spacing={3} className={classes.row}>
+			<Grid item container spacing={3} className={classes.row}>
 				<Grid item sm={8} xs={12}>
 					<div className={classes.textBox3}>
 						<Typography variant='h4' className={classes.subTitle3}>
@@ -223,7 +223,7 @@ const AboutScreen = () => {
 							into a great application.
 						</Typography>
 						<Typography className={classes.paragraph}>
-							You will recieve updates during this process, which will track the
+							You will receive updates during this process, which will track the
 							progress and timeline of development.
 						</Typography>
 					</div>

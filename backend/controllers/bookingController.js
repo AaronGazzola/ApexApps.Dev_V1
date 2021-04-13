@@ -78,7 +78,7 @@ const submitBooking = asyncHandler(async (req, res, next) => {
 				client,
 				baseUrl,
 				message1: `Please click the button below to verify your email address and confirm your booking`,
-				reason: `You have recieved this email because your email address was used to submit a booking at ApexApps.dev. This is not a promotional email. `,
+				reason: `You have received this email because your email address was used to submit a booking at ApexApps.dev. This is not a promotional email. `,
 				buttonText: 'Verify Email'
 			});
 			res.status(200).json({
@@ -162,7 +162,7 @@ const submitBooking = asyncHandler(async (req, res, next) => {
 				booking,
 				baseUrl,
 				actionLink: `${baseUrl}/cancel/client/${id}`,
-				reason: `You have recieved this email because your email address was used to confirm a booking at ApexApps.dev. This is not a promotional email. `
+				reason: `You have received this email because your email address was used to confirm a booking at ApexApps.dev. This is not a promotional email. `
 			});
 			// send email to self with booking and client details
 			await sendEmail({
@@ -256,7 +256,7 @@ const verifyClient = asyncHandler(async (req, res, next) => {
 			booking,
 			baseUrl,
 			actionLink: `${baseUrl}/cancel/client/${booking._id}`,
-			reason: `You have recieved this email because your email address was used to confirm a booking at ApexApps.dev. This is not a promotional email. `
+			reason: `You have received this email because your email address was used to confirm a booking at ApexApps.dev. This is not a promotional email. `
 		});
 		// send email to self with booking and client details
 		await sendEmail({

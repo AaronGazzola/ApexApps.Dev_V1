@@ -61,6 +61,13 @@ app.use(hpp());
 
 // Enable CORS
 app.use(cors());
+app.use((req, res, next) => {
+	res.header(
+		'Content-Security-Policy',
+		"script-src 'self' https://www.youtube.com"
+	);
+	next();
+});
 
 // Set uploads and images folders as static
 const __dirname = path.resolve();

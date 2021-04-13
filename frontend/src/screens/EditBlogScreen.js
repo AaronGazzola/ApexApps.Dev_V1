@@ -52,7 +52,7 @@ const EditBlogScreen = ({ match, history }) => {
 	} = useSelector(state => state.uploadImage);
 
 	const [uploadImageIndex, setUploadImageIndex] = useState(0);
-	const [formState, formDispatch] = useBlogForm(blog && blog);
+	const [formState, formDispatch] = useBlogForm(id && blog && blog);
 	const { formIsValid, paragraphs, title, description } = formState;
 
 	useEffect(() => {

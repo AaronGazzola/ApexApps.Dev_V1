@@ -5,7 +5,6 @@ import Booking from './models/bookingModel.js';
 import Client from './models/clientModel.js';
 import Blog from './models/blogModel.js';
 import { bookings } from './data/bookings.js';
-import blogs from './data/blogs.js';
 import connectDB from './config/db.js';
 
 // Load env vars
@@ -17,10 +16,7 @@ connectDB();
 const importData = async () => {
 	try {
 		await Booking.deleteMany();
-		await Client.deleteMany();
-		await Blog.deleteMany();
 		await Booking.insertMany(bookings);
-		await Blog.insertMany(blogs);
 
 		console.log('Data Imported!'.green.inverse);
 		process.exit();

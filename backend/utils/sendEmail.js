@@ -2,14 +2,24 @@ import nodemailer from 'nodemailer';
 import useHtmlTemplate from './useHtmlTemplate.js';
 
 const sendEmail = async options => {
-	const transporter = nodemailer.createTransport({
-		host: process.env.SMTP_HOST,
-		port: process.env.SMTP_PORT,
-		auth: {
-			user: process.env.SMTP_EMAIL,
-			pass: process.env.SMTP_PASSWORD
-		}
-	});
+	const transporter = nodemailer.createTransport(
+		process.env.NODE_ENV === 'production'
+			? {
+					service: 'gmail',
+					auth: {
+						user: process.env.GMAIL_USER,
+						pass: process.env.GMAIL_PASSWORD
+					}
+			  }
+			: {
+					host: process.env.SMTP_HOST,
+					port: process.env.SMTP_PORT,
+					auth: {
+						user: process.env.SMTP_EMAIL,
+						pass: process.env.SMTP_PASSWORD
+					}
+			  }
+	);
 
 	const [mailList, subject, html] = useHtmlTemplate(options);
 

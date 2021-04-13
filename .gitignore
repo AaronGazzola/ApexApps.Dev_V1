@@ -3,6 +3,7 @@
 frontend/node_modules
 
 # resources
+/uploads
 
 # production
 frontend/build

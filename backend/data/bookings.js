@@ -3,8 +3,6 @@ import moment from 'moment';
 // set booking times
 //  Format = 24hr, colon separated, local time
 const times = [
-	'7:00',
-	'7:30',
 	'8:00',
 	'8:30',
 	'9:00',

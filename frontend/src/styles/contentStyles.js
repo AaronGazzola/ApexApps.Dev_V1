@@ -38,6 +38,7 @@ const styles = makeStyles(theme => ({
 	},
 	textBox1: {
 		backgroundColor: '#090909',
+		background: 'transparent',
 		borderLeft: `1px solid ${theme.palette.primary.main}`,
 		maxWidth: 650,
 		// borderLeft: `1px solid ${theme.palette.grey[200]}`,
@@ -195,12 +196,12 @@ const styles = makeStyles(theme => ({
 	divider2: {
 		padding: theme.spacing(1),
 		marginTop: theme.spacing(2),
+		marginBottom: theme.spacing(2),
 		width: '80%',
 		maxWidth: 400,
 		borderBottom: `1px solid ${theme.palette.grey[800]}`
 	},
 	icons: {
-		marginTop: theme.spacing(2),
 		maxWidth: 150,
 		'& a': {
 			color: theme.palette.text.primary,
