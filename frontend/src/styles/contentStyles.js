@@ -287,7 +287,7 @@ const styles = makeStyles(theme => ({
 		}
 	},
 	paper: {
-		margin: theme.spacing(4, 0),
+		margin: theme.spacing(4, 2, 0, 2),
 		padding: theme.spacing(2),
 		border: `1px solid ${theme.palette.grey[900]}`,
 		background: 'transparent',
