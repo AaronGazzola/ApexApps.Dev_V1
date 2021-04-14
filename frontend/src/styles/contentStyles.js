@@ -228,12 +228,11 @@ const styles = makeStyles(theme => ({
 	},
 	blogList: {
 		border: `1px solid ${theme.palette.grey[800]}`,
-		margin: theme.spacing(2),
+		margin: theme.spacing(4, 2, 0, 2),
 		padding: theme.spacing(2),
 		paddingLeft: theme.spacing(3),
 		paddingRight: theme.spacing(3),
 		backgroundColor: '#090909',
-		minWidth: 400,
 		'&:hover': {
 			border: `1px solid #fff`,
 			backgroundColor: theme.palette.grey[900],
