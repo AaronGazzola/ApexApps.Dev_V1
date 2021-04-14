@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import clsx from 'clsx';
 import moment from 'moment';
 import { Grid, Typography } from '@material-ui/core';
 import { Skeleton } from '@material-ui/lab';
@@ -46,22 +47,18 @@ const BlogsScreen = () => {
 				: blogs?.map(blog => (
 						<Link
 							to={`/blog/${blog.slug}`}
-							className={classes.linkReset}
+							className={clsx(classes.linkReset, classes.blogList)}
 							key={blog._id}
 						>
-							<div className={classes.blogList}>
-								<Typography variant='h2' className={classes.subTitle}>
-									{blog.title}
-								</Typography>
-								<Typography variant='body2' className={classes.date}>
-									{moment(blog.createdAt.substring(0, 10)).format(
-										'Do MMM YYYY'
-									)}
-								</Typography>
-								<Typography className={classes.paragraph}>
-									{blog.description}
-								</Typography>
-							</div>
+							<Typography variant='h2' className={classes.subTitle}>
+								{blog.title}
+							</Typography>
+							<Typography variant='body2' className={classes.date}>
+								{moment(blog.createdAt.substring(0, 10)).format('Do MMM YYYY')}
+							</Typography>
+							<Typography className={classes.paragraph}>
+								{blog.description}
+							</Typography>
 						</Link>
 				  ))}
 		</Grid>

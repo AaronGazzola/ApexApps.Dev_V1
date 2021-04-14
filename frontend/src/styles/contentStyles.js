@@ -228,11 +228,11 @@ const styles = makeStyles(theme => ({
 	},
 	blogList: {
 		border: `1px solid ${theme.palette.grey[800]}`,
+		margin: theme.spacing(2),
 		padding: theme.spacing(2),
 		paddingLeft: theme.spacing(3),
 		paddingRight: theme.spacing(3),
 		backgroundColor: '#090909',
-		marginTop: theme.spacing(2),
 		minWidth: 400,
 		'&:hover': {
 			border: `1px solid #fff`,
@@ -242,8 +242,9 @@ const styles = makeStyles(theme => ({
 		}
 	},
 	blogTextBox: {
-		margin: theme.spacing(2, 2, 0, 2),
-		backgroundColor: '#090909',
+		margin: theme.spacing(3, 0, 1, 0),
+		padding: theme.spacing(0, 3),
+		background: 'transparent',
 		maxWidth: 800,
 		'& strong': {
 			borderBottom: `1px solid ${theme.palette.primary.main}`,
@@ -268,7 +269,7 @@ const styles = makeStyles(theme => ({
 	image: {
 		maxWidth: 800,
 		width: '100%',
-		padding: theme.spacing(2)
+		padding: theme.spacing(3, 3, 2, 3)
 	},
 	blogTitle: {
 		marginTop: theme.spacing(2)

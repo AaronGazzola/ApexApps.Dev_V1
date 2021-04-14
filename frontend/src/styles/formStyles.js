@@ -15,8 +15,10 @@ const styles = makeStyles(theme => ({
 		alignItems: 'center'
 	},
 	input: {
-		width: '90%',
-		marginTop: theme.spacing(3),
+		'&.MuiFormControl-root': {
+			width: '90%',
+			marginTop: theme.spacing(3)
+		},
 		'& .MuiInput-input': {
 			borderBottom: `2px solid ${theme.palette.grey[800]}`
 		},

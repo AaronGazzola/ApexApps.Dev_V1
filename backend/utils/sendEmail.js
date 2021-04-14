@@ -1,14 +1,27 @@
 import nodemailer from 'nodemailer';
 import useHtmlTemplate from './useHtmlTemplate.js';
+import { google } from 'googleapis';
 
 const sendEmail = async options => {
+	const oAuth2Client = new google.auth.OAuth2(
+		process.env.CLIENT_ID,
+		process.env.CLIENT_SECRET,
+		process.env.REDIRECT_URI
+	);
+	oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
+	const accessToken = await oAuth2Client.getAccessToken();
+
 	const transporter = nodemailer.createTransport(
 		process.env.NODE_ENV === 'production'
 			? {
 					service: 'gmail',
 					auth: {
+						type: 'OAuth2',
 						user: process.env.GMAIL_USER,
-						pass: process.env.GMAIL_PASSWORD
+						clientId: process.env.CLIENT_ID,
+						clientSecret: process.env.CLIENT_SECRET,
+						refreshToken: process.env.REFRESH_TOKEN,
+						accessToken: accessToken
 					}
 			  }
 			: {

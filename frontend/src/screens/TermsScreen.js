@@ -15,7 +15,7 @@ const TermsScreen = () => {
 				Terms and Conditions
 			</Typography>
 
-			<div className={clsx(classes.textBox3, classes.blogTextBox)}>
+			<div className={classes.blogTextBox}>
 				<Typography variant='h3' className={classes.subtitle1}>
 					Business Information
 				</Typography>
@@ -27,7 +27,7 @@ const TermsScreen = () => {
 					Business Name Holder: Aaron Gazzola
 				</Typography>
 			</div>
-			<div className={clsx(classes.textBox3, classes.blogTextBox)}>
+			<div className={classes.blogTextBox}>
 				<Typography variant='h3' className={classes.subtitle3}>
 					Project discussion
 				</Typography>
@@ -42,7 +42,7 @@ const TermsScreen = () => {
 					to arrange another booking.
 				</Typography>
 			</div>
-			<div className={clsx(classes.textBox3, classes.blogTextBox)}>
+			<div className={classes.blogTextBox}>
 				<Typography variant='h3' className={classes.subtitle3}>
 					Project proposal
 				</Typography>
@@ -56,7 +56,7 @@ const TermsScreen = () => {
 					restrictions.
 				</Typography>
 			</div>
-			<div className={clsx(classes.textBox3, classes.blogTextBox)}>
+			<div className={classes.blogTextBox}>
 				<Typography variant='h3' className={classes.subtitle3}>
 					Project agreement
 				</Typography>
@@ -70,7 +70,7 @@ const TermsScreen = () => {
 					must be signed by both parties before development commences.
 				</Typography>
 			</div>
-			<div className={clsx(classes.textBox3, classes.blogTextBox)}>
+			<div className={classes.blogTextBox}>
 				<Typography variant='h3' className={classes.subtitle3}>
 					Project amendments
 				</Typography>
@@ -83,7 +83,7 @@ const TermsScreen = () => {
 					project agreement will replace and nullify the existing agreement.
 				</Typography>
 			</div>
-			<div className={clsx(classes.textBox3, classes.blogTextBox)}>
+			{/* <div className={classes.blogTextBox}>
 				<Typography variant='h3' className={classes.subtitle3}>
 					Progress updates
 				</Typography>
@@ -98,8 +98,8 @@ const TermsScreen = () => {
 					progress page, and included in a milestone email sent to the client.
 					The client may opt out of receiving milestone emails at any time.
 				</Typography>
-			</div>
-			<div className={clsx(classes.textBox3, classes.blogTextBox)}>
+			</div> */}
+			<div className={classes.blogTextBox}>
 				<Typography variant='h3' className={classes.subtitle3}>
 					Privacy policy
 				</Typography>

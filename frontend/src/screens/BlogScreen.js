@@ -52,10 +52,7 @@ const BlogScreen = ({ match }) => {
 					)}
 					{blog?.paragraphs.map((p, i) => (
 						<Grid container direction='column' alignItems='center' key={i}>
-							<div
-								className={clsx(classes.textBox3, classes.blogTextBox)}
-								key={p._id}
-							>
+							<div className={classes.blogTextBox} key={p._id}>
 								{p.subtitle && (
 									<Typography variant='h4' className={classes.subtitle3}>
 										{p.subtitle}
