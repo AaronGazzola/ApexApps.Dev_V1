@@ -77,7 +77,6 @@ const submitBooking = asyncHandler(async (req, res, next) => {
 				actionLink,
 				client,
 				baseUrl,
-				message1: `Please click the button below to verify your email address and confirm your booking`,
 				reason: `You have received this email because your email address was used to submit a booking at ApexApps.dev. This is not a promotional email. `,
 				buttonText: 'Verify Email'
 			});
