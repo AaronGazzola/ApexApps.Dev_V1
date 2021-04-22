@@ -286,8 +286,11 @@ const styles = makeStyles(theme => ({
 			height: '100%'
 		}
 	},
+	appBox: {
+		padding: theme.spacing(4, 2, 0, 2),
+		width: '100%'
+	},
 	paper: {
-		margin: theme.spacing(4, 2, 0, 2),
 		padding: theme.spacing(2),
 		border: `1px solid ${theme.palette.grey[900]}`,
 		background: 'transparent',
