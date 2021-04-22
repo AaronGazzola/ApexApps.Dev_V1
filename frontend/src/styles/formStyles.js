@@ -58,9 +58,6 @@ const styles = makeStyles(theme => ({
 			}
 		}
 	},
-	submitProgress: {
-		color: theme.palette.background.default
-	},
 	modalPaper: {
 		padding: theme.spacing(4, 2, 3, 2),
 		position: 'absolute',
@@ -158,9 +155,6 @@ const styles = makeStyles(theme => ({
 	},
 	button: {
 		margin: theme.spacing(2, 0)
-	},
-	progress: {
-		color: '#000'
 	},
 	grid: {
 		margin: theme.spacing(2)

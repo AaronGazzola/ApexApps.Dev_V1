@@ -241,7 +241,7 @@ const BookingDialog = ({ open, setOpen, booking }) => {
 						className={classes.submitButton}
 					>
 						{loading ? (
-							<CircularProgress size={25} className={classes.progress} />
+							<CircularProgress size={25} style={{ color: '#000' }} />
 						) : (
 							'Submit'
 						)}

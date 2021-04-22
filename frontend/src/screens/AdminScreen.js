@@ -72,7 +72,7 @@ const AdminScreen = () => {
 					type='submit'
 				>
 					{loginLoading ? (
-						<CircularProgress size={25} className={classes.submitProgress} />
+						<CircularProgress size={25} style={{ color: '#000' }} />
 					) : (
 						'Log in'
 					)}

@@ -205,10 +205,7 @@ const ListBookingsScreen = () => {
 							disabled={fromDate.getTime() > toDate.getTime()}
 						>
 							{setBookingAvailabilityLoading ? (
-								<CircularProgress
-									className={formClasses.submitProgress}
-									size={25}
-								/>
+								<CircularProgress style={{ color: '#000' }} size={25} />
 							) : (
 								'Submit'
 							)}
