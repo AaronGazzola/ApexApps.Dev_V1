@@ -33,8 +33,8 @@ const styles = makeStyles(theme => ({
 		strokeWidth: 3
 	},
 	discuss1Start: {
-		strokeDasharray: 1040,
-		strokeDashoffset: 1040
+		strokeDasharray: 1045,
+		strokeDashoffset: 1045
 	},
 	discuss1In: {
 		animation: '$discuss1In 1s linear forwards'
@@ -44,27 +44,27 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes discuss1In': {
 		'0%': {
-			strokeDasharray: 1040,
-			strokeDashoffset: 1040
+			strokeDasharray: 1045,
+			strokeDashoffset: 1045
 		},
 		'100%': {
-			strokeDasharray: 1040,
+			strokeDasharray: 1045,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes discuss1Out': {
 		'0%': {
-			strokeDasharray: 1040,
+			strokeDasharray: 1045,
 			strokeDashoffset: 0
 		},
 		'100%': {
-			strokeDasharray: 1040,
-			strokeDashoffset: 1040
+			strokeDasharray: 1045,
+			strokeDashoffset: 1045
 		}
 	},
 	discuss2Start: {
-		strokeDasharray: 1575,
-		strokeDashoffset: 1575
+		strokeDasharray: 1580,
+		strokeDashoffset: 1580
 	},
 	discuss2In: {
 		animation: '$discuss2In 1s linear forwards'
@@ -74,27 +74,27 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes discuss2In': {
 		'0%': {
-			strokeDasharray: 1575,
-			strokeDashoffset: 1575
+			strokeDasharray: 1580,
+			strokeDashoffset: 1580
 		},
 		'100%': {
-			strokeDasharray: 1575,
+			strokeDasharray: 1580,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes discuss2Out': {
 		'0%': {
-			strokeDasharray: 1575,
+			strokeDasharray: 1580,
 			strokeDashoffset: 0
 		},
 		'100%': {
-			strokeDasharray: 1575,
-			strokeDashoffset: 1575
+			strokeDasharray: 1580,
+			strokeDashoffset: 1580
 		}
 	},
 	discuss3Start: {
-		strokeDasharray: 64,
-		strokeDashoffset: 64
+		strokeDasharray: 70,
+		strokeDashoffset: 70
 	},
 	discuss3In: {
 		animation: '$discuss3In 1s linear forwards'
@@ -104,35 +104,35 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes discuss3In': {
 		'0%': {
-			strokeDasharray: 64,
-			strokeDashoffset: 64
+			strokeDasharray: 70,
+			strokeDashoffset: 70
 		},
 		'80%': {
-			strokeDasharray: 64,
-			strokeDashoffset: 64
+			strokeDasharray: 70,
+			strokeDashoffset: 70
 		},
 		'100%': {
-			strokeDasharray: 64,
+			strokeDasharray: 70,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes discuss3Out': {
 		'0%': {
-			strokeDasharray: 64,
+			strokeDasharray: 70,
 			strokeDashoffset: 0
 		},
 		'20%': {
-			strokeDasharray: 64,
-			strokeDashoffset: 64
+			strokeDasharray: 70,
+			strokeDashoffset: 70
 		},
 		'100%': {
-			strokeDasharray: 64,
-			strokeDashoffset: 64
+			strokeDasharray: 70,
+			strokeDashoffset: 70
 		}
 	},
 	discuss4Start: {
-		strokeDasharray: 810,
-		strokeDashoffset: 810
+		strokeDasharray: 815,
+		strokeDashoffset: 815
 	},
 	discuss4In: {
 		animation: '$discuss4In 1s linear forwards'
@@ -142,35 +142,35 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes discuss4In': {
 		'0%': {
-			strokeDasharray: 810,
-			strokeDashoffset: 810
+			strokeDasharray: 815,
+			strokeDashoffset: 815
 		},
 		'30%': {
-			strokeDasharray: 810,
-			strokeDashoffset: 810
+			strokeDasharray: 815,
+			strokeDashoffset: 815
 		},
 		'100%': {
-			strokeDasharray: 810,
+			strokeDasharray: 815,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes discuss4Out': {
 		'0%': {
-			strokeDasharray: 810,
+			strokeDasharray: 815,
 			strokeDashoffset: 0
 		},
 		'70%': {
-			strokeDasharray: 810,
-			strokeDashoffset: 810
+			strokeDasharray: 815,
+			strokeDashoffset: 815
 		},
 		'100%': {
-			strokeDasharray: 810,
-			strokeDashoffset: 810
+			strokeDasharray: 815,
+			strokeDashoffset: 815
 		}
 	},
 	discuss5Start: {
-		strokeDasharray: 810,
-		strokeDashoffset: 810
+		strokeDasharray: 815,
+		strokeDashoffset: 815
 	},
 	discuss5In: {
 		animation: '$discuss5In 1s linear forwards'
@@ -180,35 +180,35 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes discuss5In': {
 		'0%': {
-			strokeDasharray: 810,
-			strokeDashoffset: 810
+			strokeDasharray: 815,
+			strokeDashoffset: 815
 		},
 		'30%': {
-			strokeDasharray: 810,
-			strokeDashoffset: 810
+			strokeDasharray: 815,
+			strokeDashoffset: 815
 		},
 		'100%': {
-			strokeDasharray: 810,
+			strokeDasharray: 815,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes discuss5Out': {
 		'0%': {
-			strokeDasharray: 810,
+			strokeDasharray: 815,
 			strokeDashoffset: 0
 		},
 		'70%': {
-			strokeDasharray: 810,
-			strokeDashoffset: 810
+			strokeDasharray: 815,
+			strokeDashoffset: 815
 		},
 		'100%': {
-			strokeDasharray: 810,
-			strokeDashoffset: 810
+			strokeDasharray: 815,
+			strokeDashoffset: 815
 		}
 	},
 	discuss6Start: {
-		strokeDasharray: 210,
-		strokeDashoffset: 210
+		strokeDasharray: 215,
+		strokeDashoffset: 215
 	},
 	discuss6In: {
 		animation: '$discuss6In 2s linear forwards'
@@ -218,35 +218,35 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes discuss6In': {
 		'0%': {
-			strokeDasharray: 210,
-			strokeDashoffset: 210
+			strokeDasharray: 215,
+			strokeDashoffset: 215
 		},
 		'80%': {
-			strokeDasharray: 210,
-			strokeDashoffset: 210
+			strokeDasharray: 215,
+			strokeDashoffset: 215
 		},
 		'100%': {
-			strokeDasharray: 210,
+			strokeDasharray: 215,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes discuss6Out': {
 		'0%': {
-			strokeDasharray: 210,
+			strokeDasharray: 215,
 			strokeDashoffset: 0
 		},
 		'70%': {
-			strokeDasharray: 210,
-			strokeDashoffset: 210
+			strokeDasharray: 215,
+			strokeDashoffset: 215
 		},
 		'100%': {
-			strokeDasharray: 210,
-			strokeDashoffset: 210
+			strokeDasharray: 215,
+			strokeDashoffset: 215
 		}
 	},
 	discuss7Start: {
-		strokeDasharray: 310,
-		strokeDashoffset: 310
+		strokeDasharray: 315,
+		strokeDashoffset: 315
 	},
 	discuss7In: {
 		animation: '$discuss7In 2s linear forwards'
@@ -256,39 +256,39 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes discuss7In': {
 		'0%': {
-			strokeDasharray: 310,
-			strokeDashoffset: 310
+			strokeDasharray: 315,
+			strokeDashoffset: 315
 		},
 		'60%': {
-			strokeDasharray: 310,
-			strokeDashoffset: 310
+			strokeDasharray: 315,
+			strokeDashoffset: 315
 		},
 		'80%': {
-			strokeDasharray: 310,
+			strokeDasharray: 315,
 			strokeDashoffset: 0
 		},
 		'100%': {
-			strokeDasharray: 310,
+			strokeDasharray: 315,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes discuss7Out': {
 		'0%': {
-			strokeDasharray: 310,
+			strokeDasharray: 315,
 			strokeDashoffset: 0
 		},
 		'70%': {
-			strokeDasharray: 310,
-			strokeDashoffset: 310
+			strokeDasharray: 315,
+			strokeDashoffset: 315
 		},
 		'100%': {
-			strokeDasharray: 310,
-			strokeDashoffset: 310
+			strokeDasharray: 315,
+			strokeDashoffset: 315
 		}
 	},
 	discuss8Start: {
-		strokeDasharray: 64,
-		strokeDashoffset: 64
+		strokeDasharray: 70,
+		strokeDashoffset: 70
 	},
 	discuss8In: {
 		animation: '$discuss8In 2s linear forwards'
@@ -298,39 +298,39 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes discuss8In': {
 		'0%': {
-			strokeDasharray: 64,
-			strokeDashoffset: 64
+			strokeDasharray: 70,
+			strokeDashoffset: 70
 		},
 		'70%': {
-			strokeDasharray: 64,
-			strokeDashoffset: 64
+			strokeDasharray: 70,
+			strokeDashoffset: 70
 		},
 		'80%': {
-			strokeDasharray: 64,
+			strokeDasharray: 70,
 			strokeDashoffset: 0
 		},
 		'100%': {
-			strokeDasharray: 64,
+			strokeDasharray: 70,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes discuss8Out': {
 		'0%': {
-			strokeDasharray: 64,
+			strokeDasharray: 70,
 			strokeDashoffset: 0
 		},
 		'70%': {
-			strokeDasharray: 64,
-			strokeDashoffset: 64
+			strokeDasharray: 70,
+			strokeDashoffset: 70
 		},
 		'100%': {
-			strokeDasharray: 64,
-			strokeDashoffset: 64
+			strokeDasharray: 70,
+			strokeDashoffset: 70
 		}
 	},
 	design1Start: {
-		strokeDasharray: 815,
-		strokeDashoffset: 815
+		strokeDasharray: 820,
+		strokeDashoffset: 820
 	},
 	design1In: {
 		animation: '$design1In 1s linear forwards'
@@ -340,31 +340,31 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes design1In': {
 		'0%': {
-			strokeDasharray: 815,
-			strokeDashoffset: 815
+			strokeDasharray: 820,
+			strokeDashoffset: 820
 		},
 		'20%': {
-			strokeDasharray: 815,
-			strokeDashoffset: 815
+			strokeDasharray: 820,
+			strokeDashoffset: 820
 		},
 		'100%': {
-			strokeDasharray: 815,
+			strokeDasharray: 820,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes design1Out': {
 		'0%': {
-			strokeDasharray: 815,
+			strokeDasharray: 820,
 			strokeDashoffset: 0
 		},
 		'100%': {
-			strokeDasharray: 815,
-			strokeDashoffset: 815
+			strokeDasharray: 820,
+			strokeDashoffset: 820
 		}
 	},
 	design2Start: {
-		strokeDasharray: 270,
-		strokeDashoffset: 270
+		strokeDasharray: 280,
+		strokeDashoffset: 280
 	},
 	design2In: {
 		animation: '$design2In 1s linear forwards'
@@ -374,31 +374,31 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes design2In': {
 		'0%': {
-			strokeDasharray: 270,
-			strokeDashoffset: 270
+			strokeDasharray: 280,
+			strokeDashoffset: 280
 		},
 		'25%': {
-			strokeDasharray: 270,
-			strokeDashoffset: 270
+			strokeDasharray: 280,
+			strokeDashoffset: 280
 		},
 		'100%': {
-			strokeDasharray: 270,
+			strokeDasharray: 280,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes design2Out': {
 		'0%': {
-			strokeDasharray: 270,
+			strokeDasharray: 280,
 			strokeDashoffset: 0
 		},
 		'100%': {
-			strokeDasharray: 270,
-			strokeDashoffset: 270
+			strokeDasharray: 280,
+			strokeDashoffset: 280
 		}
 	},
 	design3Start: {
-		strokeDasharray: 65,
-		strokeDashoffset: 65
+		strokeDasharray: 70,
+		strokeDashoffset: 70
 	},
 	design3In: {
 		animation: '$design3In 1s linear forwards'
@@ -408,35 +408,35 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes design3In': {
 		'0%': {
-			strokeDasharray: 65,
-			strokeDashoffset: 65
+			strokeDasharray: 70,
+			strokeDashoffset: 70
 		},
 		'50%': {
-			strokeDasharray: 65,
-			strokeDashoffset: 65
+			strokeDasharray: 70,
+			strokeDashoffset: 70
 		},
 		'100%': {
-			strokeDasharray: 65,
+			strokeDasharray: 70,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes design3Out': {
 		'0%': {
-			strokeDasharray: 65,
+			strokeDasharray: 70,
 			strokeDashoffset: 0
 		},
 		'50%': {
-			strokeDasharray: 65,
-			strokeDashoffset: 65
+			strokeDasharray: 70,
+			strokeDashoffset: 70
 		},
 		'100%': {
-			strokeDasharray: 65,
-			strokeDashoffset: 65
+			strokeDasharray: 70,
+			strokeDashoffset: 70
 		}
 	},
 	design4Start: {
-		strokeDasharray: 540,
-		strokeDashoffset: 540
+		strokeDasharray: 545,
+		strokeDashoffset: 545
 	},
 	design4In: {
 		animation: '$design4In 2s linear forwards'
@@ -446,31 +446,31 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes design4In': {
 		'0%': {
-			strokeDasharray: 540,
-			strokeDashoffset: 540
+			strokeDasharray: 545,
+			strokeDashoffset: 545
 		},
 		'60%': {
-			strokeDasharray: 540,
-			strokeDashoffset: 540
+			strokeDasharray: 545,
+			strokeDashoffset: 545
 		},
 		'85%': {
-			strokeDasharray: 540,
+			strokeDasharray: 545,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes design4Out': {
 		'0%': {
-			strokeDasharray: 540,
+			strokeDasharray: 545,
 			strokeDashoffset: 0
 		},
 		'100%': {
-			strokeDasharray: 540,
-			strokeDashoffset: 540
+			strokeDasharray: 545,
+			strokeDashoffset: 545
 		}
 	},
 	design5Start: {
-		strokeDasharray: 115,
-		strokeDashoffset: 115
+		strokeDasharray: 120,
+		strokeDashoffset: 120
 	},
 	design5In: {
 		animation: '$design5In 2s linear forwards'
@@ -480,31 +480,31 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes design5In': {
 		'0%': {
-			strokeDasharray: 115,
-			strokeDashoffset: 115
+			strokeDasharray: 120,
+			strokeDashoffset: 120
 		},
 		'85%': {
-			strokeDasharray: 115,
-			strokeDashoffset: 115
+			strokeDasharray: 120,
+			strokeDashoffset: 120
 		},
 		'100%': {
-			strokeDasharray: 115,
+			strokeDasharray: 120,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes design5Out': {
 		'0%': {
-			strokeDasharray: 115,
+			strokeDasharray: 120,
 			strokeDashoffset: 0
 		},
 		'100%': {
-			strokeDasharray: 115,
-			strokeDashoffset: 115
+			strokeDasharray: 120,
+			strokeDashoffset: 120
 		}
 	},
 	design6Start: {
-		strokeDasharray: 2950,
-		strokeDashoffset: 2950
+		strokeDasharray: 2955,
+		strokeDashoffset: 2955
 	},
 	design6In: {
 		animation: '$design6In 1s linear forwards'
@@ -514,27 +514,27 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes design6In': {
 		'0%': {
-			strokeDasharray: 2950,
-			strokeDashoffset: 2950
+			strokeDasharray: 2955,
+			strokeDashoffset: 2955
 		},
 		'100%': {
-			strokeDasharray: 2950,
+			strokeDasharray: 2955,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes design6Out': {
 		'0%': {
-			strokeDasharray: 2950,
+			strokeDasharray: 2955,
 			strokeDashoffset: 0
 		},
 		'100%': {
-			strokeDasharray: 2950,
-			strokeDashoffset: 2950
+			strokeDasharray: 2955,
+			strokeDashoffset: 2955
 		}
 	},
 	develop1Start: {
-		strokeDasharray: 275,
-		strokeDashoffset: 275
+		strokeDasharray: 280,
+		strokeDashoffset: 280
 	},
 	develop1In: {
 		animation: '$develop1In 1s linear forwards'
@@ -544,27 +544,27 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes develop1In': {
 		'0%': {
-			strokeDasharray: 275,
-			strokeDashoffset: 275
+			strokeDasharray: 280,
+			strokeDashoffset: 280
 		},
 		'100%': {
-			strokeDasharray: 275,
+			strokeDasharray: 280,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes develop1Out': {
 		'0%': {
-			strokeDasharray: 275,
+			strokeDasharray: 280,
 			strokeDashoffset: 0
 		},
 		'100%': {
-			strokeDasharray: 275,
-			strokeDashoffset: 275
+			strokeDasharray: 280,
+			strokeDashoffset: 280
 		}
 	},
 	develop2Start: {
-		strokeDasharray: 275,
-		strokeDashoffset: 275
+		strokeDasharray: 280,
+		strokeDashoffset: 280
 	},
 	develop2In: {
 		animation: '$develop2In 1s linear forwards'
@@ -574,35 +574,35 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes develop2In': {
 		'0%': {
-			strokeDasharray: 275,
-			strokeDashoffset: 275
+			strokeDasharray: 280,
+			strokeDashoffset: 280
 		},
 		'30%': {
-			strokeDasharray: 275,
-			strokeDashoffset: 275
+			strokeDasharray: 280,
+			strokeDashoffset: 280
 		},
 		'100%': {
-			strokeDasharray: 275,
+			strokeDasharray: 280,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes develop2Out': {
 		'0%': {
-			strokeDasharray: 275,
+			strokeDasharray: 280,
 			strokeDashoffset: 0
 		},
 		'70%': {
-			strokeDasharray: 275,
-			strokeDashoffset: 275
+			strokeDasharray: 280,
+			strokeDashoffset: 280
 		},
 		'100%': {
-			strokeDasharray: 275,
-			strokeDashoffset: 275
+			strokeDasharray: 280,
+			strokeDashoffset: 280
 		}
 	},
 	develop3Start: {
-		strokeDasharray: 25,
-		strokeDashoffset: 25
+		strokeDasharray: 30,
+		strokeDashoffset: 30
 	},
 	develop3In: {
 		animation: '$develop3In 1s linear forwards'
@@ -612,35 +612,35 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes develop3In': {
 		'0%': {
-			strokeDasharray: 25,
-			strokeDashoffset: 25
+			strokeDasharray: 30,
+			strokeDashoffset: 30
 		},
 		'70%': {
-			strokeDasharray: 25,
-			strokeDashoffset: 25
+			strokeDasharray: 30,
+			strokeDashoffset: 30
 		},
 		'100%': {
-			strokeDasharray: 25,
+			strokeDasharray: 30,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes develop3Out': {
 		'0%': {
-			strokeDasharray: 25,
+			strokeDasharray: 30,
 			strokeDashoffset: 0
 		},
 		'30%': {
-			strokeDasharray: 25,
-			strokeDashoffset: 25
+			strokeDasharray: 30,
+			strokeDashoffset: 30
 		},
 		'100%': {
-			strokeDasharray: 25,
-			strokeDashoffset: 25
+			strokeDasharray: 30,
+			strokeDashoffset: 30
 		}
 	},
 	develop4Start: {
-		strokeDasharray: 50,
-		strokeDashoffset: 50
+		strokeDasharray: 55,
+		strokeDashoffset: 55
 	},
 	develop4In: {
 		animation: '$develop4In 1s linear forwards'
@@ -650,35 +650,35 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes develop4In': {
 		'0%': {
-			strokeDasharray: 50,
-			strokeDashoffset: 50
+			strokeDasharray: 55,
+			strokeDashoffset: 55
 		},
 		'70%': {
-			strokeDasharray: 50,
-			strokeDashoffset: 50
+			strokeDasharray: 55,
+			strokeDashoffset: 55
 		},
 		'100%': {
-			strokeDasharray: 50,
+			strokeDasharray: 55,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes develop4Out': {
 		'0%': {
-			strokeDasharray: 50,
+			strokeDasharray: 55,
 			strokeDashoffset: 0
 		},
 		'30%': {
-			strokeDasharray: 50,
-			strokeDashoffset: 50
+			strokeDasharray: 55,
+			strokeDashoffset: 55
 		},
 		'100%': {
-			strokeDasharray: 50,
-			strokeDashoffset: 50
+			strokeDasharray: 55,
+			strokeDashoffset: 55
 		}
 	},
 	develop5Start: {
-		strokeDasharray: 60,
-		strokeDashoffset: 60
+		strokeDasharray: 65,
+		strokeDashoffset: 65
 	},
 	develop5In: {
 		animation: '$develop5In 1s linear forwards'
@@ -688,35 +688,35 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes develop5In': {
 		'0%': {
-			strokeDasharray: 60,
-			strokeDashoffset: 60
+			strokeDasharray: 65,
+			strokeDashoffset: 65
 		},
 		'500%': {
-			strokeDasharray: 60,
-			strokeDashoffset: 60
+			strokeDasharray: 65,
+			strokeDashoffset: 65
 		},
 		'100%': {
-			strokeDasharray: 60,
+			strokeDasharray: 65,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes develop5Out': {
 		'0%': {
-			strokeDasharray: 60,
+			strokeDasharray: 65,
 			strokeDashoffset: 0
 		},
 		'50%': {
-			strokeDasharray: 60,
-			strokeDashoffset: 60
+			strokeDasharray: 65,
+			strokeDashoffset: 65
 		},
 		'100%': {
-			strokeDasharray: 60,
-			strokeDashoffset: 60
+			strokeDasharray: 65,
+			strokeDashoffset: 65
 		}
 	},
 	develop6Start: {
-		strokeDasharray: 70,
-		strokeDashoffset: 70
+		strokeDasharray: 75,
+		strokeDashoffset: 75
 	},
 	develop6In: {
 		animation: '$develop6In 1s linear forwards'
@@ -726,35 +726,35 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes develop6In': {
 		'0%': {
-			strokeDasharray: 70,
-			strokeDashoffset: 70
+			strokeDasharray: 75,
+			strokeDashoffset: 75
 		},
 		'50%': {
-			strokeDasharray: 70,
-			strokeDashoffset: 70
+			strokeDasharray: 75,
+			strokeDashoffset: 75
 		},
 		'100%': {
-			strokeDasharray: 70,
+			strokeDasharray: 75,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes develop6Out': {
 		'0%': {
-			strokeDasharray: 70,
+			strokeDasharray: 75,
 			strokeDashoffset: 0
 		},
 		'50%': {
-			strokeDasharray: 70,
-			strokeDashoffset: 70
+			strokeDasharray: 75,
+			strokeDashoffset: 75
 		},
 		'100%': {
-			strokeDasharray: 70,
-			strokeDashoffset: 70
+			strokeDasharray: 75,
+			strokeDashoffset: 75
 		}
 	},
 	develop7Start: {
-		strokeDasharray: 45,
-		strokeDashoffset: 45
+		strokeDasharray: 50,
+		strokeDashoffset: 50
 	},
 	develop7In: {
 		animation: '$develop7In 1s linear forwards'
@@ -764,35 +764,35 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes develop7In': {
 		'0%': {
-			strokeDasharray: 45,
-			strokeDashoffset: 45
+			strokeDasharray: 50,
+			strokeDashoffset: 50
 		},
 		'50%': {
-			strokeDasharray: 45,
-			strokeDashoffset: 45
+			strokeDasharray: 50,
+			strokeDashoffset: 50
 		},
 		'100%': {
-			strokeDasharray: 45,
+			strokeDasharray: 50,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes develop7Out': {
 		'0%': {
-			strokeDasharray: 45,
+			strokeDasharray: 50,
 			strokeDashoffset: 0
 		},
 		'50%': {
-			strokeDasharray: 45,
-			strokeDashoffset: 45
+			strokeDasharray: 50,
+			strokeDashoffset: 50
 		},
 		'100%': {
-			strokeDasharray: 45,
-			strokeDashoffset: 45
+			strokeDasharray: 50,
+			strokeDashoffset: 50
 		}
 	},
 	develop8Start: {
-		strokeDasharray: 25,
-		strokeDashoffset: 25
+		strokeDasharray: 30,
+		strokeDashoffset: 30
 	},
 	develop8In: {
 		animation: '$develop8In 2s linear forwards'
@@ -802,35 +802,35 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes develop8In': {
 		'0%': {
-			strokeDasharray: 25,
-			strokeDashoffset: 25
+			strokeDasharray: 30,
+			strokeDashoffset: 30
 		},
 		'60%': {
-			strokeDasharray: 25,
-			strokeDashoffset: 25
+			strokeDasharray: 30,
+			strokeDashoffset: 30
 		},
 		'80%': {
-			strokeDasharray: 25,
+			strokeDasharray: 30,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes develop8Out': {
 		'0%': {
-			strokeDasharray: 25,
+			strokeDasharray: 30,
 			strokeDashoffset: 0
 		},
 		'50%': {
-			strokeDasharray: 25,
-			strokeDashoffset: 25
+			strokeDasharray: 30,
+			strokeDashoffset: 30
 		},
 		'100%': {
-			strokeDasharray: 25,
-			strokeDashoffset: 25
+			strokeDasharray: 30,
+			strokeDashoffset: 30
 		}
 	},
 	develop9Start: {
-		strokeDasharray: 25,
-		strokeDashoffset: 25
+		strokeDasharray: 30,
+		strokeDashoffset: 30
 	},
 	develop9In: {
 		animation: '$develop9In 2s linear forwards'
@@ -840,35 +840,35 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes develop9In': {
 		'0%': {
-			strokeDasharray: 25,
-			strokeDashoffset: 25
+			strokeDasharray: 30,
+			strokeDashoffset: 30
 		},
 		'80%': {
-			strokeDasharray: 25,
-			strokeDashoffset: 25
+			strokeDasharray: 30,
+			strokeDashoffset: 30
 		},
 		'100%': {
-			strokeDasharray: 25,
+			strokeDasharray: 30,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes develop9Out': {
 		'0%': {
-			strokeDasharray: 25,
+			strokeDasharray: 30,
 			strokeDashoffset: 0
 		},
 		'50%': {
-			strokeDasharray: 25,
-			strokeDashoffset: 25
+			strokeDasharray: 30,
+			strokeDashoffset: 30
 		},
 		'100%': {
-			strokeDasharray: 25,
-			strokeDashoffset: 25
+			strokeDasharray: 30,
+			strokeDashoffset: 30
 		}
 	},
 	deploy1Start: {
-		strokeDasharray: 2890,
-		strokeDashoffset: 2890
+		strokeDasharray: 2895,
+		strokeDashoffset: 2895
 	},
 	deploy1In: {
 		animation: '$deploy1In 1s linear forwards'
@@ -878,27 +878,27 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes deploy1In': {
 		'0%': {
-			strokeDasharray: 2890,
-			strokeDashoffset: 2890
+			strokeDasharray: 2895,
+			strokeDashoffset: 2895
 		},
 		'100%': {
-			strokeDasharray: 2890,
+			strokeDasharray: 2895,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes deploy1Out': {
 		'0%': {
-			strokeDasharray: 2890,
+			strokeDasharray: 2895,
 			strokeDashoffset: 0
 		},
 		'100%': {
-			strokeDasharray: 2890,
-			strokeDashoffset: 2890
+			strokeDasharray: 2895,
+			strokeDashoffset: 2895
 		}
 	},
 	deploy2Start: {
-		strokeDasharray: 925,
-		strokeDashoffset: 925
+		strokeDasharray: 930,
+		strokeDashoffset: 930
 	},
 	deploy2In: {
 		animation: '$deploy2In 2s linear forwards'
@@ -908,31 +908,31 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes deploy2In': {
 		'0%': {
-			strokeDasharray: 925,
-			strokeDashoffset: 925
+			strokeDasharray: 930,
+			strokeDashoffset: 930
 		},
 		'60%': {
-			strokeDasharray: 925,
-			strokeDashoffset: 925
+			strokeDasharray: 930,
+			strokeDashoffset: 930
 		},
 		'80%': {
-			strokeDasharray: 925,
+			strokeDasharray: 930,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes deploy2Out': {
 		'0%': {
-			strokeDasharray: 925,
+			strokeDasharray: 930,
 			strokeDashoffset: 0
 		},
 		'100%': {
-			strokeDasharray: 925,
-			strokeDashoffset: 925
+			strokeDasharray: 930,
+			strokeDashoffset: 930
 		}
 	},
 	deploy3Start: {
-		strokeDasharray: 200,
-		strokeDashoffset: 200
+		strokeDasharray: 205,
+		strokeDashoffset: 205
 	},
 	deploy3In: {
 		animation: '$deploy3In 2s linear forwards'
@@ -942,26 +942,26 @@ const styles = makeStyles(theme => ({
 	},
 	'@keyframes deploy3In': {
 		'0%': {
-			strokeDasharray: 200,
-			strokeDashoffset: 200
+			strokeDasharray: 205,
+			strokeDashoffset: 205
 		},
 		'85%': {
-			strokeDasharray: 200,
-			strokeDashoffset: 200
+			strokeDasharray: 205,
+			strokeDashoffset: 205
 		},
 		'100%': {
-			strokeDasharray: 200,
+			strokeDasharray: 205,
 			strokeDashoffset: 0
 		}
 	},
 	'@keyframes deploy3Out': {
 		'0%': {
-			strokeDasharray: 200,
+			strokeDasharray: 205,
 			strokeDashoffset: 0
 		},
 		'100%': {
-			strokeDasharray: 200,
-			strokeDashoffset: 200
+			strokeDasharray: 205,
+			strokeDashoffset: 205
 		}
 	}
 }));

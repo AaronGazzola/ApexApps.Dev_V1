@@ -79,9 +79,6 @@ const styles = makeStyles(theme => ({
 			fontWeight: 500,
 			userSelect: 'none'
 		},
-		[theme.breakpoints.down('xs')]: {
-			fontSize: '.8rem'
-		},
 		'&:hover': {
 			backgroundColor: theme.palette.secondary.main,
 			cursor: 'pointer',
