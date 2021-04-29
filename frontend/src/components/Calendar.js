@@ -40,7 +40,7 @@ const Calendar = ({ setOpen, setBooking }) => {
 		dispatch(
 			getBookingsAction(
 				page === 0
-					? moment().add(1, 'h')
+					? moment().add(2, 'h')
 					: moment(newDates[0]).hour(0).minute(0),
 				moment(newDates[newDates.length - 1])
 					.hour(23)
