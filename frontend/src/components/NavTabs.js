@@ -24,9 +24,9 @@ const NavTabs = ({ tabValue, handleTabChange }) => {
 			<Tab
 				className={classes.tab}
 				component={Link}
-				to='/apps'
+				to='/portfolio'
 				disableRipple
-				label='Apps'
+				label='Portfolio'
 			/>
 			<Tab
 				className={classes.tab}
