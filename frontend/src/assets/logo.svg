@@ -1,0 +1,41 @@
+
+		<svg
+			version="1.1"
+			id="logo"
+			xmlns="http://www.w3.org/2000/svg"
+			xmlns:xlink="http://www.w3.org/1999/xlink"
+			x="0px"
+			y="0px"
+			viewBox="0 0 100 100"
+			style="enable-background: new 0 0 100 100; stroke: #FF481F;	stroke-width: 3;
+				stroke-linecap: round;
+				stroke-linejoin: round;
+				fill: none;"
+			xml:space="preserve"
+		>
+		
+			<!-- Low Base -->
+			<path
+				class="line"
+				d="
+          M 1 99
+          L 20 60
+          L 80 60
+          L 99 99
+          "
+			></path>
+
+		
+			<path
+				class="line"
+				d="
+          M 32.5 35
+          L 50 1
+          L 67.5 35
+          
+          "
+			></path>
+
+		
+		</svg>
+	

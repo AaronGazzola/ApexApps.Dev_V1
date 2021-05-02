@@ -63,6 +63,13 @@ const styles = makeStyles(theme => ({
 	textBox3: {
 		padding: theme.spacing(3)
 	},
+	textBox4: {
+		padding: theme.spacing(3, 0, 2, 1),
+		width: '90%',
+		[theme.breakpoints.down('sm')]: {
+			width: '100%'
+		}
+	},
 	highlight: {
 		borderBottom: `1px solid ${theme.palette.primary.main}`,
 		fontStyle: 'italic',
@@ -301,14 +308,18 @@ const styles = makeStyles(theme => ({
 	},
 	list: {
 		listStyle: 'none',
-		padding: 0,
-		marginTop: theme.spacing(3),
+		margin: 0,
+		padding: theme.spacing(2),
 		'& li': {
 			marginBottom: theme.spacing(2)
 		}
 	},
 	listText: {
-		marginLeft: theme.spacing(1)
+		marginLeft: theme.spacing(2)
+	},
+	description: {
+		padding: theme.spacing(1, 2, 2, 2),
+		width: '100%'
 	},
 	signature1: {
 		margin: theme.spacing(1, 2)
@@ -334,6 +345,34 @@ const styles = makeStyles(theme => ({
 	},
 	margin1: {
 		margin: theme.spacing(1)
+	},
+	accordion: {
+		width: '90%',
+		[theme.breakpoints.down('sm')]: {
+			width: '100%'
+		},
+		border: `1px solid ${theme.palette.grey[900]}`
+	},
+	accordionLogo: {
+		width: 50
+	},
+	// accordionSummary: {
+	// 	alignItems: 'center'
+	// },
+	accordionSummaryGrid: {
+		alignItems: 'center',
+		width: '100%'
+	},
+	accordionTitle: {
+		marginLeft: theme.spacing(2)
+	},
+	accordionDetails: {
+		flexDirection: 'column',
+		alignItems: 'center'
+	},
+	expandText: {
+		marginLeft: 'auto',
+		color: theme.palette.text.secondary
 	}
 }));
 

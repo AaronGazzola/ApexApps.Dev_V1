@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
+import logo from 'assets/logo.svg';
+import origamiLogo from 'assets/origami.svg';
 import { Link } from 'react-router-dom';
-import useStyles from 'styles/contentStyles';
-import { Typography, Paper, Grid } from '@material-ui/core';
+import useContentStyles from 'styles/contentStyles';
+import {
+	Typography,
+	Paper,
+	Grid,
+	Accordion,
+	AccordionSummary,
+	AccordionDetails,
+	useMediaQuery
+} from '@material-ui/core';
 import {
 	AccountBalanceWallet,
 	ArtTrack,
@@ -10,215 +20,167 @@ import {
 	Devices,
 	EventAvailable,
 	ShoppingCart,
-	Storefront
+	Storefront,
+	ExpandMore
 } from '@material-ui/icons';
 
+const details = {
+	apexApps: [
+		{
+			icon: <EventAvailable />,
+			text: 'Booking calendar with availability management'
+		},
+		{
+			icon: <Create />,
+			text: 'Styled blog editor'
+		},
+		{
+			icon: <Devices />,
+			text: 'Responsive design for any screen size'
+		},
+		{
+			icon: <ContactMail />,
+			text: 'Client verification for booking confirmation'
+		}
+	],
+	origami: [
+		{
+			icon: <ShoppingCart />,
+			text: 'User friendly shopping cart and checkout'
+		},
+		{
+			icon: <AccountBalanceWallet />,
+			text: 'PayPal payment integration'
+		},
+		{
+			icon: <ContactMail />,
+			text: 'User authentication and verification'
+		},
+		{
+			icon: <Devices />,
+			text: 'Responsive design for any screen size'
+		}
+	]
+};
+
 const PortfolioScreen = () => {
-	const classes = useStyles();
+	const contentClasses = useContentStyles();
+	const [expanded, setExpanded] = useState(0);
+	const matchesXs = useMediaQuery(theme => theme.breakpoints.down('xs'));
+	const handleExpand = panel => {
+		setExpanded(panel === expanded ? 0 : panel);
+	};
 	return (
 		<>
-			<div className={classes.textBox1}>
-				<Typography variant='h1' className={classes.title}>
-					App Portfolio
+			<div className={contentClasses.textBox1}>
+				<Typography variant='h1' className={contentClasses.title}>
+					Portfolio
 				</Typography>
-				<Typography className={classes.paragraph}>
-					Below are some of the web apps designed and developed by Apex Apps
+				<Typography className={contentClasses.paragraph}>
+					Explore some of my{' '}
+					<span className={contentClasses.highlight}>Full-Stack</span> and{' '}
+					<span className={contentClasses.highlight}>Front-End</span>{' '}
+					development work
 				</Typography>
 			</div>
-			<div className={classes.appBox}>
-				<Paper
-					variant='outlined'
-					component={Grid}
-					container
-					direction='column'
-					alignItems='center'
-					className={classes.paper}
-				>
-					<Typography variant='h2' className={classes.subTitle}>
-						<Link className={classes.link} to='/'>
-							ApexApps.dev
-						</Link>
-					</Typography>
-					<ul className={classes.list}>
-						<li>
-							<Grid
-								container
-								direction='row'
-								alignItems='center'
-								justify='flex-start'
-								style={{ flexWrap: 'nowrap' }}
-							>
-								<ArtTrack color='primary' />
-								<Typography className={classes.listText}>
-									<span className={classes.highlight}>Web App Portfolio</span>
-								</Typography>
-							</Grid>
-						</li>
-						<li>
-							<Grid
-								container
-								direction='row'
-								alignItems='center'
-								justify='flex-start'
-								style={{ flexWrap: 'nowrap' }}
-							>
-								<EventAvailable />
-								<Typography className={classes.listText}>
-									Booking calendar with availability management
-								</Typography>
-							</Grid>
-						</li>
-						<li>
-							<Grid
-								container
-								direction='row'
-								alignItems='center'
-								justify='flex-start'
-								style={{ flexWrap: 'nowrap' }}
-							>
-								<Create />
-								<Typography className={classes.listText}>
-									Styled blog editor
-								</Typography>
-							</Grid>
-						</li>
-						<li>
-							<Grid
-								container
-								direction='row'
-								alignItems='center'
-								justify='flex-start'
-								style={{ flexWrap: 'nowrap' }}
-							>
-								<Devices />
-								<Typography className={classes.listText}>
-									Responsive design for any screen size
-								</Typography>
-							</Grid>
-						</li>
-						<li>
-							<Grid
-								container
-								direction='row'
-								alignItems='center'
-								justify='flex-start'
-								style={{ flexWrap: 'nowrap' }}
-							>
-								<ContactMail />
-								<Typography className={classes.listText}>
-									Client verification for booking confirmation
-								</Typography>
-							</Grid>
-						</li>
-					</ul>
-
-					<div className={classes.video}>
-						<iframe
-							width='560'
-							height='315'
-							src='https://www.youtube.com/embed/moGGjXAPuis'
-							title='YouTube video player'
-							frameBorder='0'
-							allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-							allowFullScreen
-						></iframe>
-					</div>
-				</Paper>
+			<div className={contentClasses.textBox4}>
+				<Typography variant='h2' className={contentClasses.title}>
+					Full-Stack Web Apps:
+				</Typography>
 			</div>
-			<div className={classes.appBox}>
-				<Paper
-					variant='outlined'
-					component={Grid}
-					container
-					direction='column'
-					alignItems='center'
-					className={classes.paper}
+			<Accordion
+				expanded={expanded === 1}
+				onChange={() => handleExpand(1)}
+				className={contentClasses.accordion}
+			>
+				<AccordionSummary
+					expandIcon={<ExpandMore fontSize='large' style={{ color: '#fff' }} />}
+					aria-controls='Origami.cool information'
+					id='origami-panel'
+					className={contentClasses.accordionSummary}
 				>
-					<Typography variant='h2' className={classes.subTitle}>
-						<a
-							className={classes.link}
-							href='https://www.origami.cool'
-							target='_blank'
-							rel='noreferrer noopener'
-						>
-							Origami.cool
-						</a>
-					</Typography>
-					<ul className={classes.list}>
-						<li>
-							<Grid
-								container
-								direction='row'
-								alignItems='center'
-								justify='flex-start'
-								style={{ flexWrap: 'nowrap' }}
-							>
-								<Storefront color='primary' />
-								<Typography className={classes.listText}>
-									<span className={classes.highlight}>
-										Custom eCommerce platform
-									</span>
-								</Typography>
-							</Grid>
-						</li>
-						<li>
-							<Grid
-								container
-								direction='row'
-								alignItems='center'
-								justify='flex-start'
-								style={{ flexWrap: 'nowrap' }}
-							>
-								<ShoppingCart />
-								<Typography className={classes.listText}>
-									User friendly shopping cart and checkout
-								</Typography>
-							</Grid>
-						</li>
-						<li>
-							<Grid
-								container
-								direction='row'
-								alignItems='center'
-								justify='flex-start'
-								style={{ flexWrap: 'nowrap' }}
-							>
-								<AccountBalanceWallet />
-								<Typography className={classes.listText}>
-									PayPal payment integration
-								</Typography>
-							</Grid>
-						</li>
-						<li>
-							<Grid
-								container
-								direction='row'
-								alignItems='center'
-								justify='flex-start'
-								style={{ flexWrap: 'nowrap' }}
-							>
-								<Devices />
-								<Typography className={classes.listText}>
-									Responsive design for any screen size
-								</Typography>
-							</Grid>
-						</li>
-						<li>
-							<Grid
-								container
-								direction='row'
-								alignItems='center'
-								justify='flex-start'
-								style={{ flexWrap: 'nowrap' }}
-							>
-								<ContactMail />
-								<Typography className={classes.listText}>
-									User authentication and verification
-								</Typography>
-							</Grid>
-						</li>
-					</ul>
-					<div className={classes.video}>
+					<Grid container className={contentClasses.accordionSummaryGrid}>
+						<img
+							className={contentClasses.accordionLogo}
+							src={origamiLogo}
+							alt='Origami logo'
+						/>
+						<Typography variant='h3' className={contentClasses.accordionTitle}>
+							{expanded === 1 ? (
+								<a
+									className={contentClasses.link}
+									style={{ fontWeight: 100 }}
+									href='https://www.origami.cool'
+									rel='noopener noreferrer'
+									target='_blank'
+								>
+									Origami.cool
+								</a>
+							) : (
+								'Origami.cool'
+							)}
+						</Typography>
+						{expanded !== 1 && !matchesXs && (
+							<Typography variant='body2' className={contentClasses.expandText}>
+								Click to expand
+							</Typography>
+						)}
+					</Grid>
+				</AccordionSummary>
+				<AccordionDetails className={contentClasses.accordionDetails}>
+					<Grid container>
+						<Grid item xs={12} md={6}>
+							<ul className={contentClasses.list}>
+								<li>
+									<Grid
+										container
+										direction='row'
+										alignItems='center'
+										justify='flex-start'
+										style={{ flexWrap: 'nowrap' }}
+									>
+										<Storefront color='primary' />
+										<Typography className={contentClasses.listText}>
+											<span className={contentClasses.highlight}>
+												Custom eCommerce platform
+											</span>
+										</Typography>
+									</Grid>
+								</li>
+								{details.origami.map(item => (
+									<li key={item.text}>
+										<Grid
+											container
+											direction='row'
+											alignItems='center'
+											justify='flex-start'
+											style={{ flexWrap: 'nowrap' }}
+										>
+											{item.icon}
+											<Typography className={contentClasses.listText}>
+												{item.text}
+											</Typography>
+										</Grid>
+									</li>
+								))}
+							</ul>
+						</Grid>
+						<Grid item xs={12} md={6} className={contentClasses.description}>
+							<Typography variant='h4'>Origami Store</Typography>
+							<Typography className={contentClasses.paragraph}>
+								A live eCommerce app, selling hand made origami
+							</Typography>
+							<Typography className={contentClasses.paragraph}>
+								This project combines two of my favourit things - programming
+								and origami! I hand fold each origmai model with the same care
+								and love that I put into my apps.
+							</Typography>
+							<Typography className={contentClasses.paragraph}>
+								Watch the video below for a full walkthrough.
+							</Typography>
+						</Grid>
+					</Grid>
+					<div className={contentClasses.video}>
 						<iframe
 							width='560'
 							height='315'
@@ -229,8 +191,101 @@ const PortfolioScreen = () => {
 							allowFullScreen
 						></iframe>
 					</div>
-				</Paper>
-			</div>
+				</AccordionDetails>
+			</Accordion>
+			<Accordion
+				expanded={expanded === 2}
+				onChange={() => handleExpand(2)}
+				className={contentClasses.accordion}
+			>
+				<AccordionSummary
+					expandIcon={<ExpandMore fontSize='large' style={{ color: '#fff' }} />}
+					aria-controls='ApexApps.dev informaiton'
+					id='apex-apps-panel'
+					className={contentClasses.accordionSummary}
+				>
+					<Grid container className={contentClasses.accordionSummaryGrid}>
+						<img
+							className={contentClasses.accordionLogo}
+							style={{ padding: 2 }}
+							src={logo}
+							alt='ApexApps logo'
+						/>
+						<Typography variant='h3' className={contentClasses.accordionTitle}>
+							ApexApps.dev
+						</Typography>
+						{expanded !== 2 && !matchesXs && (
+							<Typography variant='body2' className={contentClasses.expandText}>
+								Click to expand
+							</Typography>
+						)}
+					</Grid>
+				</AccordionSummary>
+				<AccordionDetails className={contentClasses.accordionDetails}>
+					<Grid container>
+						<Grid item xs={12} md={6}>
+							<ul className={contentClasses.list}>
+								<li>
+									<Grid
+										container
+										direction='row'
+										alignItems='center'
+										justify='flex-start'
+										style={{ flexWrap: 'nowrap' }}
+									>
+										<ArtTrack color='primary' />
+										<Typography className={contentClasses.listText}>
+											<span className={contentClasses.highlight}>
+												Web App Portfolio
+											</span>
+										</Typography>
+									</Grid>
+								</li>
+								{details.apexApps.map(item => (
+									<li key={item.text}>
+										<Grid
+											container
+											direction='row'
+											alignItems='center'
+											justify='flex-start'
+											style={{ flexWrap: 'nowrap' }}
+										>
+											{item.icon}
+											<Typography className={contentClasses.listText}>
+												{item.text}
+											</Typography>
+										</Grid>
+									</li>
+								))}
+							</ul>
+						</Grid>
+						<Grid item xs={12} md={6} className={contentClasses.description}>
+							<Typography variant='h4'>My Portfolio</Typography>
+							<Typography className={contentClasses.paragraph}>
+								Welcome to my Web App development portfolio!
+							</Typography>
+							<Typography className={contentClasses.paragraph}>
+								Here clients are able to view some of my work and book a call
+								via the booking calendar.
+							</Typography>
+							<Typography className={contentClasses.paragraph}>
+								Watch the video below for a full walkthrough!
+							</Typography>
+						</Grid>
+					</Grid>
+					<div className={contentClasses.video}>
+						<iframe
+							width='560'
+							height='315'
+							src='https://www.youtube.com/embed/moGGjXAPuis'
+							title='YouTube video player'
+							frameBorder='0'
+							allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
+							allowFullScreen
+						></iframe>
+					</div>
+				</AccordionDetails>
+			</Accordion>
 		</>
 	);
 };
